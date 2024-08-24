@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Sale Website</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-car"></i></h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home <i class="fas fa-home"></i></a></li>
+                    <li><a href="#inventory">Inventory <i class="fas fa-car-side"></i></a></li>
+                    <li><a href="#about">About Us <i class="fas fa-info-circle"></i></a></li>
+                    <li><a href="#contact">Contact <i class="fas fa-envelope"></i></a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+        </div>
+    </header>
+    <section class="hero">
+        <div class="container">
+            <h2>Find Your Dream Car</h2>
+            <p>Choose from a wide range of new and used cars</p>
+            <a href="#inventory" class="btn">Browse Inventory</a>
+        </div>
+
+    </section>
+    <section id="inventory" class="inventory">
+        <div class="container">
+            <h3>Our Inventory <i class="fas fa-star"></i></h3>
+            <div class="car-card">
+                <img src="car1.webp" alt="Car 1">
+                <h4>Car Model 1 <i class="fas fa-car"></i></h4>
+                <p>$25,000</p>
+            </div>
+
+        </div>
+        <div class="car-card">
+            <img src="car2.webp" alt="Car 2">
+            <h4>Car Model 2 <i class="fas fa-car"></i></h4>
+            <p>$25,000</p>
+        </div>
+        <div class="car-card">
+            <img src="car3.webp" alt="Car 3">
+            <h4>Car Model 3 <i class="fas fa-car"></i></h4>
+            <p>$30,000</p>
+        </div>
+        <div class="car-card">
+            <img src="car4.webp" alt="Car 4">
+            <h4>Car Model 4 <i class="fas fa-car"></i></h4>
+            <p>$20,000</p>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h3>About Us <i class="fas fa-info-circle"></i></h3>
+            <p>We are trusted car dealership with years of experience in the automotive industry. Our mission is to help
+                you find the perfect car that fits your needs and budget.</p>
+            <p>Our team of experts is here to guide yoy through the entire process, from selecting the right vehicle to
+                securing the best financing options.</p>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h3>Contact Us <i class="fas fa-envelope"></i></h3>
+            <p>We'd love to hear from you! Whether you have questions about our inventory or need assistance with financing, our team is here to help.</p>
+
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name" required>
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" required>
+                <label for="message">Message:</label>
+                <textarea name="message" id="message" required></textarea>
+                <button type="submit" class="btn">
+                    Send Message
+                </button>
+            </form>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Car Sale.All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
