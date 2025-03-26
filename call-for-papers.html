@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Call for Papers - SDSTD2025</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+    rel="stylesheet" />
+    <style>
+      body {
+        animation: slideUp 0.5s ease;
+        font-family: "Ubuntu", sans-serif;
+        font-weight: 400;
+      }
+      .logo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        gap: 10rem;
+        background-color: #f8f9fa;
+      }
+
+      .logo {
+        height: 80px;
+        object-fit: contain;
+        transition: transform 0.3s ease;
+      }
+
+      .logo:hover {
+        transform: scale(1.05);
+        cursor: pointer;
+      }
+
+      button {
+        padding: 10px 20px;
+        background-color: white;
+        color: #0b274c;
+        border: 1px solid white;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: 0.3s;
+      }
+
+      button:hover {
+        background-color: #007bff;
+        color: white;
+      }
+
+      .navbar {
+        /* padding: 15px; */
+        /* display: flex; */
+        justify-content: center;
+        align-items: center;
+      }
+      nav {
+        background-color: #fff;
+        padding: 0.5rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      }
+      .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+      }
+
+      .nav-links li {
+        display: inline;
+      }
+
+      .nav-links a {
+        /* color: white; */
+        text-decoration: none;
+        font-size: 18px;
+      }
+
+      /* Menu Button (Visible only on mobile) */
+      .menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        color: linear-gradient(to right, #cffafe 0%, #dbeafe 100%);
+        font-size: 20px;
+        cursor: pointer;
+        text-align: left;
+      }
+
+      /* Mobile Navbar (Sidebar) */
+      .mobile-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 250px;
+        height: 100%;
+        background: #0b274c;
+        padding-top: 50px;
+        transition: transform 0.3s ease-in-out;
+        transform: translateX(-100%);
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+      }
+
+      .mobile-nav.active {
+        transform: translateX(0);
+      }
+
+      .close-btn {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        align-self: flex-end;
+        cursor: pointer;
+        margin-right: auto;
+      }
+
+      .mobile-nav a {
+        color: white;
+        background: linear-gradient(to right, #2563eb 0%, #06b6d4 100%);
+        -webkit-background-clip: text;
+        /* -webkit-text-fill-color: transparent; */
+        text-decoration: none;
+        padding: 15px;
+        font-size: 18px;
+        display: block;
+        list-style: none;
+      }
+
+      /* Show Mobile Menu */
+      .mobile-nav .dropdown {
+        position: relative;
+        display: block;
+      }
+
+      .mobile-nav .dropdown-content {
+        display: none; /* Initially hidden */
+        flex-direction: column;
+        background: #1a1a1a;
+        padding-left: 10px;
+      }
+
+      .mobile-nav .dropdown-content a {
+        padding: 10px;
+        display: block;
+        color: white;
+        text-decoration: none;
+      }
+
+      /* Show dropdown when active */
+      .mobile-nav .dropdown.active .dropdown-content {
+        display: flex;
+      }
+
+      .dropdown-content a {
+        display: block;
+        /* padding: 0.75rem 1.5rem; */
+        color: #333;
+        transition: all 0.3s ease;
+      }
+
+      .dropdown-content a:hover .dropdown-content {
+        display: block;
+        opacity: 1;
+        color: #000 !important;
+        animation: fadeIn 0.3s ease;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .menu-btn {
+          display: block;
+        }
+        .logo-container {
+          gap: 2rem;
+        }
+        .logo{
+          height: 25px;
+        }
+      }
+      .call-papers h1 {
+        text-align: center;
+        font-weight: bold;
+        font-size: 2rem;
+        color: #000;
+        /* background: #fff; */
+        margin: 0 auto;
+        width: 30%;
+        margin-bottom: 1rem;
+      }
+      .submit-paper {
+        color: #000 !important;
+        /* background: #027bff; */
+        background-color: linear-gradient(to right, #cffafe 0%, #dbeafe 100%);
+        /* -webkit-text-fill-color: transparent; */
+        animation: fadeIn 1s ease;
+        box-shadow: 1px -4px 5px;
+      }
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @media (max-width: 768px) {
+        body {
+          text-align: justify;
+        }
+        .logo {
+          height: 25px;
+          align-items: justify;
+        }
+        ul li,
+        p {
+          text-align: justify;
+          /* font-size: 16px; */
+        }
+        .call-papers h1,
+        h2 {
+          text-align: center;
+          width: fit-content;
+        }
+        .link {
+          font-size: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo-container">
+        <img src="SDSTD2025.png" alt="SDSTD" class="logo" />
+        <img src="cvm.png" alt="CVM" class="logo" />
+        <img src="adit.png" alt="ADIT" class="logo" />
+        <img src="gcet.png" alt="GCET" class="logo" />
+        <img src="mbit.png" alt="MBIT" class="logo" />
+      </div>
+      <nav class="navbar">
+        <ul class="nav-links">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropbtn">About</a>
+            <div class="dropdown-content">
+              <a href="cvm.html">Charutar Vidya Mandal</a>
+              <a href="cvm-university.html">CVM University</a>
+            </div>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropbtn">SDSTD-2025</a>
+            <div class="dropdown-content">
+              <a href="tracks.html">Tracks</a>
+              <a href="call-for-papers.html">Call for Papers</a>
+              <a href="important-dates.html">Important Dates</a>
+              <a href="submission-guidelines.html">Submission Guidelines</a>
+              <a href="#" onclick="openInNewTab('https://forms.gle/oZiaETYz1s2UpWhR8')">Registration</a>
+              <a href="Payment.html">Payment Details</a>
+            </div>
+          </li>
+          <li><a href="keynote.html">Keynote Speakers</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropbtn">Committee</a>
+            <div class="dropdown-content">
+              <a href="organizing.html">Organizing Committee</a>
+              <a href="track-coordinators.html">Track Co-ordinators</a>
+              <a href="ITC.html">International Technical Committee</a>
+              <a href="NC.html">National Technical Committee</a>
+              <!-- <a href="WC.html">Website Coordinator</a> -->
+            </div>
+          </li>
+          <li><a href="index.html#contact">Contact Us</a></li>
+          <li>
+            <a href="#" class="submit-paper" onclick="openInNewTab('https://cmt3.research.microsoft.com/User/Login?ReturnUrl=%2FSDSTD2025%2FSubmission%2FIndex')">Submit Paper</a
+            >
+          </li>
+        </ul>
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+      </nav>
+      <div class="mobile-nav" id="mobileNav">
+        <button class="close-btn" onclick="toggleClose()">✖</button>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">About</a>
+          <div class="dropdown-content">
+            <a href="cvm.html">Charutar Vidya Mandal</a>
+            <a href="cvm-university.html">CVM University</a>
+          </div>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">SDSTD-2025</a>
+          <div class="dropdown-content">
+            <a href="tracks.html">Tracks</a>
+            <a href="call-for-papers.html">Call for Papers</a>
+            <a href="important-dates.html">Important Dates</a>
+            <a href="submission-guidelines.html">Submission Guidelines</a>
+            <a href="#" onclick="openInNewTab('https://forms.gle/oZiaETYz1s2UpWhR8')">Registration</a>
+            <a href="Payment.html">Payment Details</a>
+          </div>
+        </li>
+        <li><a href="keynote.html">Keynote Speakers</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">Committee</a>
+          <div class="dropdown-content">
+            <a href="organizing.html">Organizing Committee</a>
+            <a href="track-coordinators.html">Track Co-ordinators</a>
+            <a href="ITC.html">International Technical Committee</a>
+            <a href="NC.html">National Technical Committee</a>
+            <!-- <a href="WC.html">Website Coordinator</a> -->
+          </div>
+        </li>
+        <li><a href="index.html#contact">Contact Us</a></li>
+        <li><a href="#" class="submit-paper">Submit Paper</a></li>
+      </div>
+    </header>
+    <main>
+      <section class="call-papers">
+        <h1>Call For Papers</h1>
+        <div class="guidelines-list">
+          <p>
+            Prospective authors from India and abroad are invited to submit
+            their full papers describing original, previously unpublished,
+            complete work (not currently under review by any other
+            conference/journal) by electronic submission.
+          </p>
+          <br />
+          <h2>Submission Requirements</h2>
+          <ul>
+            <li>
+              The maximum number of pages for conference paper is 10 pages
+            </li>
+            <li>Papers need to be submitted in the .docx/Latex format</li>
+            <li>
+              Paper should be submitted through Microsoft CMT (Microsoft's
+              Conference Management Toolkit) portal only.
+            </li>
+            <li>
+              <p class="download-link">Download Manuscript Template:</p>
+              <a href="Template for Paper Preparation for STSTD2025.docx">Word File</a>
+                <!-- <a href="Template for Paper Preparation for STSTD2025.pdf">PDF File</a> -->
+            </li>
+          </ul>
+          <br />
+          <h2>Important Guidelines</h2>
+          <ul>
+            <li>
+              A submission should not be intended to get reviews from the
+              reviewers for the sole purpose of improving on the quality of the
+              paper
+            </li>
+            <li>
+              A submission implies that the author intends to ultimately
+              register the paper upon a favorable response from the conference
+              organizers
+            </li>
+            <li>
+              All submissions will be rigorously peer-reviewed by a panel of
+              experts
+            </li>
+            <li>
+              Manuscripts should not contain Embedded links, Scanned images,
+              Header and Footer
+            </li>
+            <li>Email submission will not be accepted</li>
+          </ul>
+          <br />
+          <h2>Contact Information</h2>
+          <p>
+            All queries related to the conference shall be addressed to:
+            <a href="mailto:cvmconference.sdstd2025@cvmu.edu.in" class="link" onclick="window.open('mailto:cvmuconference.sdstd2025@cvmu.edu.in')"
+              >cvmuconference.sdstd2025@cvmu.edu.in</a>
+          </p>
+          <br />
+          <h2>Notes</h2>
+          <ul>
+            <li>
+              The Conference will check plagiarism for all the articles prior
+              publication
+            </li>
+            <li>
+              In any case, if the submitted original manuscript is more than 20%
+              plagiarized then the article will be rejected and the same will be
+              notified to the author
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <p>© 2025 SDSTD Conference. All rights reserved.</p>
+        <div class="footer-links">
+          <p>Design And Develop By <span style="font-weight: bold">Student Team of CP & IT GCET College</span></p>
+        </div>
+      </div>
+    </footer>
+    <script>
+      function toggleMenu() {
+        const mobileNav = document.getElementById("mobileNav");
+        mobileNav.classList.add("active");
+      }
+
+      function toggleClose() {
+        const mobileNav = document.getElementById("mobileNav");
+        mobileNav.classList.remove("active");
+      }
+      function openInNewTab(url){
+        window.open(url, '_blank').focus();
+      }
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>

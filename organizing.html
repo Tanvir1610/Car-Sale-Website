@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Organizing Committee - SDSTD2025</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="coordinators.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+    rel="stylesheet" />
+  <style>
+    body {
+      animation: slideUp 0.5s ease;
+      font-family: "Ubuntu", sans-serif;
+      font-weight: 400;
+    }
+
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+      gap: 10rem;
+      background-color: #f8f9fa;
+    }
+
+    .logo {
+      height: 80px;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+      cursor: pointer;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: white;
+      color: #0b274c;
+      border: 1px solid white;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .navbar {
+      /* padding: 15px; */
+      /* display: flex; */
+      justify-content: center;
+      align-items: center;
+    }
+
+    nav {
+      background-color: #fff;
+      padding: 0.5rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links li {
+      display: inline;
+    }
+
+    .nav-links a {
+      /* color: white; */
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+    /* Menu Button (Visible only on mobile) */
+    .menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: linear-gradient(to right, #cffafe 0%, #dbeafe 100%);
+      font-size: 20px;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    /* Mobile Navbar (Sidebar) */
+    .mobile-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 250px;
+      height: 100%;
+      background: #0b274c;
+      padding-top: 50px;
+      transition: transform 0.3s ease-in-out;
+      transform: translateX(-100%);
+      display: flex;
+      flex-direction: column;
+      list-style: none;
+    }
+
+    .mobile-nav.active {
+      transform: translateX(0);
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      align-self: flex-end;
+      cursor: pointer;
+      margin-right: auto;
+    }
+
+    .mobile-nav a {
+      color: white;
+      background: linear-gradient(to right, #2563eb 0%, #06b6d4 100%);
+      -webkit-background-clip: text;
+      /* -webkit-text-fill-color: transparent; */
+      text-decoration: none;
+      padding: 15px;
+      font-size: 18px;
+      display: block;
+      list-style: none;
+    }
+
+    /* Show Mobile Menu */
+    .mobile-nav .dropdown {
+      position: relative;
+      display: block;
+    }
+
+    .mobile-nav .dropdown-content {
+      display: none;
+      /* Initially hidden */
+      flex-direction: column;
+      background: #1a1a1a;
+      padding-left: 10px;
+    }
+
+    .mobile-nav .dropdown-content a {
+      padding: 10px;
+      display: block;
+      color: white;
+      text-decoration: none;
+    }
+
+    /* Show dropdown when active */
+    .mobile-nav .dropdown.active .dropdown-content {
+      display: flex;
+    }
+
+    .dropdown-content a {
+      display: block;
+      /* padding: 0.75rem 1.5rem; */
+      color: #333;
+      transition: all 0.3s ease;
+    }
+
+    .dropdown-content a:hover .dropdown-content {
+      display: block;
+      opacity: 1;
+      color: #000 !important;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .committee-member {
+      display: flex;
+      /* height: 250px; */
+      width: 208.28px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+    }
+
+    h2 {
+      font-weight: bold;
+      color: #000;
+      /* background: #fff; */
+      font-size: 2rem;
+      width: fit-content;
+      margin: 0 auto;
+      margin-bottom: 2rem;
+      margin-top: 2rem;
+    }
+
+    .local-committee-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 0.4fr));
+      gap: 2rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .logo-container {
+        gap: 2rem;
+      }
+    }
+
+    .call-papers h1 {
+      text-align: center;
+    }
+
+    .submit-paper {
+      color: #000 !important;
+      /* background: #027bff; */
+      background-color: linear-gradient(to right, #cffafe 0%, #dbeafe 100%);
+      /* -webkit-text-fill-color: transparent; */
+      animation: fadeIn 1s ease;
+      box-shadow: 1px -4px 5px;
+    }
+
+    p {
+      font-size: 1.1rem;
+    }
+
+    .member-name,
+    .member-role {
+      text-align: left;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        text-align: justify;
+      }
+
+      .logo {
+        height: 25px;
+        align-items: justify;
+      }
+
+      .member-image {
+        height: 150px;
+        width: 150px;
+        object-fit: cover;
+      }
+
+      .member-name,
+      .member-role {
+        text-align: left;
+        font-size: 0.8rem;
+        font-weight: bold;
+      }
+
+      .committee-member {
+        /* height: 400px; */
+        width: 150px;
+        margin: 0 auto;
+      }
+
+      .committee-member img {
+        height: 150px;
+        width: 150px;
+        margin: 0 auto;
+      }
+
+      .member-image1 {
+        height: 180px;
+        width: 150px;
+        margin: 0 auto;
+      }
+
+      .member-image2 {
+        height: 180px;
+        width: 150px;
+        margin: 0 auto;
+      }
+
+      .member-image3 {
+        height: 180px;
+        width: 150px;
+        margin: 0 auto;
+      }
+
+      .coordinator-card {
+        /* height: 225px; */
+        width: 150px;
+        margin: 0 auto;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* .committee-member1 {
+        height: 150px;
+        width: 150px;
+        margin: 0 auto;
+      } */
+      p {
+        font-size: 0.9rem;
+        text-align: justify;
+      }
+
+      .local-committee-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin: 0 auto;
+        /* padding: 2rem; */
+        /* width: 300px; */
+        /* height: 150px; */
+        /* text-align: center; */
+        align-items: center;
+        max-width: 1200px;
+        justify-content: center;
+      }
+    }
+
+    .member-image1 {
+      width: 208.28px;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .member-image2 {
+      width: 250px;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .member-image3 {
+      height: 250px;
+      width: 208.28px;
+      object-fit: cover;
+    }
+
+    /* .committee-member img{
+      height: 250px;
+      width: 250px;
+    } */
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="SDSTD2025.png" alt="SDSTD" class="logo" />
+      <img src="cvm.png" alt="CVM" class="logo" />
+      <img src="adit.png" alt="ADIT" class="logo" />
+      <img src="gcet.png" alt="GCET" class="logo" />
+      <img src="mbit.png" alt="MBIT" class="logo" />
+    </div>
+    <nav class="navbar">
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">About</a>
+          <div class="dropdown-content">
+            <a href="cvm.html">Charutar Vidya Mandal</a>
+            <a href="cvm-university.html">CVM University</a>
+          </div>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">SDSTD-2025</a>
+          <div class="dropdown-content">
+            <a href="tracks.html">Tracks</a>
+            <a href="call-for-papers.html">Call for Papers</a>
+            <a href="important-dates.html">Important Dates</a>
+            <a href="submission-guidelines.html">Submission Guidelines</a>
+            <a href="#" onclick="openInNewTab('https://forms.gle/oZiaETYz1s2UpWhR8')">Registration</a>
+            <a href="Payment.html">Payment Details</a>
+          </div>
+        </li>
+        <li><a href="keynote.html">Keynote Speakers</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">Committee</a>
+          <div class="dropdown-content">
+            <a href="organizing.html">Organizing Committee</a>
+            <a href="track-coordinators.html">Track Co-ordinators</a>
+            <a href="ITC.html">International Technical Committee</a>
+            <a href="NC.html">National Technical Committee</a>
+            <!-- <a href="WC.html">Website Coordinator</a> -->
+          </div>
+        </li>
+        <li><a href="index.html#contact">Contact Us</a></li>
+        <li>
+          <a href="#" class="submit-paper"
+            onclick="openInNewTab('https://cmt3.research.microsoft.com/User/Login?ReturnUrl=%2FSDSTD2025%2FSubmission%2FIndex')">Submit
+            Paper</a>
+        </li>
+      </ul>
+      <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    </nav>
+    <div class="mobile-nav" id="mobileNav">
+      <button class="close-btn" onclick="toggleClose()">✖</button>
+      <li><a href="index.html" class="active">Home</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropbtn">About</a>
+        <div class="dropdown-content">
+          <a href="cvm.html">Charutar Vidya Mandal</a>
+          <a href="cvm-university.html">CVM University</a>
+        </div>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropbtn">SDSTD-2025</a>
+        <div class="dropdown-content">
+          <a href="tracks.html">Tracks</a>
+          <a href="call-for-papers.html">Call for Papers</a>
+          <a href="important-dates.html">Important Dates</a>
+          <a href="submission-guidelines.html">Submission Guidelines</a>
+          <a href="#" onclick="openInNewTab('https://forms.gle/oZiaETYz1s2UpWhR8')">Registration</a>
+          <a href="Payment.html">Payment Details</a>
+        </div>
+      </li>
+      <li><a href="keynote.html">Keynote Speakers</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Committee</a>
+        <div class="dropdown-content">
+          <a href="organizing.html">Organizing Committee</a>
+          <a href="track-coordinators.html">Track Co-ordinators</a>
+          <a href="ITC.html">International Technical Committee</a>
+          <a href="NC.html">National Technical Committee</a>
+          <!-- <a href="WC.html">Website Coordinator</a> -->
+        </div>
+      </li>
+      <li><a href="index.html#contact">Contact Us</a></li>
+      <li><a href="#" class="submit-paper"
+          onclick="openInNewTab('https://cmt3.research.microsoft.com/User/Login?ReturnUrl=%2FSDSTD2025%2FSubmission%2FIndex')">Submit
+          Paper</a></li>
+    </div>
+  </header>
+  <main>
+    <section class="committee-section">
+      <!-- <h1>Organizing Committee</h1> -->
+      <!-- <p>
+          Our dedicated Organizing Committee works tirelessly to bring this
+          event to life, ensuring every detail is handled with precision and
+          care. The team comprises experienced professionals committed to
+          delivering a seamless and memorable experience for all participants.
+          From planning logistics to coordinating activities, they are at the
+          heart of the event's success. Feel free to reach out to our committee
+          members for any inquiries or assistance!
+        </p> -->
+      <br />
+      <h2 style="background: none;">Chief Patron</h2>
+      <div class="committee-grid">
+        <div class="committee-member">
+          <img src="Bikhubhai.jpeg" alt="Er. Bhikhubhai B. Patel" class="member-image" style="object-fit: cover;" />
+          <div class="member-info">
+            <h3 class="member-name">Er. Bhikhubhai B. Patel</h3>
+            <p class="member-role" style="font-size: 1rem;">
+              President, CVM University<br/>
+              Chairman, Charutar Vidya Mandal <br/>
+              Vallabh Vidyanagar
+            </p>
+          </div>
+        </div>
+    </section>
+    <section class="committee-section">
+      <h2 style="background: none;">Patrons</h2>
+      <br />
+      <div class="local-committee-grid">
+        <div class="committee-member">
+          <img src="ManishBhai.jpeg" alt="Shri Manishbhai S. Patel" class="member-image" />
+          <div class="member-info">
+            <h3 class="member-name">Shri Manishbhai S. Patel</h3>
+            <p class="member-role">Vice President, Charutar Vidya Mandal</p>
+          </div>
+        </div>
+        <div class="committee-member">
+          <img src="Dr. S. G. Patel.jpg" alt="Dr. S. G. Patel" class="member-image" />
+          <div class="member-info">
+            <h3 class="member-name">Dr. S. G. Patel</h3>
+            <p class="member-role">Hon Secretary, Charutar Vidya Mandal</p>
+          </div>
+        </div>
+        <div class="committee-member">
+          <img src="rct.jpg" alt="RCT" class="member-image">
+          <div class="member-info">
+            <h3 class="member-name">Shri Ramesh Talati</h3>
+            <p class="member-role">Hon. Jt. Secretary, Charutar Vidya Mandal</p>
+          </div>
+        </div>
+        <div class="committee-member">
+          <img src="mdp.jpg" alt="MDP" class="member-image">
+          <div class="member-info">
+            <h3 class="member-name">Shri Mehul D. Patel</h3>
+            <p class="member-role">Hon. Jt. Secretary, Charutar Vidya Mandal</p>
+          </div>
+        </div>
+        <div class="committee-member">
+          <img src="vhp.jpg" alt="MDP" class="member-image">
+          <div class="member-info">
+            <h3 class="member-name">Shri Vishal H. Patel</h3>
+            <p class="member-role">Hon. Jt. Secretary, Charutar Vidya Mandal</p>
+          </div>
+        </div>
+      </div>
+      <br />
+      <h2 style="background: none; ">Local Advisory Committee</h2>
+      <br />
+      <div class="local-committee-grid" style="max-width: 900px; margin: 0 auto;">
+        <div class="committee-member">
+          <img src="hemant.jpeg" alt="HJP" class="member-image">
+          <div class="member-info">
+            <h3 class="member-name">Dr. Hemant C Trivedi</h3>
+            <p class="member-role">Provost (I/C), CVMU</p>
+          </div>
+        </div>
+        <div class="committee-member">
+          <img src="registrar.png" alt="SW-PR" class="member-image">
+          <div class="member-info">
+            <h3 class="member-name">Dr. Sandeep Walia</h3>
+            <p class="member-role">Registrar, Dean Academics, CVMU</p>
+          </div>
+        </div>
+      </div>
+      <h2 style="background: none;">Conference Chair</h2>
+      <div class="committee-grid">
+        <div class="committee-member">
+          <img src="KN Sir 1.jpg" alt="Dr. Kaushik Nath" class="member-image" />
+          <div class="member-info">
+            <h3 class="member-name">Dr. Kaushik Nath</h3>
+            <p class="member-role">Principal, GCET and Dean FoET</p>
+          </div>
+        </div>
+        <div class="committee-member">
+          <img src="VS (1).jpg" alt="Dr. Vishal Singh" class="member-image" />
+          <div class="member-info">
+            <h3 class="member-name">Dr. Vishal N. Singh</h3>
+            <p class="member-role">Principal, ADIT</p>
+          </div>
+        </div>
+        <div class="committee-member">
+          <img src="Maulika-Patel.jpg" alt="Dr. Maulika Patel" class="member-image" />
+          <div class="member-info">
+            <h3 class="member-name">Dr. Maulika Patel</h3>
+            <p class="member-role">Principal, MBIT</p>
+          </div>
+        </div>
+      </div>
+      <h2 style="background: none;">Conveners</h2>
+      <div class="coordinators-grid">
+        <div class="coordinator-card">
+          <div class="committee-member">
+            <img src="Shrivastav.jpg" alt="Dr. Shivmurti Srivastav" class="member-image" />
+          </div>
+          <div class="coordinator-info">
+            <h3>Dr. Shivmurti Srivastav</h3>
+            <p>Professor & Head,<br />Food Processing Technology, ADIT</p>
+            <button class="more-btn" onclick="openInNewTab('http://adit.ac.in/facultydetails206f.html?dept=14&id=34')">
+              More
+            </button>
+            <!-- <div class="additional-info hidden">
+                <p>
+                  Additional information about Dr. Shivmurti Srivastav will be
+                  displayed here.
+                </p>
+              </div> -->
+          </div>
+        </div>
+
+        <div class="coordinator-card">
+          <div class="committee-member">
+            <img src="Vinod.jpeg" alt="Dr. Vinod Patel" class="member-image" />
+          </div>
+          <div class="coordinator-info">
+            <h3>Dr. Vinod N. Patel</h3>
+            <p>Professor & Head,<br />Mechatronics, GCET</p>
+            <button class="more-btn" onclick="openInNewTab('https://www.gcet.ac.in/staff.php')">
+              More
+            </button>
+            <!-- <div class="additional-info hidden">
+                <p>
+                  Additional information about Dr. Vinod Patel will be
+                  displayed here.
+                </p>
+              </div> -->
+          </div>
+        </div>
+
+        <div class="coordinator-card">
+          <div class="committee-member">
+            <img src="Foram.jpg" alt="Dr. Foram Joshi" class="member-image" />
+          </div>
+          <div class="coordinator-info">
+            <h3>Dr. Foram Joshi</h3>
+            <p>Assistant Professor,<br />Applied Science, MBIT</p>
+            <button class="more-btn" onclick="openInNewTab('https://www.mbit.edu.in/?page_id=12395')">
+              More
+            </button>
+            <!-- <div class="additional-info hidden">
+                <p>
+                  Additional information about Dr. Foram Joshi will be
+                  displayed here.
+                </p>
+              </div> -->
+          </div>
+        </div>
+      </div>
+      </div>
+      <h2 style="background: none;">Website Co-ordinator</h2>
+      <div class="committee-grid">
+        <div class="committee-member">
+          <img src="jmv.jpg" alt="Jay Vala" class="member-image" />
+          <div class="member-info">
+            <h3 class="member-name">Dr. Jay Vala</h3>
+            <p class="member-role">
+              Assistant Professor,<br />Information Technology, GCET
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- </div> -->
+      <h2 style="background: none;">Publicity and Media Co-ordinator</h2>
+      <!-- <div class="committee-grid">
+        <div class="committee-member" style="display: flex;">
+          <img src="crp.jpg" alt="Chintan Patel" class="mamber-image" />
+          <div class="member-info">
+            <h3 class="member-name">Dr. Chintan Patel</h3>
+            <p class="member-role">Assistant Professor,Electrical Engineering, GCET</p>
+          </div>
+        </div>
+      </div>
+      <div class="committee-grid">
+        <div class="committee-member" style="display: flex; gap: 20px;">
+          <img src="KinjalParmar.jpg" alt="Chintan Patel" class="mamber-image" />
+          <div class="member-info">
+            <h3 class="member-name">Kinjal Parmar</h3>
+            <p class="member-role">Assistant Professor,Computer Engineering, ADIT</p>
+          </div>
+        </div>
+      </div>
+      <div class="committee-grid">
+        <div class="committee-member" style="display: flex; gap: 20px;">
+          <img src="JVP.png" alt="Chintan Patel" class="mamber-image" />
+          <div class="member-info">
+            <h3 class="member-name">Jignasha Vishal Parmar</h3>
+            <p class="member-role">Assistant Professor,Computer Engineering, ADIT</p>
+          </div>
+        </div>
+      </div> -->
+      <div class="committee-grid">
+        <div class="committee-member">
+          <img src="crp.jpg" alt="Dr. Chintan Patel" class="member-image1" />
+          <div class="member-info">
+            <h3 class="member-name">Dr. Chintan Patel</h3>
+            <p class="member-role" style="font-size: 0.8rem;">Assistant Professor,<br />Department of Electrical
+              Engineering, GCET</p>
+          </div>
+        </div>
+        <div class="committee-member">
+          <img src="KinjalParmar.jpg" alt="KinjalParmar" class="member-image2" />
+          <div class="member-info">
+            <h3 class="member-name">Kinjal Parmar</h3>
+            <p class="member-role" style="font-size: 0.8rem;">Assistant Professor,<br />Computer Engineering, ADIT</p>
+          </div>
+        </div>
+        <div class="committee-member">
+          <img src="JVP.png" alt="Dr. Maulika Patel" class="member-image3" style="margin-bottom: 0px;" />
+          <div class="member-info">
+            <h3 class="member-name">Jignasha Vishal Parmar</h3>
+            <p class="member-role" style="font-size: 0.8rem;">Assistant Professor,<br />Computer Engineering, ADIT</p>
+          </div>
+        </div>
+        <div class="committee-member">
+          <img src="Dhruv-Dalwadi.jpg" alt="Dhruv-Dalwadi" class="member-image3" style="margin-bottom: 0px;" />
+          <div class="member-info">
+            <h3 class="member-name">Prof. Dhruv Dalvadi</h3>
+            <p class="member-role" style="font-size: 0.8rem;">Assistant Professor, Computer Engineering, MBIT</p>
+          </div>
+        </div>
+        <div class="committee-member">
+          <img src="Jaina-Patel.jpg" alt="Jaina-Patel" class="member-image3" style="margin-bottom: 0px;" />
+          <div class="member-info">
+            <h3 class="member-name">Prof. Jaina Patel</h3>
+            <p class="member-role" style="font-size: 0.8rem;">Assistant Professor, Computer Engineering, MBIT</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <p>© 2025 SDSTD Conference. All rights reserved.</p>
+      <div class="footer-links">
+        <p>Design And Develop By <span style="font-weight: bold;">Student Team of CP & IT GCET College</span></p>
+      </div>
+    </div>
+  </footer>
+  <script>
+    function toggleMenu() {
+      const mobileNav = document.getElementById("mobileNav");
+      mobileNav.classList.add("active");
+    }
+
+    function toggleClose() {
+      const mobileNav = document.getElementById("mobileNav");
+      mobileNav.classList.remove("active");
+    }
+    function openInNewTab(url) {
+      window.open(url, '_blank').focus();
+    }
+  </script>
+  <script src="script.js"></script>
+</body>
+
+</html>

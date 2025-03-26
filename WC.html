@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Coordinators</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="coordinators.css">
+    <style>
+        body {
+            animation: slideUp 0.5s ease;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: white;
+            color: #0b274c;
+            border: 1px solid white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .navbar {
+            /* padding: 15px; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        nav {
+            background-color: #fff;
+            padding: 1rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links li {
+            display: inline;
+        }
+
+        .nav-links a {
+            /* color: white; */
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        /* Menu Button (Visible only on mobile) */
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: linear-gradient(to right, #cffafe 0%, #dbeafe 100%);
+            font-size: 20px;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        /* Mobile Navbar (Sidebar) */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100%;
+            background: #0b274c;
+            padding-top: 50px;
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(-100%);
+            display: flex;
+            flex-direction: column;
+            list-style: none;
+        }
+
+        .mobile-nav.active {
+            transform: translateX(0);
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            align-self: flex-end;
+            cursor: pointer;
+            margin-right: auto;
+        }
+
+        .mobile-nav a {
+            color: white;
+            background: linear-gradient(to right, #2563eb 0%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            /* -webkit-text-fill-color: transparent; */
+            text-decoration: none;
+            padding: 15px;
+            font-size: 18px;
+            display: block;
+            list-style: none;
+        }
+
+        /* Show Mobile Menu */
+        .mobile-nav .dropdown {
+            position: relative;
+            display: block;
+        }
+
+        .mobile-nav .dropdown-content {
+            display: none;
+            /* Initially hidden */
+            flex-direction: column;
+            background: #1a1a1a;
+            padding-left: 10px;
+        }
+
+        .mobile-nav .dropdown-content a {
+            padding: 10px;
+            display: block;
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Show dropdown when active */
+        .mobile-nav .dropdown.active .dropdown-content {
+            display: flex;
+        }
+
+        .dropdown-content a {
+            display: block;
+            /* padding: 0.75rem 1.5rem; */
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-content a:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            color: #000 !important;
+            animation: fadeIn 0.3s ease;
+        }
+        .submit-paper {
+            color: #fff !important;
+            /* background: #027bff; */
+            background: linear-gradient(to right, #2563eb 0%, #06b6d4 100%);
+            /* -webkit-text-fill-color: transparent; */
+            animation: fadeIn 1s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo-container">
+          <img src="SDSTD2025.png" alt="SDSTD" class="logo" />
+          <img src="cvm.png" alt="CVM" class="logo" />
+          <img src="adit.png" alt="ADIT" class="logo" />
+          <img src="gcet.png" alt="GCET" class="logo" />
+          <img src="mbit.png" alt="MBIT" class="logo" />
+        </div>
+        <nav class="navbar">
+          <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropbtn">About</a>
+              <div class="dropdown-content">
+                <a href="cvm.html">Charutar Vidya Mandal</a>
+                <a href="cvm-university.html">CVM University</a>
+              </div>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropbtn">SDSTD-2025</a>
+              <div class="dropdown-content">
+                <a href="tracks.html">Tracks</a>
+                <a href="call-for-papers.html">Call for Papers</a>
+                <a href="important-dates.html">Important Dates</a>
+                <a href="submission-guidelines.html">Submission Guidelines</a>
+                <a href="https://forms.gle/1WUzuEWmN1Q8DzNB7">Registration</a>
+                <a href="Payment.html">Payment Details</a>
+              </div>
+            </li>
+            <li><a href="keynote.html">Keynote Speakers</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropbtn">Committee</a>
+              <div class="dropdown-content">
+                <a href="organizing.html">Organizing Committee</a>
+                <a href="track-coordinators.html">Track Coordinators</a>
+                <a href="ITC.html">International Technical Committee</a>
+                <a href="NC.html">National Technical Committee</a>
+                <a href="WC.html">Website Coordinator</a>
+              </div>
+            </li>
+            <li><a href="#contact">Contact Us</a></li>
+            <li>
+              <a href="#" class="submit-paper" style="color: #000 !important"
+                >Submit Paper</a
+              >
+            </li>
+          </ul>
+          <button class="menu-btn" onclick="toggleMenu()">☰</button>
+        </nav>
+        <div class="mobile-nav" id="mobileNav">
+          <button class="close-btn" onclick="toggleClose()">✖</button>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropbtn">About</a>
+            <div class="dropdown-content">
+              <a href="cvm.html">Charutar Vidya Mandal</a>
+              <a href="cvm-university.html">CVM University</a>
+            </div>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropbtn">SDSTD-2025</a>
+            <div class="dropdown-content">
+              <a href="tracks.html">Tracks</a>
+              <a href="call-for-papers.html">Call for Papers</a>
+              <a href="important-dates.html">Important Dates</a>
+              <a href="submission-guidelines.html">Submission Guidelines</a>
+              <a href="https://forms.gle/1WUzuEWmN1Q8DzNB7">Registration</a>
+              <a href="Payment.html">Payment Details</a>
+            </div>
+          </li>
+          <li><a href="keynote.html">Keynote Speakers</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropbtn">Committee</a>
+            <div class="dropdown-content">
+              <a href="organizing.html">Organizing Committee</a>
+              <a href="track-coordinators.html">Publicity Coordinators</a>
+              <a href="ITC.html">International Technical Committee</a>
+              <a href="NC.html">National Technical Committee</a>
+              <a href="WC.html">Website Coordinator</a>
+            </div>
+          </li>
+          <li><a href="index.html#contact">Contact Us</a></li>
+          <li><a href="#" class="submit-paper">Submit Paper</a></li>
+        </div>
+      </header>
+    <main>
+        <section class="committee-section">
+            <!-- <h1>Organizing Committee</h1> -->
+            <!-- <p>
+            Our dedicated Organizing Committee works tirelessly to bring this
+            event to life, ensuring every detail is handled with precision and
+            care. The team comprises experienced professionals committed to
+            delivering a seamless and memorable experience for all participants.
+            From planning logistics to coordinating activities, they are at the
+            heart of the event's success. Feel free to reach out to our committee
+            members for any inquiries or assistance!
+          </p> -->
+            <br />
+            <h2>Publicity Coordinator</h2>
+            <div class="committee-grid">
+                <div class="committee-member">
+                    <img src="jmv.jpg" alt="Jay Vala" class="member-image" />
+                    <div class="member-info">
+                        <h3 class="member-name">Dr. Jay Vala</h3>
+                        <p class="member-role">
+                            Assistant Professor,<br />Information Technology, GCET
+                        </p>
+                    </div>
+                </div>
+                <div class="committee-member">
+                    <img src="crp.jpg" alt="Chintan Patel" class="member-image">
+                    <div class="member-info">
+                        <h3 class="member-name">Dr. Chintan Patel</h3>
+                        <p class="member-role">Assistant Professor,<br />Electrical Engineering, GCET</p>
+                    </div>
+                </div>
+        </section>
+</body>
+
+</html>

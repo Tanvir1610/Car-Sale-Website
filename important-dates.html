@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Important Dates - SDSTD2025</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+    rel="stylesheet" />
+    <style>
+      button {
+        padding: 10px 20px;
+        background-color: white;
+        color: #0b274c;
+        border: 1px solid white;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: 0.3s;
+        font-family: "Ubuntu", sans-serif;
+        font-weight: 400;
+      }
+      .logo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        gap: 10rem;
+        background-color: #f8f9fa;
+      }
+
+      .logo {
+        height: 80px;
+        object-fit: contain;
+        transition: transform 0.3s ease;
+      }
+
+      .logo:hover {
+        transform: scale(1.05);
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #007bff;
+        color: white;
+      }
+
+      .navbar {
+        /* padding: 15px; */
+        /* display: flex; */
+        justify-content: center;
+        align-items: center;
+      }
+      nav {
+        background-color: #fff;
+        padding: 0.5rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      }
+      .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+      }
+
+      .nav-links li {
+        display: inline;
+      }
+
+      .nav-links a {
+        /* color: white; */
+        text-decoration: none;
+        font-size: 18px;
+      }
+
+      /* Menu Button (Visible only on mobile) */
+      .menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        color: linear-gradient(to right, #cffafe 0%, #dbeafe 100%);
+        font-size: 20px;
+        cursor: pointer;
+        text-align: left;
+      }
+
+      /* Mobile Navbar (Sidebar) */
+      .mobile-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 250px;
+        height: 100%;
+        background: #0b274c;
+        padding-top: 50px;
+        transition: transform 0.3s ease-in-out;
+        transform: translateX(-100%);
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+      }
+
+      .mobile-nav.active {
+        transform: translateX(0);
+      }
+
+      .close-btn {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        align-self: flex-end;
+        cursor: pointer;
+        margin-right: auto;
+      }
+
+      .mobile-nav a {
+        color: white;
+        background: linear-gradient(to right, #2563eb 0%, #06b6d4 100%);
+        -webkit-background-clip: text;
+        /* -webkit-text-fill-color: transparent; */
+        text-decoration: none;
+        padding: 15px;
+        font-size: 18px;
+        display: block;
+        list-style: none;
+      }
+
+      /* Show Mobile Menu */
+      .mobile-nav .dropdown {
+        position: relative;
+        display: block;
+      }
+
+      .mobile-nav .dropdown-content {
+        display: none; /* Initially hidden */
+        flex-direction: column;
+        background: #1a1a1a;
+        padding-left: 10px;
+      }
+
+      .mobile-nav .dropdown-content a {
+        padding: 10px;
+        display: block;
+        color: white;
+        text-decoration: none;
+      }
+
+      /* Show dropdown when active */
+      .mobile-nav .dropdown.active .dropdown-content {
+        display: flex;
+      }
+
+      .dropdown-content a {
+        display: block;
+        /* padding: 0.75rem 1.5rem; */
+        color: #333;
+        transition: all 0.3s ease;
+      }
+
+      .dropdown-content a:hover .dropdown-content {
+        display: block;
+        opacity: 1;
+        color: #000 !important;
+        animation: fadeIn 0.3s ease;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .menu-btn {
+          display: block;
+        }
+        .logo-container {
+          gap: 2rem;
+        }
+        .logo{
+          height: 25px;
+        }
+      }
+      body {
+        animation: slideUp 0.5s ease;
+        font-family: "Ubuntu", sans-serif;
+        font-weight: 400;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        /* background-color: #111; */
+        display: flex;
+        flex-direction: column;
+        /* align-items: center; */
+        /* justify-content: center; */
+        /* min-height: 100vh; */
+        margin: 0;
+        /* padding: 20px; */
+      }
+      .table-container {
+        /* width: 100%; */
+        /* max-width: 900px; */
+        perspective: 1000px;
+        margin-top: 20px;
+        overflow-x: auto;
+        display: flex;
+        /* height: 60vh; */
+        justify-content: center;
+        text-align: left;
+        align-items: center;
+        margin: 0 auto;
+        padding: 1.5rem;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: linear-gradient(to right, #fff 0%, #8fa7de 100%);
+        color: #222;
+        /* transform: rotateX(10deg); */
+        box-shadow:0.5px -1px 25px 0.5px #222;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+      }
+      th,
+      td {
+        padding: 15px;
+        /* text-align: left; */
+        font-weight: bold;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      th {
+        background-color: rgba(0, 123, 255, 0.3);
+      }
+      tr:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        transition: 0.3s;
+        transform: scale(1.02);
+        /* background: linear-gradient(to right, #2563eb 0%,#06b6d4 100%); */
+      }
+      @media (max-width: 768px) {
+        table {
+          transform: rotateX(0deg);
+          align-items: center;
+          justify-content: center;
+        }
+        th,
+        td {
+          padding: 10px;
+          font-size: 14px;
+        }
+      }
+      /* .call-papers h1 {
+        text-align: center;
+      } */
+
+      .submit-paper {
+        color: #000 !important;
+        /* background: #027bff; */
+        background-color: linear-gradient(to right, #cffafe 0%, #dbeafe 100%);
+        /* -webkit-text-fill-color: transparent; */
+        animation: fadeIn 1s ease;
+        box-shadow: 1px -4px 5px;
+      }
+
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 768px) {
+        body {
+          text-align: justify;
+        }
+        .logo {
+          height: 25px;
+          align-items: justify;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo-container">
+        <img src="SDSTD2025.png" alt="SDSTD" class="logo" />
+        <img src="cvm.png" alt="CVM" class="logo" />
+        <img src="adit.png" alt="ADIT" class="logo" />
+        <img src="gcet.png" alt="GCET" class="logo" />
+        <img src="mbit.png" alt="MBIT" class="logo" />
+      </div>
+      <nav class="navbar">
+        <ul class="nav-links">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropbtn">About</a>
+            <div class="dropdown-content">
+              <a href="cvm.html">Charutar Vidya Mandal</a>
+              <a href="cvm-university.html">CVM University</a>
+            </div>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropbtn">SDSTD-2025</a>
+            <div class="dropdown-content">
+              <a href="tracks.html">Tracks</a>
+              <a href="call-for-papers.html">Call for Papers</a>
+              <a href="important-dates.html">Important Dates</a>
+              <a href="submission-guidelines.html">Submission Guidelines</a>
+              <a href="#" onclick="openInNewTab('https://forms.gle/oZiaETYz1s2UpWhR8')">Registration</a>
+              <a href="Payment.html">Payment Details</a>
+            </div>
+          </li>
+          <li><a href="keynote.html">Keynote Speakers</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropbtn">Committee</a>
+            <div class="dropdown-content">
+              <a href="organizing.html">Organizing Committee</a>
+              <a href="track-coordinators.html">Track Co-ordinators</a>
+              <a href="ITC.html">International Technical Committee</a>
+              <a href="NC.html">National Technical Committee</a>
+              <!-- <a href="WC.html">Website Coordinator</a> -->
+            </div>
+          </li>
+          <li><a href="index.html#contact">Contact Us</a></li>
+          <li>
+            <a href="#" class="submit-paper" onclick="openInNewTab('https://cmt3.research.microsoft.com/User/Login?ReturnUrl=%2FSDSTD2025%2FSubmission%2FIndex')">Submit Paper</a>
+          </li>
+        </ul>
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+      </nav>
+      <div class="mobile-nav" id="mobileNav">
+        <button class="close-btn" onclick="toggleClose()">✖</button>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">About</a>
+          <div class="dropdown-content">
+            <a href="cvm.html">Charutar Vidya Mandal</a>
+            <a href="cvm-university.html">CVM University</a>
+          </div>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">SDSTD-2025</a>
+          <div class="dropdown-content">
+            <a href="tracks.html">Tracks</a>
+            <a href="call-for-papers.html">Call for Papers</a>
+            <a href="important-dates.html">Important Dates</a>
+            <a href="submission-guidelines.html">Submission Guidelines</a>
+            <a href="#" onclick="openInNewTab('https://forms.gle/oZiaETYz1s2UpWhR8')">Registration</a>
+            <a href="Payment.html">Payment Details</a>
+          </div>
+        </li>
+        <li><a href="keynote.html">Keynote Speakers</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">Committee</a>
+          <div class="dropdown-content">
+            <a href="organizing.html">Organizing Committee</a>
+            <a href="track-coordinators.html">Track Co-ordinators</a>
+            <a href="ITC.html">International Technical Committee</a>
+            <a href="NC.html">National Technical Committee</a>
+            <!-- <a href="WC.html">Website Coordinator</a> -->
+          </div>
+        </li>
+        <li><a href="index.html#contact">Contact Us</a></li>
+        <li><a href="#" class="submit-paper" onclick="openInNewTab('https://cmt3.research.microsoft.com/User/Login?ReturnUrl=%2FSDSTD2025%2FSubmission%2FIndex')">Submit Paper</a></li>
+      </div>
+    </header>
+    <h1 style="color: #000; font-size: 2rem; font-weight: bold; text-align: center; margin: 0 auto; margin-top: 1.5rem;">Important Dates</h1>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Activity</th>
+          </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+      </table>
+    </div>
+    <footer>
+      <div class="footer-content">
+        <p>© 2025 SDSTD Conference. All rights reserved.</p>
+        <div class="footer-links">
+          <p>Design And Develop By <span style="font-weight: bold">Student Team of CP & IT GCET College</span></p>
+        </div>
+      </div>
+    </footer>
+    <script>
+      function toggleMenu() {
+        const mobileNav = document.getElementById("mobileNav");
+        mobileNav.classList.add("active");
+      }
+
+      function toggleClose() {
+        const mobileNav = document.getElementById("mobileNav");
+        mobileNav.classList.remove("active");
+      }
+      function openInNewTab(url){
+        window.open(url, '_blank').focus();
+      }
+    </script>
+    <script>
+      const tableData = [
+        { date: "24th March 2025", activity: "Paper submission start" },
+        {
+          date: "10th May 2025",
+          activity: "Last date of submission of Papers",
+        },
+        // { date: "20th May 2025", activity: "Extension for paper submission" },
+        {
+          date: "25th May 2025",
+          activity: "Intimation for paper acceptance and Registration starts",
+        },
+        { date: "10th June 2025", activity: "Last date of registration" },
+        {
+          date: "15th June 2025",
+          activity:
+            "Last date of submission of camera ready copy and copy right form",
+        },
+        { date: "25th June 2025", activity: "Conference starts" },
+      ];
+
+      const tableBody = document.getElementById("table-body");
+
+      tableData.forEach((entry) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `<td>${entry.date}</td><td>${entry.activity}</td>`;
+        tableBody.appendChild(row);
+      });
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CVM University - SDSTD-2025</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+    rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: "Ubuntu", sans-serif;
+        font-weight: 400;
+      }
+      .logo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        gap: 10rem;
+        background-color: #f8f9fa;
+      }
+
+      /* .logo-container img{
+        width: 80px;
+        height: 80px;
+      } */
+
+      .logo {
+        height: 80px;
+        object-fit: contain;
+        transition: transform 0.3s ease;
+      }
+
+      .logo:hover {
+        transform: scale(1.05);
+        cursor: pointer;
+      }
+
+      .cvmu-logo {
+        max-width: 300px;
+        margin: 2rem auto;
+        display: block;
+        animation: fadeIn 1s ease;
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin: 1rem 0;
+      }
+
+      .social-links a {
+        /* color: #2563eb; */
+        background: #027bff;
+        background: linear-gradient(to right, #2563eb 0%, #06b6d4 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 1.5rem;
+        transition: transform 0.3s ease;
+      }
+
+      .social-links a:hover {
+        transform: translateY(-3px);
+      }
+
+      .navbar {
+        /* padding: 15px; */
+        /* display: flex; */
+        justify-content: center;
+        align-items: center;
+      }
+
+      .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+      }
+
+      .nav-links li {
+        display: inline;
+      }
+
+      .nav-links a {
+        /* color: white; */
+        text-decoration: none;
+        font-size: 18px;
+      }
+
+      /* Menu Button (Visible only on mobile) */
+      .menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        color: linear-gradient(to right, #cffafe 0%, #dbeafe 100%);
+        font-size: 20px;
+        cursor: pointer;
+        text-align: left;
+        margin-left: 10px;
+      }
+
+      /* Mobile Navbar (Sidebar) */
+      .mobile-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 250px;
+        height: 100%;
+        background: #0b274c;
+        padding-top: 50px;
+        transition: transform 0.3s ease-in-out;
+        transform: translateX(-100%);
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+      }
+
+      .mobile-nav.active {
+        transform: translateX(0);
+      }
+
+      .close-btn {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        /* align-self: flex-end; */
+        cursor: pointer;
+        margin-right: auto;
+        padding: 10px 20px;
+      }
+
+      .mobile-nav a {
+        color: white;
+        background: linear-gradient(to right, #2563eb 0%, #06b6d4 100%);
+        -webkit-background-clip: text;
+        /* -webkit-text-fill-color: transparent; */
+        text-decoration: none;
+        padding: 15px;
+        font-size: 18px;
+        display: block;
+        list-style: none;
+      }
+
+      /* Show Mobile Menu */
+      .mobile-nav .dropdown {
+        position: relative;
+        display: block;
+      }
+
+      .mobile-nav .dropdown-content {
+        display: none; /* Initially hidden */
+        flex-direction: column;
+        background: #1a1a1a;
+        padding-left: 10px;
+      }
+
+      .mobile-nav .dropdown-content a {
+        padding: 10px;
+        display: block;
+        color: white;
+        text-decoration: none;
+      }
+
+      /* Show dropdown when active */
+      .mobile-nav .dropdown.active .dropdown-content {
+        display: flex;
+      }
+
+      .dropdown-content a {
+        display: block;
+        /* padding: 0.75rem 1.5rem; */
+        color: #333;
+        transition: all 0.3s ease;
+      }
+
+      .dropdown-content:hover .dropdown-content {
+        display: block;
+        opacity: 1;
+        color: #000 !important;
+        animation: fadeIn 0.3s ease;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .menu-btn {
+          display: block;
+        }
+        .logo-container {
+          gap: 2rem;
+        }
+      }
+
+      .submit-paper {
+        color: #000 !important;
+        /* background: #027bff; */
+        background-color: linear-gradient(to right, #cffafe 0%, #dbeafe 100%);
+        /* -webkit-text-fill-color: transparent; */
+        animation: fadeIn 1s ease;
+        box-shadow: 1px -4px 5px;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+
+        to {
+          opacity: 1;
+        }
+      }
+
+      .content-section {
+        animation: slideUp 1s ease;
+      }
+
+      .content-section h1 {
+        text-align: center;
+        color: #000;
+        font-weight: bold;
+        font-size: 2rem;
+        /* background: #fff; */
+        width: fit-content;
+        margin: 0 auto;
+        margin-bottom: 1rem;
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 768px) {
+        body {
+          text-align: justify;
+        }
+
+        .logo {
+          height: 25px;
+        }
+
+        .content-section h1,
+        p {
+          text-align: justify;
+        }
+        .content-section h1{
+          margin-bottom: 2rem;
+        }
+        .content-section h2,
+        p {
+          text-align: justify;
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="logo-container">
+        <img src="SDSTD2025.png" alt="SDSTD" class="logo" />
+        <img src="cvm.png" alt="CVM" class="logo" />
+        <img src="adit.png" alt="ADIT" class="logo" />
+        <img src="gcet.png" alt="GCET" class="logo" />
+        <img src="mbit.png" alt="MBIT" class="logo" />
+      </div>
+      <nav class="navbar">
+        <ul class="nav-links">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropbtn">About</a>
+            <div class="dropdown-content">
+              <a href="cvm.html">Charutar Vidya Mandal</a>
+              <a href="cvm-university.html">CVM University</a>
+            </div>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropbtn">SDSTD-2025</a>
+            <div class="dropdown-content">
+              <a href="tracks.html">Tracks</a>
+              <a href="call-for-papers.html">Call for Papers</a>
+              <a href="important-dates.html">Important Dates</a>
+              <a href="submission-guidelines.html">Submission Guidelines</a>
+              <a href="#" onclick="openInNewTab('https://forms.gle/oZiaETYz1s2UpWhR8')">Registration</a>
+              <a href="Payment.html">Payment Details</a>
+            </div>
+          </li>
+          <li><a href="keynote.html">Keynote Speakers</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropbtn">Committee</a>
+            <div class="dropdown-content">
+              <a href="organizing.html">Organizing Committee</a>
+              <a href="track-coordinators.html">Track Co-ordinators</a>
+              <a href="ITC.html">International Technical Committee</a>
+              <a href="NC.html">National Technical Committee</a>
+              <!-- <a href="WC.html">Website Coordinator</a> -->
+            </div>
+          </li>
+          <li><a href="index.html#contact">Contact Us</a></li>
+          <li>
+            <a href="#" class="submit-paper" onclick="openInNewTab('https://cmt3.research.microsoft.com/User/Login?ReturnUrl=%2FSDSTD2025%2FSubmission%2FIndex')">Submit Paper</a>
+          </li>
+        </ul>
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+      </nav>
+      <div class="mobile-nav" id="mobileNav">
+        <button class="close-btn" onclick="toggleClose()">✖</button>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">About</a>
+          <div class="dropdown-content">
+            <a href="cvm.html">Charutar Vidya Mandal</a>
+            <a href="cvm-university.html">CVM University</a>
+          </div>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">SDSTD-2025</a>
+          <div class="dropdown-content">
+            <a href="tracks.html">Tracks</a>
+            <a href="call-for-papers.html">Call for Papers</a>
+            <a href="important-dates.html">Important Dates</a>
+            <a href="submission-guidelines.html">Submission Guidelines</a>
+            <a href="#" onclick="openInNewTab('https://forms.gle/oZiaETYz1s2UpWhR8')">Registration</a>
+            <a href="Payment.html">Payment Details</a>
+          </div>
+        </li>
+        <li><a href="keynote.html">Keynote Speakers</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">Committee</a>
+          <div class="dropdown-content">
+            <a href="organizing.html">Organizing Committee</a>
+            <a href="track-coordinators.html">Track Co-ordinators</a>
+            <a href="ITC.html">International Technical Committee</a>
+            <a href="NC.html">National Technical Committee</a>
+            <!-- <a href="WC.html">Website Coordinator</a> -->
+          </div>
+        </li>
+        <li><a href="index.html#contact">Contact Us</a></li>
+        <li><a href="#" class="submit-paper" onclick="openInNewTab('https://cmt3.research.microsoft.com/User/Login?ReturnUrl=%2FSDSTD2025%2FSubmission%2FIndex')">Submit Paper</a></li>
+      </div>
+    </header>
+
+    <section class="content-section about-section">
+      <img src="cvm.png" alt="CVM University Logo" class="cvmu-logo" />
+      <h1>The Charutar Vidya Mandal University (CVMU)</h1>
+
+      <div class="recognition">
+        <p>
+          CVM University has received approval from the University Grants
+          Commission (UGC), a statutory body of the Government of India
+          responsible for the coordination, determination, and maintenance of
+          standards of university education in India.
+        </p>
+      </div>
+
+      <div class="social-links">
+        <a href="https://m.facebook.com/CVMUniversity/" target="_blank" onclick="openInNewTab('https://m.facebook.com/CVMUniversity/')"
+          ><i class="fab fa-facebook"></i
+        ></a>
+        <a
+          href="https://www.linkedin.com/company/cvmuniversity/"
+          target="_blank" onclick="openInNewTab('https://www.linkedin.com/company/cvmuniversity/')"
+          ><i class="fab fa-linkedin"></i
+        ></a>
+        <a
+          href="https://www.instagram.com/cvmu.university/?hl=en"
+          target="_blank" onclick="openInNewTab('https://www.instagram.com/cvmu.university/?hl=en')"
+          ><i class="fab fa-instagram"></i
+        ></a>
+      </div>
+
+      <!-- <h2>UGC Recognition</h2> -->
+      <p>
+        University Grants Commission (UGC), Govt. of India has empowered CVM
+        University to award Degrees under Section 22 of UGC Act 1956. CVMU
+        legacy of knowledge aims to enlighten the future generations by
+        inspiring innovations, forward thinking for a better tomorrow.
+      </p>
+
+      <!-- <h2>Academic Excellence</h2> -->
+      <p>
+        With the quintessence of the University motto "ज्ञान-विज्ञान-प्रज्ञान
+        (Knowledge – Science – Wisdom) the academic landscape of CVMU is
+        expanding with diversity in the course curricula that are inclusive of
+        global demands and challenges, and strengthening the intellectual
+        standards of research and innovations.
+      </p>
+
+      <!-- <h2>Current Status</h2> -->
+      <p>
+        Presently CVM University offers 129 programs from Undergraduate to
+        Doctoral (Ph. D.) under the tutelage of 18 Constituent Colleges /
+        Institutes, Eight (08) Faculties, employee strength of 2000+ and student
+        strength of around 10000.
+      </p>
+
+      <p class="website-link">
+        Website:
+        <a
+          href="https://www.cvmu.edu.in/"
+          target="_blank" onclick="openInNewTab('https://www.cvmu.edu.in/')"
+          style="
+            background: #027bff;
+            background: linear-gradient(to right, #2563eb 0%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;">https://www.cvmu.edu.in/</a
+        >
+      </p>
+
+      <h2>Faculty of Engineering & Technology</h2>
+      <p>Three engineering colleges are functioning under CVM University:</p>
+      <ul class="college-list">
+        <li>
+          G H Patel College of Engineering & Technology (Estd. 1997) -
+          <a
+            href="https://www.gcet.ac.in"
+            target="_blank" onclick="openInNewTab('https://www.gcet.ac.in')"
+            style="
+              background: linear-gradient(to right, #2563eb 0%, #06b6d4 100%);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;">Website</a
+          >
+        </li>
+        <li>
+          A D Patel Institute of Technology (Estd. 2000) -
+          <a
+            href="http://adit.ac.in"
+            target="_blank" onclick="openInNewTab('http://adit.ac.in')"
+            style="
+              background: linear-gradient(to right, #2563eb 0%, #06b6d4 100%);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+            "
+            >Website</a
+          >
+        </li>
+        <li>
+          Madhuben & Bhanubhai Patel Institute of Technology (Estd. 2009) -
+          <a
+            href="https://www.mbit.edu.in"
+            target="_blank" onclick="openInNewTab('https://www.mbit.edu.in')"
+            style="background: linear-gradient(to right, #2563eb 0%, #06b6d4 100%);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;">Website</a
+          >
+        </li>
+      </ul>
+    </section>
+
+    <footer>
+      <div class="footer-content">
+        <p>© 2025 SDSTD Conference. All rights reserved.</p>
+        <div class="footer-links">
+          <p>Design And Develop By <span style="font-weight: bold">Student Team of CP & IT GCET College</span></p>
+        </div>
+      </div>
+    </footer>
+    <script>
+      function toggleMenu() {
+        const mobileNav = document.getElementById("mobileNav");
+        mobileNav.classList.add("active");
+      }
+
+      function toggleClose() {
+        const mobileNav = document.getElementById("mobileNav");
+        mobileNav.classList.remove("active");
+      }
+      function openInNewTab(url){
+        window.open(url, '_blank').focus();
+      }
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>

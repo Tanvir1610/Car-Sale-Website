@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Track Coordinators - SDSTD-2025</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="coordinators.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+    rel="stylesheet" />
+    <style>
+      body {
+        animation: slideUp 0.5s ease;
+        font-family: "Ubuntu", sans-serif;
+        font-weight: 400;
+        /* margin: 0;  */
+      }
+      .logo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        gap: 10rem;
+        background-color: #f8f9fa;
+      }
+
+      .logo {
+        height: 80px;
+        object-fit: contain;
+        transition: transform 0.3s ease;
+      }
+
+      .logo:hover {
+        transform: scale(1.05);
+        cursor: pointer;
+      }
+      @media (max-width: 768px) {
+        .logo {
+          height: 25px;
+        }
+      }
+      button {
+        padding: 10px 20px;
+        background-color: white;
+        color: #0b274c;
+        border: 1px solid white;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: 0.3s;
+      }
+
+      button:hover {
+        background-color: #007bff;
+        color: white;
+      }
+
+      .navbar {
+        /* padding: 15px; */
+        /* display: flex; */
+        justify-content: center;
+        align-items: center;
+      }
+      nav {
+        /* background-color: #fff; */
+        padding: 0.5rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      }
+      .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+      }
+
+      .nav-links li {
+        display: inline;
+      }
+
+      .nav-links a {
+        /* color: white; */
+        text-decoration: none;
+        font-size: 18px;
+      }
+
+      /* Menu Button (Visible only on mobile) */
+      .menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        color: linear-gradient(to right, #cffafe 0%, #dbeafe 100%);
+        font-size: 20px;
+        cursor: pointer;
+        text-align: left;
+      }
+
+      /* Mobile Navbar (Sidebar) */
+      .mobile-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 250px;
+        height: 100%;
+        background: #0b274c;
+        padding-top: 50px;
+        transition: transform 0.3s ease-in-out;
+        transform: translateX(-100%);
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+      }
+
+      .mobile-nav.active {
+        transform: translateX(0);
+      }
+
+      .close-btn {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        align-self: flex-end;
+        cursor: pointer;
+        margin-right: auto;
+        text-align: left;
+      }
+
+      .mobile-nav a {
+        color: white;
+        background: linear-gradient(to right, #2563eb 0%, #06b6d4 100%);
+        -webkit-background-clip: text;
+        /* -webkit-text-fill-color: transparent; */
+        text-decoration: none;
+        padding: 15px;
+        font-size: 18px;
+        display: block;
+        list-style: none;
+      }
+
+      /* Show Mobile Menu */
+      .mobile-nav .dropdown {
+        position: relative;
+        display: block;
+      }
+
+      .mobile-nav .dropdown-content {
+        display: none; /* Initially hidden */
+        flex-direction: column;
+        background: #1a1a1a;
+        padding-left: 10px;
+      }
+
+      .mobile-nav .dropdown-content a {
+        padding: 10px;
+        display: block;
+        color: white;
+        text-decoration: none;
+      }
+
+      /* Show dropdown when active */
+      .mobile-nav .dropdown.active .dropdown-content {
+        display: flex;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .menu-btn {
+          display: block;
+        }
+        .logo-container {
+          gap: 2rem;
+        }
+      }
+      .call-papers h1 {
+        text-align: center;
+      }
+
+      .submit-paper {
+        color: #000 !important;
+        /* background: #027bff; */
+        background-color: linear-gradient(to right, #cffafe 0%, #dbeafe 100%);
+        /* -webkit-text-fill-color: transparent; */
+        animation: fadeIn 1s ease;
+        box-shadow: 1px -4px 5px;
+      }
+
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @media (max-width: 768px) {
+        body {
+          text-align: justify;
+        }
+        .logo {
+          height: 25px;
+          align-items: justify;
+        }
+        .track-section h2 {
+          text-align: justify;
+        }
+        .track-coordinators-section h1,
+        .section-description {
+          text-align: justify;
+          padding: 1rem;
+        }
+        .track-coordinators-section h1 {
+          font-size: 1.5rem;
+          font-weight: bold;
+        }
+        .coordinator-info h3 {
+          font-size: 0.6rem;
+          text-align: center;
+        }
+        .coordinator-info p{
+          font-size: 0.6rem;
+          text-align: center;
+        }
+        .coordinator-image img {
+          width: 150px;
+          height: 150px;
+          object-fit: cover;
+          /* border-radius: 50%; */
+          margin: 0 auto;
+        }
+        .coordinator-image{
+          height: 150px;
+          width: 150px;
+          margin: 0 auto;
+        }
+        .coordinator-card{
+          height: 250px;
+          width: 150px;
+          margin: 0 auto;
+        }
+      }
+      .container h2 {
+        background: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="logo-container">
+        <img src="SDSTD2025.png" alt="SDSTD" class="logo" />
+        <img src="cvm.png" alt="CVM" class="logo" />
+        <img src="adit.png" alt="ADIT" class="logo" />
+        <img src="gcet.png" alt="GCET" class="logo" />
+        <img src="mbit.png" alt="MBIT" class="logo" />
+      </div>
+      <nav class="navbar">
+        <ul class="nav-links">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropbtn">About</a>
+            <div class="dropdown-content">
+              <a href="cvm.html">Charutar Vidya Mandal</a>
+              <a href="cvm-university.html">CVM University</a>
+            </div>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropbtn">SDSTD-2025</a>
+            <div class="dropdown-content">
+              <a href="tracks.html">Tracks</a>
+              <a href="call-for-papers.html">Call for Papers</a>
+              <a href="important-dates.html">Important Dates</a>
+              <a href="submission-guidelines.html">Submission Guidelines</a>
+              <a href="#" onclick="openInNewTab('https://forms.gle/oZiaETYz1s2UpWhR8')">Registration</a>
+              <a href="Payment.html">Payment Details</a>
+            </div>
+          </li>
+          <li><a href="keynote.html">Keynote Speakers</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropbtn">Committee</a>
+            <div class="dropdown-content">
+              <a href="organizing.html">Organizing Committee</a>
+              <a href="track-coordinators.html">Track Co-ordinators</a>
+              <a href="ITC.html">International Technical Committee</a>
+              <a href="NC.html">National Technical Committee</a>
+              <!-- <a href="WC.html">Website Coordinator</a> -->
+            </div>
+          </li>
+          <li><a href="index.html#contact">Contact Us</a></li>
+          <li>
+            <a href="#" class="submit-paper" onclick="openInNewTab('https://cmt3.research.microsoft.com/User/Login?ReturnUrl=%2FSDSTD2025%2FSubmission%2FIndex')">Submit Paper</a>
+          </li>
+        </ul>
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+      </nav>
+      <div class="mobile-nav" id="mobileNav">
+        <button class="close-btn" onclick="toggleClose()">✖</button>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">About</a>
+          <div class="dropdown-content">
+            <a href="cvm.html">Charutar Vidya Mandal</a>
+            <a href="cvm-university.html">CVM University</a>
+          </div>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">SDSTD-2025</a>
+          <div class="dropdown-content">
+            <a href="tracks.html">Tracks</a>
+            <a href="call-for-papers.html">Call for Papers</a>
+            <a href="important-dates.html">Important Dates</a>
+            <a href="submission-guidelines.html">Submission Guidelines</a>
+            <a href="#" onclick="openInNewTab('https://forms.gle/oZiaETYz1s2UpWhR8')">Registration</a>
+            <a href="Payment.html">Payment Details</a>
+          </div>
+        </li>
+        <li><a href="keynote.html">Keynote Speakers</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">Committee</a>
+          <div class="dropdown-content">
+            <a href="organizing.html">Organizing Committee</a>
+            <a href="track-coordinators.html">Track Co-ordinators</a>
+            <a href="ITC.html">International Technical Committee</a>
+            <a href="NC.html">National Technical Committee</a>
+            <!-- <a href="WC.html">Website Coordinator</a> -->
+          </div>
+        </li>
+        <li><a href="index.html#contact">Contact Us</a></li>
+        <li><a href="#" class="submit-paper" onclick="openInNewTab('https://cmt3.research.microsoft.com/User/Login?ReturnUrl=%2FSDSTD2025%2FSubmission%2FIndex')">Submit Paper</a></li>
+      </div>
+    </header>
+    <main>
+      <section class="track-coordinators-section">
+        <div class="container">
+          <h1 style="font-size: 2rem; font-weight: bold; text-align: center; color: #000; width: fit-content; margin: 0 auto; margin-bottom: 1rem; margin-top: 1rem;">Track Co-ordinators</h1>
+          <p class="section-description">
+            Track Co-ordinators in an international conference manage and oversee
+            specific thematic tracks or sessions. They are responsible for
+            organizing speakers, reviewing submissions and ensuring smooth
+            execution of sessions related to their track. Their role helps
+            maintain the quality and focus of discussions within their assigned
+            area of expertise.
+          </p>
+
+          <div class="track-section">
+            <h2 style="font-weight: bold;">Mechanical, Mechatronics, Automobile, Automation & Robotics</h2>
+            <div class="coordinators-grid">
+              <div class="coordinator-card">
+                <div class="coordinator-image">
+                  <img src="Ajay M Patel.jpg" alt="Dr. Ajay M Patel" />
+                </div>
+                <div class="coordinator-info">
+                  <h3>Dr. Ajay M Patel</h3>
+                  <p>Contact:9427037011</p>
+                  <p>Email:<br/>ajaypatel@gcet.ac.in</p>
+                </div>
+              </div>
+
+              <div class="coordinator-card">
+                <div class="coordinator-image">
+                  <img src="prof.maharshi.jpg" alt="Prof. Maharshi Thakkar" />
+                </div>
+                <div class="coordinator-info">
+                  <h3>Prof. Maharshi Thakkar</h3>
+                  <p>Contact:8511849931</p>
+                  <p>Email:<br/>me.mhthakkar@adit.ac.in</p>
+                </div>
+              </div>
+
+              <div class="coordinator-card">
+                <div class="coordinator-image">
+                  <img
+                    src="Simit B. Prajapati.jpg"
+                    alt="Prof. Simit B. Prajapati"
+                  />
+                </div>
+                <div class="coordinator-info">
+                  <h3>Prof. Simit B. Prajapati</h3>
+                  <p>Contact:9898408940</p>
+                  <p>Email:<br/>simit31@adit.ac.in</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="track-section">
+            <h2 style="font-weight: bold;">
+              Food Processing and Dairy Technology, Chemical and Civil
+              Engineering
+            </h2>
+            <div class="coordinators-grid">
+              <div class="coordinator-card">
+                <div class="coordinator-image">
+                  <img
+                    src="Dr. Dharmesh ka Patel.jpg"
+                    alt="Dr. Dharmesh Ka Patel"
+                  />
+                </div>
+                <div class="coordinator-info">
+                  <h3>Dr. Dharmesh Ka Patel</h3>
+                  <p>Contact:9824157874</p>
+                  <p>Email:<br/>dharmeshkapatel@gcet.ac.in</p>
+                </div>
+              </div>
+
+              <div class="coordinator-card">
+                <div class="coordinator-image">
+                  <img
+                    src="Prof.Darshan Yagnik.jpg"
+                    alt="Prof. Darshan Yagnik"
+                  />
+                </div>
+                <div class="coordinator-info">
+                  <h3>Prof. Darshan Yagnik</h3>
+                  <p>Contact:9898415126</p>
+                  <p>Email:<br/>civil.dmyagnik@adit.ac.in</p>
+                </div>
+              </div>
+
+              <div class="coordinator-card">
+                <div class="coordinator-image">
+                  <img src="Dr. Kshitiz Kumar.jpg" alt="Dr. Kshitiz Kumar" />
+                </div>
+                <div class="coordinator-info">
+                  <h3>Dr. Kshitiz Kumar</h3>
+                  <p>Contact:8222861889</p>
+                  <p>Email:<br/>fpt.kshitiz@adit.ac.in</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="track-section">
+            <h2 style="font-weight: bold;">Electrical, Electronics and Communication Engineering</h2>
+            <div class="coordinators-grid">
+              <div class="coordinator-card">
+                <div class="coordinator-image">
+                  <img src="Bhaskar Thakkar.jpg" alt="Dr. Bhaskar Thakker" />
+                </div>
+                <div class="coordinator-info">
+                  <h3>Dr. Bhaskar Thakker</h3>
+                  <p>Contact:9574383265</p>
+                  <p>Email:<br/>bhaskarthakkar@gcet.ac.in</p>
+                </div>
+              </div>
+
+              <div class="coordinator-card">
+                <div class="coordinator-image">
+                  <img src="Paresh Modha.jpg" alt="Prof. Paresh Modha" />
+                </div>
+                <div class="coordinator-info">
+                  <h3>Prof. Paresh Modha</h3>
+                  <p>Contact:9998567827</p>
+                  <p>Email:<br/>ee.paresh@adit.ac.in</p>
+                </div>
+              </div>
+
+              <div class="coordinator-card">
+                <div class="coordinator-image">
+                  <img src="Dr. Mehyul Thakkar.jpg" alt="Dr Mehul Thakkar" />
+                </div>
+                <div class="coordinator-info">
+                  <h3>Dr Mehul Thakkar</h3>
+                  <p>Contact:9033569124</p>
+                  <p>Email:<br/>mgthakkar@mbit.edu.in</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="track-section">
+            <h2 style="font-weight: bold;">Computer Engineering and Information Technology</h2>
+            <div class="coordinators-grid">
+              <div class="coordinator-card">
+                <div class="coordinator-image">
+                  <img src="Dr. Kinjal Joshi.jpg" alt="Dr. Kinjal Joshi" />
+                </div>
+                <div class="coordinator-info">
+                  <h3>Dr. Kinjal Joshi</h3>
+                  <p>Contact:9924692719</p>
+                  <p>Email:<br/>kinjaljoshi@gcet.ac.in</p>
+                </div>
+              </div>
+
+              <!-- <div class="coordinator-card">
+                <div class="coordinator-image">
+                  <img src="Dr. Miral Patel.jpg" alt="Dr. Miral Patel" />
+                </div> -->
+                <!-- <div class="coordinator-info">
+                  <h3>Dr. Miral Patel</h3>
+                  <p>Contact:9725746161</p>
+                  <p>Email: miralpatel@gcet.ac.in</p>
+                </div>
+              </div> -->
+
+              <div class="coordinator-card">
+                <div class="coordinator-image">
+                  <img src="Krunal Patel.jpg" alt="Dr Krunal N Patel" />
+                </div>
+                <div class="coordinator-info">
+                  <h3>Dr Krunal N Patel</h3>
+                  <p>Contact:9925789238</p>
+                  <p>Email:<br/>It.krunalpatel@adit.ac.in</p>
+                </div>
+              </div>
+
+              <div class="coordinator-card">
+                <div class="coordinator-image">
+                  <img
+                    src="Prof. Pritesh Pandey.jpg"
+                    alt="Prof Pritesh Pandey"
+                  />
+                </div>
+                <div class="coordinator-info">
+                  <h3>Prof Pritesh Pandey</h3>
+                  <p>Contact:94263 31176</p>
+                  <p>Email:<br/>papandey@mbit.edu.in</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <p>© 2025 SDSTD Conference. All rights reserved.</p>
+        <div class="footer-links">
+          <p>Design And Develop By <span style="font-weight: bold">Student Team of CP & IT GCET College</span></p>
+        </div>
+      </div>
+    </footer>
+    <script>
+      function toggleMenu() {
+        const mobileNav = document.getElementById("mobileNav");
+        mobileNav.classList.add("active");
+      }
+
+      function toggleClose() {
+        const mobileNav = document.getElementById("mobileNav");
+        mobileNav.classList.remove("active");
+      }
+      function openInNewTab(url){
+      window.open(url, '_blank').focus();
+      }
+    </script>
+    <script src="script.js"></script>
+    <script src="coordinators.js"></script>
+  </body>
+</html>

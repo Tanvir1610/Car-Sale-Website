@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coordinators - SDSTD-2025</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="coordinators.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+    rel="stylesheet" />
+    <style>
+      body {
+        animation: slideUp 0.5s ease;
+        font-family: "Ubuntu", sans-serif;
+        font-weight: 400;
+      }
+      .logo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        gap: 10rem;
+        background-color: #f8f9fa;
+      }
+
+      .logo {
+        height: 50px;
+        object-fit: contain;
+        transition: transform 0.3s ease;
+      }
+
+      .logo:hover {
+        transform: scale(1.05);
+        cursor: pointer;
+      }
+
+      button {
+        padding: 10px 20px;
+        background-color: white;
+        color: #0b274c;
+        border: 1px solid white;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: 0.3s;
+      }
+
+      button:hover {
+        background-color: #007bff;
+        color: white;
+      }
+
+      .navbar {
+        /* padding: 15px; */
+        /* display: flex; */
+        justify-content: center;
+        align-items: center;
+      }
+      nav {
+        background-color: #fff;
+        padding: 0.5rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      }
+      .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+      }
+
+      .nav-links li {
+        display: inline;
+      }
+
+      .nav-links a {
+        /* color: white; */
+        text-decoration: none;
+        font-size: 18px;
+      }
+
+      /* Menu Button (Visible only on mobile) */
+      .menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        color: linear-gradient(to right, #cffafe 0%, #dbeafe 100%);
+        font-size: 20px;
+        cursor: pointer;
+        text-align: left;
+      }
+
+      /* Mobile Navbar (Sidebar) */
+      .mobile-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 250px;
+        height: 100%;
+        background: #0b274c;
+        padding-top: 50px;
+        transition: transform 0.3s ease-in-out;
+        transform: translateX(-100%);
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+      }
+
+      .mobile-nav.active {
+        transform: translateX(0);
+      }
+
+      .close-btn {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        align-self: flex-end;
+        cursor: pointer;
+        margin-right: auto;
+        text-align: left;
+      }
+
+      .mobile-nav a {
+        color: white;
+        background: linear-gradient(to right, #2563eb 0%, #06b6d4 100%);
+        -webkit-background-clip: text;
+        /* -webkit-text-fill-color: transparent; */
+        text-decoration: none;
+        padding: 15px;
+        font-size: 18px;
+        display: block;
+        list-style: none;
+      }
+
+      /* Show Mobile Menu */
+      .mobile-nav .dropdown {
+        position: relative;
+        display: block;
+      }
+
+      .mobile-nav .dropdown-content {
+        display: none; /* Initially hidden */
+        flex-direction: column;
+        background: #1a1a1a;
+        padding-left: 10px;
+      }
+
+      .mobile-nav .dropdown-content a {
+        padding: 10px;
+        display: block;
+        color: white;
+        text-decoration: none;
+      }
+
+      /* Show dropdown when active */
+      .mobile-nav .dropdown.active .dropdown-content {
+        display: flex;
+      }
+
+      .dropdown-content a {
+        display: block;
+        padding: 0.75rem 1.5rem;
+        color: #333;
+        transition: all 0.3s ease;
+      }
+
+      .dropdown-content a:hover .dropdown-content {
+        display: block;
+        opacity: 1;
+        color: #000 !important;
+        animation: fadeIn 0.3s ease;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .menu-btn {
+          display: block;
+        }
+        .logo-container {
+          gap: 1rem;
+        }
+      }
+      .call-papers h1 {
+        text-align: center;
+      }
+      .submit-paper {
+        color: #fff !important;
+        /* background: #027bff; */
+        background: linear-gradient(to right, #2563eb 0%, #06b6d4 100%);
+        /* -webkit-text-fill-color: transparent; */
+        animation: fadeIn 1s ease;
+      }
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @media (max-width: 768px) {
+        body {
+          text-align: justify;
+        }
+        .logo {
+          height: 25px;
+          align-items: justify;
+        }
+        .coordinator-info h3 {
+          font-size: 0.66rem;
+        }
+        /* .coordinators-section h1,
+        h2,
+        p {
+          text-align: justify;
+        } */
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="logo-container">
+        <img src="SDSTD2025.png" alt="SDSTD" class="logo" />
+        <img src="cvm.png" alt="CVM" class="logo" />
+        <img src="adit.png" alt="ADIT" class="logo" />
+        <img src="gcet.png" alt="GCET" class="logo" />
+        <img src="mbit.png" alt="MBIT" class="logo" />
+      </div>
+      <nav class="navbar">
+        <ul class="nav-links">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropbtn">About</a>
+            <div class="dropdown-content">
+              <a href="cvm.html">Charutar Vidya Mandal</a>
+              <a href="cvm-university.html">CVM University</a>
+            </div>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropbtn">SDSTD-2025</a>
+            <div class="dropdown-content">
+              <a href="tracks.html">Tracks</a>
+              <a href="call-for-papers.html">Call for Papers</a>
+              <a href="important-dates.html">Important Dates</a>
+              <a href="submission-guidelines.html">Submission Guidelines</a>
+              <a href="https://forms.gle/1WUzuEWmN1Q8DzNB7">Registration</a>
+              <a href="Payment.html">Payment Details</a>
+            </div>
+          </li>
+          <li><a href="keynote.html">Keynote Speakers</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropbtn">Committee</a>
+            <div class="dropdown-content">
+              <a href="organizing.html">Organizing Committee</a>
+              <a href="track-coordinators.html">Track Coordinators</a>
+              <a href="ITC.html">International Technical Committee</a>
+              <a href="NC.html">National Technical Committee</a>
+              <!-- <a href="WC.html">Website Coordinator</a> -->
+            </div>
+          </li>
+          <li><a href="#contact">Contact Us</a></li>
+          <li>
+            <a href="#" class="submit-paper" style="color: #000 !important"
+              >Submit Paper</a
+            >
+          </li>
+        </ul>
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+      </nav>
+      <div class="mobile-nav" id="mobileNav">
+        <button class="close-btn" onclick="toggleClose()">✖</button>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">About</a>
+          <div class="dropdown-content">
+            <a href="cvm.html">Charutar Vidya Mandal</a>
+            <a href="cvm-university.html">CVM University</a>
+          </div>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">SDSTD-2025</a>
+          <div class="dropdown-content">
+            <a href="tracks.html">Tracks</a>
+            <a href="call-for-papers.html">Call for Papers</a>
+            <a href="important-dates.html">Important Dates</a>
+            <a href="submission-guidelines.html">Submission Guidelines</a>
+            <a href="https://forms.gle/1WUzuEWmN1Q8DzNB7">Registration</a>
+            <a href="Payment.html">Payment Details</a>
+          </div>
+        </li>
+        <li><a href="keynote.html">Keynote Speakers</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">Committee</a>
+          <div class="dropdown-content">
+            <a href="organizing.html">Organizing Committee</a>
+            <a href="track-coordinators.html">Track Coordinators</a>
+            <a href="ITC.html">International Technical Committee</a>
+            <a href="NC.html">National Technical Committee</a>
+            <!-- <a href="WC.html">Website Coordinator</a> -->
+          </div>
+        </li>
+        <li><a href="index.html#contact">Contact Us</a></li>
+        <li><a href="#" class="submit-paper">Submit Paper</a></li>
+      </div>
+    </header>
+    <main>
+      <section class="coordinators-section">
+        <div class="container">
+          <h1>Coordinators</h1>
+          <p class="section-description">
+            Our Coordinators put in relentless effort to ensure the event runs
+            flawlessly, handling every detail with utmost care. With their
+            expertise and dedication, they oversee logistics, streamline
+            activities, and create a well-organized experience for all
+            participants. Their behind-the-scenes work is instrumental in the
+            event's success. Should you need any assistance or have any
+            questions, our coordinators are always ready to help!
+          </p>
+
+          <div class="coordinators-grid">
+            <div class="coordinator-card">
+              <div class="coordinator-image">
+                <img src="Shrivastav.jpg" alt="Dr. Shivmurti Srivastav" />
+              </div>
+              <div class="coordinator-info">
+                <h3>Dr. Shivmurti Srivastav</h3>
+                <p>Professor & Head,<br />Food Proc. & Tech., ADIT</p>
+                <a
+                  href="http://adit.ac.in/facultydetails206f.html?dept=14&id=34"
+                  ><button class="more-btn" onclick="toggleDetails(this)">
+                    More
+                  </button></a
+                >
+                <!-- <div class="additional-info hidden">
+                  <p>
+                    Additional information about Dr. Shivmurti Srivastav will be
+                    displayed here.
+                  </p>
+                </div> -->
+              </div>
+            </div>
+
+            <div class="coordinator-card">
+              <div class="coordinator-image">
+                <img src="Vinod Patel.jpg" alt="Dr. Vinod Patel" />
+              </div>
+              <div class="coordinator-info">
+                <h3>Dr. Vinod Patel</h3>
+                <p>Professor & Head,<br />Mechatronics, GCET</p>
+                <a href="https://www.gcet.ac.in/staff.php"
+                  ><button class="more-btn" onclick="toggleDetails(this)">
+                    More
+                  </button></a
+                >
+                <!-- <div class="additional-info hidden">
+                  <p>
+                    Additional information about Dr. Vinod Patel will be
+                    displayed here.
+                  </p>
+                </div> -->
+              </div>
+            </div>
+
+            <div class="coordinator-card">
+              <div class="coordinator-image">
+                <img src="Foram.jpg" alt="Dr. Foram Joshi" />
+              </div>
+              <div class="coordinator-info">
+                <h3>Dr. Foram Joshi</h3>
+                <p>Assistant Professor,<br />Applied Science, MBIT</p>
+                <a href="https://www.mbit.edu.in/?page_id=12395"
+                  ><button class="more-btn" onclick="toggleDetails(this)">
+                    More
+                  </button></a
+                >
+                <!-- <div class="additional-info hidden">
+                  <p>
+                    Additional information about Dr. Foram Joshi will be
+                    displayed here.
+                  </p>
+                </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <p>© 2025 SDSTD Conference. All rights reserved.</p>
+        <div class="footer-links">
+          <p>Design And Develop By</p>
+          <p style="font-weight: bold">Student Team of CP & IT GCET College</p>
+        </div>
+      </div>
+    </footer>
+    <script>
+      function toggleMenu() {
+        const mobileNav = document.getElementById("mobileNav");
+        mobileNav.classList.add("active");
+      }
+
+      function toggleClose() {
+        const mobileNav = document.getElementById("mobileNav");
+        mobileNav.classList.remove("active");
+      }
+    </script>
+    <script src="scriptcoordinators.js"></script>
+    <script src="coordinators.js"></script>
+  </body>
+</html>

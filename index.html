@@ -2,107 +2,624 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Car Sale Website</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SDSTD2025 Conference</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+    rel="stylesheet" />
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAylRbSMqRXBb67Xn2121kqC_MzoyWQ4FQ&callback=initMap"
+    async defer></script>
+  <style>
+    body {
+      animation: slideUp 0.8s ease-in;
+      /* background: linear-gradient(135deg, #3b82f6, #fff, #000); */
+      font-family: "Ubuntu", sans-serif;
+      font-weight: 400;
+      background: linear-gradient(135deg, #3b82f6, #cffafe, #dbeafe);
+      /* font-style: italic; */
+    }
+
+    .conference-logo {
+      width: 65px;
+      padding-right: 1rem;
+    }
+
+    .conference-logo:hover {
+      transform: scale(1.1);
+    }
+
+    .navbar {
+      /* padding: 15px; */
+      /* display: flex; */
+      justify-content: center;
+      align-items: center;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links li {
+      display: inline;
+    }
+
+    .nav-links a {
+      /* color: white; */
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+    /* Menu Button (Visible only on mobile) */
+    .menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: linear-gradient(to right, #cffafe 0%, #dbeafe 100%);
+      font-size: 20px;
+      cursor: pointer;
+      text-align: left;
+      /* margin-left: 10px; */
+    }
+
+    /* Mobile Navbar (Sidebar) */
+    .mobile-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 250px;
+      height: 100%;
+      background: #0b274c;
+      padding-top: 50px;
+      transition: transform 0.3s ease-in-out;
+      transform: translateX(-100%);
+      display: flex;
+      flex-direction: column;
+      list-style: none;
+    }
+
+    .mobile-nav.active {
+      transform: translateX(0);
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      align-self: flex-end;
+      cursor: pointer;
+      margin-right: 15px;
+      text-align: left;
+    }
+
+    .mobile-nav a {
+      color: white;
+      background: linear-gradient(to right, #2563eb 0%, #06b6d4 100%);
+      -webkit-background-clip: text;
+      /* -webkit-text-fill-color: transparent; */
+      text-decoration: none;
+      padding: 15px;
+      font-size: 18px;
+      display: block;
+      list-style: none;
+    }
+
+    /* Show Mobile Menu */
+    .mobile-nav .dropdown {
+      position: relative;
+      display: block;
+    }
+
+    .mobile-nav .dropdown-content {
+      display: none;
+      /* Initially hidden */
+      flex-direction: column;
+      background: #1a1a1a;
+      padding-left: 10px;
+    }
+
+    .mobile-nav .dropdown-content a {
+      padding: 10px;
+      display: block;
+      color: white;
+      text-decoration: none;
+    }
+
+    /* Show dropdown when active */
+    .mobile-nav .dropdown.active .dropdown-content {
+      display: flex;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .logo-container {
+        gap: 2rem;
+      }
+    }
+    @media (max-width: 768px) {
+        table {
+          transform: rotateX(0deg);
+          align-items: center;
+          justify-content: center;
+          margin: 0;
+          padding: 0;
+        }
+        tr,
+        td {
+          padding: 10px;
+          font-size: 10px;
+          margin: 0;
+        }
+      }
+    .contact {
+      /* background-color: #0b274c;
+            color: white; */
+      color: #fff !important;
+      /* background: #027bff; */
+      background: linear-gradient(to right, #2563eb 0%, #06b6d4 100%);
+      text-align: center;
+      /* padding: 40px 20px; */
+      margin-bottom: 0.8rem;
+    }
+
+    .contact h2 {
+      margin: 0 auto;
+      font-size: 2rem;
+      margin-top: 2rem;
+    }
+
+    .contact p.email {
+      font-size: 18px;
+      margin: 10px 0 20px;
+      /* padding: 3rem; */
+    }
+
+    @media(max-width:768px){
+      .contact p.email{
+        font-size: 15px;
+        padding: 0;
+        margin: 0;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+      .contact h2{
+        font-size: 18px;
+      }
+      .display {
+        display: block;
+      }
+      .contact-us {
+        display: block;
+      }
+    }
+    /* Contact Form */
+    form {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    input[type="email"] {
+      padding: 10px;
+      width: 250px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: white;
+      color: #0b274c;
+      border: 1px solid white;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #007bff;
+      color: white;
+    }
+
+    /* Google Map */
+    #map {
+      height: 400px;
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      form {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      input[type="email"],
+      button {
+        width: 90%;
+        max-width: 300px;
+      }
+    }
+
+    .hero h1 {
+      background-color: #fff;
+      color: #3b82f6;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+    @media(max-width:768px){
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+    .hero {
+      background: linear-gradient(135deg, #3b82f6, #cffafe, #dbeafe);
+    }
+
+    .submit-paper {
+      color: #000 !important;
+      background-color: linear-gradient(to right, #cffafe 0%, #dbeafe 100%);
+      /* -webkit-text-fill-color: transparent; */
+      margin-right: 15px;
+      animation: fadeIn 1s ease;
+      box-shadow: 1px -4px 5px;
+    }
+
+    .register-btn {
+      color: #fff !important;
+      /* background: #027bff; */
+      background: linear-gradient(to right, #2563eb 0%, #06b6d4 100%);
+      /* -webkit-text-fill-color: transparent; */
+      animation: fadeIn 1s ease;
+    }
+
+    .display {
+      display: grid;
+      gap: 1rem;
+      margin-top: 2rem;
+      display: grid;
+    }
+    .contact-us {
+      display: flex;
+      text-align: left;
+    } 
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        text-align: justify;
+      }
+
+      .logo {
+        height: 25px;
+        align-items: justify;
+      }
+
+      /* .logo1 {
+          height: 40px;
+        } */
+
+      .content-section {
+        text-align: justify;
+      }
+
+      .hero h2 {
+        text-align: justify;
+        font-size: 1rem;
+      }
+    }
+    .Address{
+      margin: 0 auto;
+      margin-bottom: 1rem;
+      margin-top: 0;
+    }
+    tr,td {
+      /* margin: 10px; */
+      padding: 10px;
+      text-align: center;
+    }
+    .table-container {
+      overflow-x: hidden;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+    }
+    table{
+      text-align: center;
+      margin: 0 auto;
+      justify-content: center;
+      align-items: center;
+      margin-top: 2rem;
+    }
+  </style>
 </head>
 
 <body>
-    <header>
-        <div class="container">
-            <h1><i class="fas fa-car"></i></h1>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home <i class="fas fa-home"></i></a></li>
-                    <li><a href="#inventory">Inventory <i class="fas fa-car-side"></i></a></li>
-                    <li><a href="#about">About Us <i class="fas fa-info-circle"></i></a></li>
-                    <li><a href="#contact">Contact <i class="fas fa-envelope"></i></a></li>
-                </ul>
-            </nav>
-            <div class="menu-toggle" id="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-
+  <header>
+    <div class="logo-container">
+      <img src="SDSTD2025.png" alt="SDSTD" class="logo" />
+      <img src="cvm.png" alt="CVM" class="logo" />
+      <img src="adit.png" alt="ADIT" class="logo" />
+      <img src="gcet.png" alt="GCET" class="logo" />
+      <img src="mbit.png" alt="MBIT" class="logo" />
+    </div>
+    <nav class="navbar">
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">About</a>
+          <div class="dropdown-content">
+            <a href="cvm.html">Charutar Vidya Mandal</a>
+            <a href="cvm-university.html">CVM University</a>
+          </div>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">SDSTD-2025</a>
+          <div class="dropdown-content">
+            <a href="tracks.html">Tracks</a>
+            <a href="call-for-papers.html">Call for Papers</a>
+            <a href="important-dates.html">Important Dates</a>
+            <a href="submission-guidelines.html">Submission Guidelines</a>
+            <a href="#" onclick="openInNewTab('https://forms.gle/oZiaETYz1s2UpWhR8')">Registration</a>
+            <a href="Payment.html">Payment Details</a>
+          </div>
+        </li>
+        <li><a href="keynote.html">Keynote Speakers</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">Committee</a>
+          <div class="dropdown-content">
+            <a href="organizing.html">Organizing Committee</a>
+            <a href="track-coordinators.html">Track Co-ordinators</a>
+            <a href="ITC.html">International Technical Committee</a>
+            <a href="NC.html">National Technical Committee</a>
+            <!-- <a href="WC.html">Website Coordinator</a> -->
+          </div>
+        </li>
+        <li><a href="index.html#contact">Contact Us</a></li>
+        <li>
+          <a href="#" class="submit-paper" onclick="openInNewTab('https://cmt3.research.microsoft.com/User/Login?ReturnUrl=%2FSDSTD2025%2FSubmission%2FIndex')">Submit Paper</a>
+        </li>
+      </ul>
+      <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    </nav>
+    <div class="mobile-nav" id="mobileNav">
+      <button class="close-btn" onclick="toggleClose()">✖</button>
+      <li><a href="index.html" class="active">Home</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropbtn">About</a>
+        <div class="dropdown-content">
+          <a href="cvm.html">Charutar Vidya Mandal</a>
+          <a href="cvm-university.html">CVM University</a>
         </div>
-    </header>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropbtn">SDSTD-2025</a>
+        <div class="dropdown-content">
+          <a href="tracks.html">Tracks</a>
+          <a href="call-for-papers.html">Call for Papers</a>
+          <a href="important-dates.html">Important Dates</a>
+          <a href="submission-guidelines.html">Submission Guidelines</a>
+          <a href="#" onclick="openInNewTab('https://forms.gle/oZiaETYz1s2UpWhR8')">Registration</a>
+          <a href="Payment.html">Payment Details</a>
+        </div>
+      </li>
+      <li><a href="keynote.html">Keynote Speakers</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Committee</a>
+        <div class="dropdown-content">
+          <a href="organizing.html">Organizing Committee</a>
+          <a href="track-coordinators.html">Track Co-ordinators</a>
+          <a href="ITC.html">International Technical Committee</a>
+          <a href="NC.html">National Technical Committee</a>
+          <!-- <a href="WC.html">Website Coordinator</a> -->
+        </div>
+      </li>
+      <li><a href="index.html#contact">Contact Us</a></li>
+      <li><a href="#" class="submit-paper" onclick="openInNewTab('https://cmt3.research.microsoft.com/User/Login?ReturnUrl=%2FSDSTD2025%2FSubmission%2FIndex')">Submit Paper</a></li>
+    </div>
+  </header>
+  <main>
     <section class="hero">
-        <div class="container">
-            <h2>Find Your Dream Car</h2>
-            <p>Choose from a wide range of new and used cars</p>
-            <a href="#inventory" class="btn">Browse Inventory</a>
-        </div>
-
+      <h1>
+        <!-- <video autoplay muted loop id="myVideo">
+            <source src="Untitled video.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video> -->
+        <img src="SDSTD2025.png" alt="SDSTD2025 Logo" class="conference-logo" />SDSTD 2025
+      </h1>
+      <h2>
+        Synergetic Development through Smart Technology & Digital
+        Transformation-2025
+      </h2>
+      <div class="conference-type">
+        International Conference <span style="font-weight: bold;">(Hybrid Mode)</span>
+      </div>
+      <div class="conference-dates" style="font-weight: bold;">Conference Dates: 25-26 June 2025</div>
+      <div class="cta-buttons">
+        <a href="#" class="register-btn" onclick="openInNewTab('https://forms.gle/oZiaETYz1s2UpWhR8')">Register Now</a>
+        <!-- <a href="#" class="submit-btn">Submit Paper →</a> -->
+      </div>
     </section>
-    <section id="inventory" class="inventory">
-        <div class="container">
-            <h3>Our Inventory <i class="fas fa-star"></i></h3>
-            <div class="car-card">
-                <img src="car1.webp" alt="Car 1">
-                <h4>Car Model 1 <i class="fas fa-car"></i></h4>
-                <p>$25,000</p>
-            </div>
+    <section class="content-section">
+      <h2>About SDSTD 2025</h2>
+      <p>
+        The Faculty of Engineering and Technology, The Charutar Vidya Mandal
+        University, is organizing International Conference (Hybrid Mode) on
+        "Synergetic Development through Smart Technology & Digital
+        Transformation-2025 (SDSTD2025)"
+      </p>
 
-        </div>
-        <div class="car-card">
-            <img src="car2.webp" alt="Car 2">
-            <h4>Car Model 2 <i class="fas fa-car"></i></h4>
-            <p>$25,000</p>
-        </div>
-        <div class="car-card">
-            <img src="car3.webp" alt="Car 3">
-            <h4>Car Model 3 <i class="fas fa-car"></i></h4>
-            <p>$30,000</p>
-        </div>
-        <div class="car-card">
-            <img src="car4.webp" alt="Car 4">
-            <h4>Car Model 4 <i class="fas fa-car"></i></h4>
-            <p>$20,000</p>
-        </div>
+      <p>
+        The international level Conference on Synergetic Development through
+        Smart Technology & Digital Transformation-2025 (SDSTD2025) is of
+        paramount importance in shaping the future of multidisciplinary
+        studies and collaboration. A key value of SDSTD2025 lies in its
+        ability to bring together various experts, scientists, teaching
+        fraternity, researchers, industrialists, and students from varied
+        fields of Engineering onto a common platform to share their knowledge
+        and cutting-edge research findings, observations, discoveries,
+        innovations etc., to broaden the new horizons of wisdom.
+      </p>
+      <p id="contact">
+        SDSTD2025 aims to explore sustainable synergetic development through
+        innovative digital transformation for industry and governance, thereby
+        contributing to economic development and societal well-being. It is
+        not merely a gathering of minds but a collective endeavour to shape a
+        better, more sustainable future through the integration of smart
+        technology, knowledge and ideas across disciplines. SDSTD2025 is
+        poised to be a milestone in the journey towards a more interconnected,
+        innovative, and sustainable global society.
+      </p>
     </section>
+  </main>
+  <div class="popup-overlay" id="popupOverlay">
+    <div class="popup-content">
+      <button class="close-button" onclick="closePopup()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
 
-    <section id="about" class="about">
-        <div class="container">
-            <h3>About Us <i class="fas fa-info-circle"></i></h3>
-            <p>We are trusted car dealership with years of experience in the automotive industry. Our mission is to help
-                you find the perfect car that fits your needs and budget.</p>
-            <p>Our team of experts is here to guide yoy through the entire process, from selecting the right vehicle to
-                securing the best financing options.</p>
+      <div class="popup-body">
+        <!-- <h2>Special Announcement!</h2> -->
+        <div class="image-container">
+          <img src="SDSTD2025.jpg" alt="Announcement" />
         </div>
+        <button class="action-button" onclick="openInNewTab('SDSTD2025.jpg')">Click Here!</button>
+      </div>
+    </div>
+  </div>
+  <section class="contact">
+    <h2>Contact Us</h2>
+    <p class="email">cvmuconference.sdstd2025@cvmu.edu.in</p>
+    <form>
+      <input type="email" placeholder="Email for queries*" required />
+      <button type="submit" onclick="window.open('mailto:cvmuconference.sdstd2025@cvmu.edu.in')">Submit</button>
+    </form>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Land-line</th>
+          </tr>
+        </thead>
+        <tbody id="table"></tbody>
+      </table>
+    </div>
+    <!-- <section class="display">
+      <div class="contact-us">
+        <h2>Dr. Shivmurti Srivastav</h2>
+        <p class="email">shivmurti.shrivastava@cvmu.edu.in<br />
+          Mobile No:9428901917</p>
+        <h2>Dr. Vinod Patel</h2>
+        <p class="email">vinodpatel@gcet.ac.in <br />
+          Mobile No:9537869801
+        </p>
+        <h2>Dr. Foram Joshi</h2>
+        <p class="email">fmjoshi@mbit.edu.in<br />
+          Mobile No:9426885360
+        </p>
+        </div> -->
     </section>
+    <h2 class="Address" style="margin-top: 0px;">The CVM University</h2>
+    <p style="text-align: center;">Beside BVM College,Opp. Shastri Maidan,Vallabh Vidhyanagar-388120 ,Gujarat, India</p>
+  </section>
 
-    <section id="contact" class="contact">
-        <div class="container">
-            <h3>Contact Us <i class="fas fa-envelope"></i></h3>
-            <p>We'd love to hear from you! Whether you have questions about our inventory or need assistance with financing, our team is here to help.</p>
+  <!-- <div id="map"></div> -->
 
-            <form>
-                <label for="name">Name:</label>
-                <input type="text" name="name" id="name" required>
-                <label for="email">Email:</label>
-                <input type="email" name="email" id="email" required>
-                <label for="message">Message:</label>
-                <textarea name="message" id="message" required></textarea>
-                <button type="submit" class="btn">
-                    Send Message
-                </button>
-            </form>
-        </div>
-    </section>
+  <footer>
+    <div class="footer-content">
+      <p>© 2025 SDSTD Conference. All rights reserved.</p>
+      <div class="footer-links">
+        <p>Design And Develop By <span style="font-weight: bold;">Student Team of CP & IT GCET College</span></p>
+      </div>
+    </div>
+  </footer>
+  <script>
+    function toggleMenu() {
+      const mobileNav = document.getElementById("mobileNav");
+      mobileNav.classList.add("active");
+    }
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Car Sale.All Rights Reserved.</p>
-        </div>
-    </footer>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2053642123284283"
-     crossorigin="anonymous"></script>
-    <script src="script.js"></script>
+    function toggleClose() {
+      const mobileNav = document.getElementById("mobileNav");
+      mobileNav.classList.remove("active");
+    }
+    function openInNewTab(url){
+      window.open(url, '_blank').focus();
+    }
+    const tableData = [
+        { Name: "Dr. Shivmurti Srivastav", Email: "shivmurti.shrivastava@cvmu.edu.in", 
+          Mobile: "+91 2692-233680" 
+        },
+        
+        {
+          Name: "Dr. Vinod Patel",
+          Email: "vinodpatel@gcet.ac.in",
+          Mobile:"+91 2692-231651"
+        },
+        {
+          Name: "Dr. Foram Joshi",
+          Email:"fmjoshi@mbit.edu.in",
+          Mobile: "+91 2692-230823"
+        }
+      ];
+
+      const table = document.getElementById("table");
+
+      tableData.forEach((entry) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `<td>${entry.Name}</td><td>${entry.Email}</td><td>${entry.Mobile}</td>`;
+        table.appendChild(row);
+      });
+  </script>
+
+  <script src="scriptContact.js"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>
