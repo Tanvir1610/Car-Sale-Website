@@ -1,556 +1,1009 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Keynote Speakers</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="coordinators.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
-    rel="stylesheet" />
-  <style>
-    body {
-      animation: slideUp 0.5s ease;
-      font-family: "Ubuntu", sans-serif;
-      font-weight: 400;
-    }
-
-    .logo-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 1rem;
-      gap: 10rem;
-      background-color: #f8f9fa;
-    }
-
-    .logo {
-      height: 80px;
-      object-fit: contain;
-      transition: transform 0.3s ease;
-    }
-
-    .logo:hover {
-      transform: scale(1.05);
-      cursor: pointer;
-    }
-
-    button {
-      padding: 10px 20px;
-      background-color: white;
-      color: #0b274c;
-      border: 1px solid white;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-      transition: 0.3s;
-    }
-
-    button:hover {
-      background-color: #007bff;
-      color: white;
-    }
-
-    .navbar {
-      /* padding: 15px; */
-      /* display: flex; */
-      justify-content: center;
-      align-items: center;
-    }
-
-    nav {
-      background-color: #fff;
-      padding: 0.5rem;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    }
-
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-    }
-
-    .nav-links li {
-      display: inline;
-    }
-
-    .nav-links a {
-      /* color: white; */
-      text-decoration: none;
-      font-size: 18px;
-    }
-
-    /* Menu Button (Visible only on mobile) */
-    .menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      color: linear-gradient(to right, #cffafe 0%, #dbeafe 100%);
-      font-size: 20px;
-      cursor: pointer;
-      text-align: left;
-    }
-
-    /* Mobile Navbar (Sidebar) */
-    .mobile-nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 250px;
-      height: 100%;
-      background: #0b274c;
-      padding-top: 50px;
-      transition: transform 0.3s ease-in-out;
-      transform: translateX(-100%);
-      display: flex;
-      flex-direction: column;
-      list-style: none;
-    }
-
-    .mobile-nav.active {
-      transform: translateX(0);
-    }
-
-    .close-btn {
-      background: none;
-      border: none;
-      color: white;
-      font-size: 24px;
-      align-self: flex-end;
-      cursor: pointer;
-      margin-right: auto;
-      text-align: left;
-    }
-
-    .mobile-nav a {
-      color: white;
-      background: linear-gradient(to right, #2563eb 0%, #06b6d4 100%);
-      -webkit-background-clip: text;
-      /* -webkit-text-fill-color: transparent; */
-      text-decoration: none;
-      padding: 15px;
-      font-size: 18px;
-      display: block;
-      list-style: none;
-    }
-
-    /* Show Mobile Menu */
-    .mobile-nav .dropdown {
-      position: relative;
-      display: block;
-    }
-
-    .mobile-nav .dropdown-content {
-      display: none;
-      /* Initially hidden */
-      flex-direction: column;
-      background: #1a1a1a;
-      padding-left: 10px;
-    }
-
-    .mobile-nav .dropdown-content a {
-      padding: 10px;
-      display: block;
-      color: white;
-      text-decoration: none;
-    }
-
-    /* Show dropdown when active */
-    .mobile-nav .dropdown.active .dropdown-content {
-      display: flex;
-    }
-
-    .dropdown-content a {
-      display: block;
-      /* padding: 0.75rem 1.5rem; */
-      color: #333;
-      transition: all 0.3s ease;
-    }
-
-    .dropdown-content a:hover .dropdown-content {
-      display: block;
-      opacity: 1;
-      color: #000 !important;
-      animation: fadeIn 0.3s ease;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Keynote Speakers - SDSTD2025</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
       }
 
-      .menu-btn {
-        display: block;
-      }
-
-      .logo-container {
-        gap: 2rem;
-      }
-
-      .logo {
-        height: 25px;
-      }
-    }
-
-    .coming-soon {
-      min-height: 60vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-      text-align: center;
-      padding: 2rem;
-    }
-
-    .coming-soon h1 {
-      font-size: 4rem;
-      background: linear-gradient(to right, #2563eb 0%, #06b6d4 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeInUp 1s ease forwards;
-    }
-
-    .submit-paper {
-      color: #000 !important;
-      /* background: #027bff; */
-      background-color: linear-gradient(to right, #cffafe 0%, #dbeafe 100%);
-      /* -webkit-text-fill-color: transparent; */
-      animation: fadeIn 1s ease;
-      box-shadow: 1px -4px 5px;
-    }
-
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .dots {
-      display: inline-flex;
-      /* font-size: 24px; */
-      letter-spacing: 2px;
-      /* animation: dots 2s infinite; */
-    }
-
-    .dots span {
-      /* color: #2563eb; */
-      background: linear-gradient(to right, #2563eb 0%, #06b6d4 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: blink 1.5s infinite;
-    }
-
-    .dots span:nth-child(2) {
-      animation-delay: 0.2s;
-    }
-
-    .dots span:nth-child(3) {
-      animation-delay: 0.4s;
-    }
-
-    main {
-      margin: 0 auto;
-      padding: 2rem;
-      max-width: 1200px;
-    }
-
-    .container {
-      background-color: #fff;
-      border-radius: 8px;
-      padding: 2rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-    }
-
-    h1 {
-      margin: 0 auto;
-      text-align: center;
-      margin-top: 2rem;
-    }
-
-    .key {
-      padding-left: 1rem;
-    }
-
-    .key::before {
-      content: "→";
-      color: #007bff;
-      text-align: justify;
-      padding: 0.5rem;
-    }
-
-    @keyframes blink {
-
-      0%,
-      100% {
-        opacity: 0;
-      }
-
-      50% {
-        opacity: 1;
-      }
-    }
-
-    @keyframes slideUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media (max-width: 768px) {
       body {
-        text-align: justify;
+        animation: slideUp 0.8s ease-in;
+        font-family: "Ubuntu", sans-serif;
+        font-weight: 400;
+        background: linear-gradient(135deg, #3b82f6, #cffafe, #dbeafe);
+        min-height: 100vh;
+      }
+
+      /* Header Styles - Matching index.html */
+      .logo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        gap: 7rem;
+        background-color: #f8f9fa;
       }
 
       .logo {
-        height: 25px;
-        align-items: justify;
-      }
-    }
-
-    .committee-member img {
-      height: 260px;
-      width: 230px;
-    }
-
-    @media (max-width: 768px) {
-      .local-committee-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        margin: 0 auto;
-        /* padding: 2rem; */
-        /* width: 300px; */
-        /* height: 150px; */
-        /* text-align: center; */
-        align-items: center;
-        max-width: 1200px;
-        justify-content: center;
+        height: 80px;
+        object-fit: contain;
+        transition: transform 0.3s ease;
       }
 
-      .committee-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 0.4fr));
-        gap: 2rem;
-        /* margin-top: 2rem; */
-        max-width: 1200px;
+      .logo:hover {
+        transform: scale(1.05);
+        cursor: pointer;
+      }
+
+      .navbar {
         justify-content: center;
         align-items: center;
-        margin: 0 auto;
+        background-color: #0b274c;
+        padding: 1rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
       }
-      .committee-member img {
-        height: 150px;
-        width: 150px;
+
+      .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
       }
-      
-      .committee-member{
-        width: 150px;
-        /* height: 150px; */
+
+      .nav-links li {
+        display: inline;
+        position: relative;
       }
-      .member-role {
-        font-size: 0.6rem;
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 400;
+        padding: 0.5rem 1rem;
+        display: block;
+        transition: all 0.3s ease;
+        border: 1px solid;
+        border-radius: 5px;
+      }
+
+      .nav-links a:hover {
+        color: black !important;
+        background: linear-gradient(to right, #cffafe 0%, #dbeafe 100%);
+        border-radius: 5px;
+        /* border: none; */
+      }
+
+      .dropdown {
+        position: relative;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #fff;
+        min-width: 220px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        z-index: 1;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 0.5rem 0;
+        opacity: 0;
+        transition: all 0.3s ease;
+      }
+
+      .dropdown-content a {
+        display: block;
+        /* padding: 0.75rem 1.5rem; */
+        color: #333;
+        transition: all 0.3s ease;
+        border: none;
+      }
+
+      .dropdown-content a:hover {
+        color: #000 !important;
+        background: linear-gradient(to right, #cffafe 0%, #dbeafe 100%);
+        /* -webkit-text-fill-color: transparent; */
+        transform: translateX(1px);
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+        opacity: 1;
+        animation: fadeIn 0.3s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-10px) translateX(-50%);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) translateX(-50%);
+        }
+      }
+
+      .submit-paper {
+        color: white !important;
+        /* background: linear-gradient(to right, #cffafe 0%, #dbeafe 100%) !important; */
+        margin-right: 15px;
+        animation: fadeIn 1s ease;
+        box-shadow: none;
+        border-radius: 5px;
+      }
+
+      .submit-paper:hover {
+        color: black !important;
+        background: linear-gradient(
+          to right,
+          #cffafe 0%,
+          #dbeafe 100%
+        ) !important;
+        border-radius: 5px;
+      }
+
+      /* Menu Button (Visible only on mobile) */
+      .menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
         text-align: left;
-        font-weight: bold;
       }
-      .member-name {
+
+      /* Mobile Navbar (Sidebar) */
+      .mobile-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 250px;
+        height: 100%;
+        background: #0b274c;
+        padding-top: 50px;
+        transition: transform 0.3s ease-in-out;
+        transform: translateX(-100%);
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        z-index: 1000;
+      }
+
+      .mobile-nav.active {
+        transform: translateX(0);
+      }
+
+      .close-btn {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        align-self: flex-end;
+        cursor: pointer;
+        margin-right: 15px;
+        text-align: left;
+      }
+
+      .mobile-nav a {
+        color: white;
+        text-decoration: none;
+        padding: 15px;
+        font-size: 18px;
+        display: block;
+        list-style: none;
+      }
+
+      .mobile-nav a:hover {
+        background: rgba(6, 182, 212, 0.1);
+      }
+
+      /* Main Content */
+      .main-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+      }
+
+      /* Page Header */
+      .page-header {
+        text-align: center;
+        margin-bottom: 3rem;
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .page-title {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #3b82f6;
+        margin-bottom: 1rem;
+      }
+
+      .page-subtitle {
+        font-size: 1.2rem;
+        color: #666;
+        line-height: 1.6;
+      }
+
+      /* Section Styles */
+      .speakers-section {
+        margin-bottom: 3rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #000;
+        text-align: center;
+        margin-bottom: 2rem;
+        /* background: white; */
+        padding: 1rem;
+        border-radius: 10px;
+      }
+
+      /* Speaker Cards Grid */
+      .speakers-grid {
+        display: grid;
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .keynote-grid {
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .expert-grid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      }
+
+      /* Speaker Card Styles */
+      .speaker-card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        border: 1px solid #e2e8f0;
+        width: 280px;
+        height: fit-content;
+      }
+
+      .speaker-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      .keynote-card {
+        border: 3px solid #3b82f6;
+        position: relative;
+        height: fit-content;
+        width: 280px;
+      }
+
+      .keynote-badge {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: linear-gradient(to right, #2563eb 0%, #06b6d4 100%);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
         font-size: 0.8rem;
-        text-align: left;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        z-index: 10;
+      }
+
+      .speaker-image-container {
+        position: relative;
+        height: 280px;
+        overflow: hidden;
+      }
+
+      .speaker-image {
+        width: 280px;
+        height: 280px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      .speaker-card:hover .speaker-image {
+        transform: scale(1.05);
+      }
+
+      .speaker-content {
+        padding: 1.5rem;
+      }
+
+      .speaker-name {
+        font-size: 1.3rem;
         font-weight: bold;
+        color: #3b82f6;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
       }
-      #member {
-        font-size: 8.9px;
+
+      .speaker-designation {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #374151;
+        margin-bottom: 0.5rem;
       }
-    }
 
-    .member-info {
-      padding: 0.5rem;
-      font-weight: bold;
-    }
+      .speaker-organization {
+        font-size: 0.9rem;
+        color: #6b7280;
+        margin-bottom: 1rem;
+        line-height: 1.4;
+      }
 
-    .member-name {
-      font-size: 0.85rem;
-      font-weight: 400;
-      margin: 0;
-      font-weight: bold;
-    }
-  </style>
-</head>
-<header>
-  <div class="logo-container">
-    <img src="SDSTD2025.png" alt="SDSTD" class="logo" />
-    <img src="cvm.png" alt="CVM" class="logo" />
-    <img src="adit.png" alt="ADIT" class="logo" />
-    <img src="gcet.png" alt="GCET" class="logo" />
-    <img src="mbit.png" alt="MBIT" class="logo" />
-  </div>
-  <nav class="navbar">
-    <ul class="nav-links">
-      <li><a href="index.html" class="active">Home</a></li>
-      <li class="dropdown">
-        <a href="#" class="dropbtn">About</a>
-        <div class="dropdown-content">
-          <a href="cvm.html">Charutar Vidya Mandal</a>
-          <a href="cvm-university.html">CVM University</a>
-        </div>
-      </li>
-      <li class="dropdown">
-        <a href="#" class="dropbtn">SDSTD-2025</a>
-        <div class="dropdown-content">
-          <a href="tracks.html">Tracks</a>
-          <a href="call-for-papers.html">Call for Papers</a>
-          <a href="important-dates.html">Important Dates</a>
-          <a href="submission-guidelines.html">Submission Guidelines</a>
-          <a href="#" onclick="openInNewTab('https://forms.gle/oZiaETYz1s2UpWhR8')">Registration</a>
-          <a href="Payment.html">Payment Details</a>
-        </div>
-      </li>
-      <li><a href="keynote.html">Keynote Speakers</a></li>
-      <li class="dropdown">
-        <a href="#" class="dropbtn">Committee</a>
-        <div class="dropdown-content">
-          <a href="organizing.html">Organizing Committee</a>
-          <a href="track-coordinators.html">Track Co-ordinators</a>
-          <a href="ITC.html">International Technical Committee</a>
-          <a href="NC.html">National Technical Committee</a>
-          <!-- <a href="WC.html">Website Coordinator</a> -->
-        </div>
-      </li>
-      <li><a href="index.html#contact">Contact Us</a></li>
-      <li>
-        <a href="#" class="submit-paper" onclick="openInNewTab('https://cmt3.research.microsoft.com/User/Login?ReturnUrl=%2FSDSTD2025%2FSubmission%2FIndex')">Submit Paper</a>
-      </li>
-    </ul>
-    <button class="menu-btn" onclick="toggleMenu()">☰</button>
-  </nav>
-  <div class="mobile-nav" id="mobileNav">
-    <button class="close-btn" onclick="toggleClose()">✖</button>
-    <li><a href="index.html" class="active">Home</a></li>
-    <li class="dropdown">
-      <a href="#" class="dropbtn">About</a>
-      <div class="dropdown-content">
+      .speaker-topic {
+        background: linear-gradient(to right, #f0f9ff, #e0f2fe);
+        padding: 1rem;
+        border-radius: 8px;
+        border-left: 4px solid #3b82f6;
+      }
+
+      .topic-label {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #3b82f6;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+
+      .topic-text {
+        font-size: 0.9rem;
+        color: #374151;
+        margin: 0;
+        line-height: 1.4;
+        font-weight: 500;
+      }
+
+      /* Call to Action Section */
+      .cta-section {
+        background: linear-gradient(to right, #2563eb 0%, #06b6d4 100%);
+        color: white;
+        padding: 3rem 2rem;
+        border-radius: 15px;
+        text-align: center;
+        margin: 3rem 0;
+      }
+
+      .cta-title {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+      }
+
+      .cta-text {
+        font-size: 1.1rem;
+        opacity: 0.9;
+        max-width: 800px;
+        margin: 0 auto 2rem;
+        line-height: 1.6;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .cta-btn {
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .cta-btn.primary {
+        background: white;
+        color: #2563eb;
+      }
+
+      .cta-btn.primary:hover {
+        background: #f8fafc;
+        transform: translateY(-2px);
+      }
+
+      .cta-btn.secondary {
+        background: transparent;
+        color: white;
+        border: 2px solid white;
+      }
+
+      .cta-btn.secondary:hover {
+        background: white;
+        color: #2563eb;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #f8f9fa;
+        padding: 0.5rem;
+        /* margin-top: 1.5rem; */
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .footer-content span {
+        font-weight: bold;
+        color: #000;
+      }
+
+      /* Animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .menu-btn {
+          display: block;
+          color: white;
+        }
+
+        .logo-container {
+          gap: 2rem;
+          /* background: none; */
+        }
+
+        .logo {
+          height: 25px;
+        }
+
+        .page-title {
+          font-size: 2rem;
+        }
+
+        .section-title {
+          font-size: 1.5rem;
+        }
+
+        .keynote-grid,
+        .expert-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .speaker-card {
+          max-width: 400px;
+          margin: 0 auto;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .cta-btn {
+          width: 100%;
+          max-width: 300px;
+        }
+
+        .submit-paper {
+          color: white !important;
+          box-shadow: none;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .page-title {
+          font-size: 1.5rem;
+        }
+
+        .speaker-content {
+          padding: 1rem;
+        }
+
+        .speaker-name {
+          font-size: 1.1rem;
+        }
+
+        .cta-section {
+          padding: 2rem 1rem;
+        }
+
+        .cta-title {
+          font-size: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="logo-container">
+        <img src="SDSTD2025.png" alt="SDSTD" class="logo" />
+        <img src="cvm.png" alt="CVM" class="logo" />
+        <img src="adit.png" alt="ADIT" class="logo" />
+        <img src="gcet.png" alt="GCET" class="logo" />
+        <img src="mbit.png" alt="MBIT" class="logo" />
+        <img src="CVM-Logo.png" alt="MBIT" class="logo" />
+      </div>
+      <nav class="navbar">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropbtn">About</a>
+            <div class="dropdown-content">
+              <a href="cvm.html">Charutar Vidya Mandal</a>
+              <a href="cvm-university.html">CVM University</a>
+            </div>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropbtn">SDSTD-2025</a>
+            <div class="dropdown-content">
+              <a href="tracks.html">Tracks</a>
+              <a href="call-for-papers.html">Call for Papers</a>
+              <a href="important-dates.html">Important Dates</a>
+              <a href="submission-guidelines.html">Submission Guidelines</a>
+              <a
+                href="#"
+                onclick="openInNewTab('https://forms.gle/oZiaETYz1s2UpWhR8')"
+                >Registration</a
+              >
+              <a href="Payment.html">Payment Details</a>
+            </div>
+          </li>
+          <li><a href="keynote.html" class="active">Keynote Speaker</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropbtn">Committee</a>
+            <div class="dropdown-content">
+              <a href="organizing.html">Organizing Committee</a>
+              <a href="track-coordinators.html">Track Co-ordinators</a>
+              <a href="ITC.html">International Technical Committee</a>
+              <a href="NC.html">National Technical Committee</a>
+            </div>
+          </li>
+          <li><a href="index.html#contact">Contact Us</a></li>
+          <li>
+            <a
+              href="#"
+              class="submit-paper"
+              onclick="openInNewTab('https://cmt3.research.microsoft.com/User/Login?ReturnUrl=%2FSDSTD2025%2FSubmission%2FIndex')"
+              >Submit Paper</a
+            >
+          </li>
+        </ul>
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+      </nav>
+      <div class="mobile-nav" id="mobileNav">
+        <button class="close-btn" onclick="toggleClose()">✖</button>
+        <a href="index.html">Home</a>
         <a href="cvm.html">Charutar Vidya Mandal</a>
         <a href="cvm-university.html">CVM University</a>
-      </div>
-    </li>
-    <li class="dropdown">
-      <a href="#" class="dropbtn">SDSTD-2025</a>
-      <div class="dropdown-content">
         <a href="tracks.html">Tracks</a>
         <a href="call-for-papers.html">Call for Papers</a>
         <a href="important-dates.html">Important Dates</a>
         <a href="submission-guidelines.html">Submission Guidelines</a>
-        <a href="#" onclick="openInNewTab('https://forms.gle/oZiaETYz1s2UpWhR8')">Registration</a>
+        <a
+          href="#"
+          onclick="openInNewTab('https://forms.gle/oZiaETYz1s2UpWhR8')"
+          >Registration</a
+        >
         <a href="Payment.html">Payment Details</a>
-      </div>
-    </li>
-    <li><a href="keynote.html">Keynote Speakers</a></li>
-    <li class="dropdown">
-      <a href="#" class="dropbtn">Committee</a>
-      <div class="dropdown-content">
+        <a href="keynote.html">Keynote Speaker</a>
         <a href="organizing.html">Organizing Committee</a>
         <a href="track-coordinators.html">Track Co-ordinators</a>
         <a href="ITC.html">International Technical Committee</a>
         <a href="NC.html">National Technical Committee</a>
-        <!-- <a href="WC.html">Website Coordinator</a> -->
+        <a href="index.html#contact">Contact Us</a>
+        <a
+          href="#"
+          onclick="openInNewTab('https://cmt3.research.microsoft.com/User/Login?ReturnUrl=%2FSDSTD2025%2FSubmission%2FIndex')"
+          >Submit Paper</a
+        >
       </div>
-    </li>
-    <li><a href="index.html#contact">Contact Us</a></li>
-    <li><a href="#" class="submit-paper" onclick="openInNewTab('https://cmt3.research.microsoft.com/User/Login?ReturnUrl=%2FSDSTD2025%2FSubmission%2FIndex')">Submit Paper</a></li>
-  </div>
-</header>
-<h1 style="font-weight: bold; font-size: 2rem; color: #000; width: fit-content;">Keynote Speakers</h1>
-<div class="committee-grid" style="margin-top: 2rem; margin-bottom: 2rem;">
-  <div class="committee-member">
-    <img src="Kiran Trivedi.jpg" alt="Dr. Kiran Trivedi" style="object-fit: cover;" />
-    <div class="member-info">
-      <h3 class="member-name">Dr. Kiran Trivedi</h3>
-      <p class="member-role">Associate Professor of Computer Science<br />at the University of
-        Wollongong,<br /> GIFT City campus, Gandhinagar, Gujarat, India.</p>
-    </div>
-  </div>
+    </header>
 
-</div>
-<h1 style="font-weight: bold; font-size: 2rem; color: #000; width: fit-content;">Experts Talk</h1>
-<div class="committee-grid" style="margin-top: 2rem; margin-bottom: 2rem">
-  <div class="committee-member">
-    <img src="RJP.jpg" alt="Dr. Rahul Jashvantbhai Pandya"
-      style="text-align: left; object-fit: cover;" />
-    <div class="member-info">
-      <h3 class="member-name">Dr. Rahul Jashvantbhai Pandya</h3>
-      <!-- <h3 style="font-size: 0.8rem;">Expert talk on "Tiny Machine Learning"</h3> -->
-      <p class="member-role" id="member">Senior IEEE member,Assistant Professor,<br/>Electrical,Electronics and Communication<br/>Engineering (EECE)<br/>Department,Indian Institute of Technology, Dharwad</p>
-    </div>
-  </div>
-  <div class="committee-member" style="text-align: left;">
-    <img src="SP.jpg" alt="Satyam Panchal" style="object-fit: cover;" />
-    <div class="member-info">
-      <h3 class="member-name">Satyam Panchal</h3>
-      <!-- <h3 style="font-size: 0.8rem;">Expert talk on "Introduction to Electric Vehicle and Modeling" -->
-      <!-- </h3><br/> -->
-      <p class="member-role"> Ph.D., P.Eng.,Adjunct Assistant Professor,<br />Department of
-        Mechanical and Mechatronics Engineering/<br />University of Waterloo, Ontario, Canada</p>
-    </div>
-  </div>
-  <div class="committee-member" style="text-align: left;">
-    <img src="Dr. Modi Chirag Navinchandra.png" alt="Dr. Modi Chirag Navinchandra" style="object-fit: cover;" />
-    <div class="member-info">
-      <h3 class="member-name">Dr. Modi Chirag Navinchandra</h3>
-      <!-- <h3 style="font-size: 0.8rem;">Expert talk on "Introduction to Electric Vehicle and Modeling" -->
-      <!-- </h3><br/> -->
-      <p class="member-role" >Associate Professor in the department <br/>of computer science and engineering at National Institute of Technology Goa (NIT Goa).</p>
-    </div>
-  </div>
-</div>
-  
-<main class="container" style="margin-top: 2rem">
-  <p class="key">
-    We are thrilled to announce that the Experts from reputed International
-    and National Institutes are going to join the conference.
-  </p>
-  <p class="key">
-    You are invited to register for networking opportunities, support
-    innovations and potential collaborators.
-  </p>
-</main>
+    <main class="main-content">
+      <!-- Page Header -->
+      <!-- <div class="page-header">
+        <h1 class="page-title">Distinguished Speakers</h1>
+        <p class="page-subtitle">
+          Join us for inspiring talks from renowned experts and thought leaders
+          in technology and innovation
+        </p>
+      </div> -->
 
-<footer>
-  <div class="footer-content">
-    <p>© 2025 SDSTD Conference. All rights reserved.</p>
-    <div class="footer-links">
-      <p>Design And Develop By <span style="font-weight: bold">Student Team of CP & IT GCET College</span></p>
-    </div>
-  </div>
-</footer>
-<script>
-  function toggleMenu() {
-    const mobileNav = document.getElementById("mobileNav");
-    mobileNav.classList.add("active");
-  }
+      <!-- Keynote Speakers -->
+      <section class="speakers-section">
+        <h2 class="section-title">Keynote Speakers</h2>
+        <div class="speakers-grid keynote-grid">
+          <!-- Keynote Speaker 1 -->
+          <div class="speaker-card keynote-card">
+            <div class="speaker-image-container">
+              <img
+                src="Kiran Trivedi.jpg"
+                alt="Dr. Kiran Trivedi"
+                class="speaker-image"
+              />
+              <div class="keynote-badge">Keynote</div>
+            </div>
+            <div class="speaker-content">
+              <h3 class="speaker-name">Dr. Kiran Trivedi</h3>
+              <p class="speaker-designation">
+                Associate Professor, Computer Science
+              </p>
+              <p class="speaker-organization">
+                University of Wollongong, Gandhinagar, Gujarat, India
+              </p>
+              <div class="speaker-topic">
+                <span class="topic-label">Topic:</span>
+                <p class="topic-text">
+                  Tiny Machine Learning for Engineering Applications
+                </p>
+              </div>
+            </div>
+          </div>
 
-  function toggleClose() {
-    const mobileNav = document.getElementById("mobileNav");
-    mobileNav.classList.remove("active");
-  }
-  function openInNewTab(url){
-    window.open(url, '_blank').focus();
-  }
-</script>
-<script src="script.js"></script>
-</body>
+          <!-- Keynote Speaker 2 -->
+          <div class="speaker-card keynote-card">
+            <div class="speaker-image-container">
+              <img
+                src="DKP.jpg"
+                alt="Dr Darshan K Patel"
+                class="speaker-image"
+              />
+              <div class="keynote-badge">Keynote</div>
+            </div>
+            <div class="speaker-content">
+              <h3 class="speaker-name">Dr Darshan K Patel</h3>
+              <p class="speaker-designation">Group Director, SAC, ISRO</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
+      <!-- Expert Talks -->
+      <section class="speakers-section">
+        <h2 class="section-title">Expert Talks</h2>
+        <div class="speakers-grid expert-grid">
+          <!-- Expert Speaker 1 -->
+          <div class="speaker-card">
+            <div class="speaker-image-container">
+              <img src="SP.jpg" alt="Satyam Panchal" class="speaker-image" />
+            </div>
+            <div class="speaker-content">
+              <h3 class="speaker-name">Satyam Panchal</h3>
+              <p class="speaker-designation">
+                Ph.D., P.Eng., Adjunct Assistant Professor
+              </p>
+              <p class="speaker-organization">
+                Mechanical and Mechatronics Engg., University of Waterloo,
+                Ontario, Canada
+              </p>
+              <div class="speaker-topic">
+                <span class="topic-label">Topic:</span>
+                <p class="topic-text">
+                  Introduction to Electric Vehicle and Modeling
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Expert Speaker 2 -->
+          <div class="speaker-card">
+            <div class="speaker-image-container">
+              <img
+                src="Expert_Track 1_Dr. Suril Shah_Professor & Head Mechanical Engineering Department_IIT Jodhpur.png"
+                alt="Dr. Suril Shah"
+                class="speaker-image"
+              />
+            </div>
+            <div class="speaker-content">
+              <h3 class="speaker-name">Dr. Suril Shah</h3>
+              <p class="speaker-designation">
+                Professor & Head, Mechanical Engineering Department
+              </p>
+              <p class="speaker-organization">IIT-Jodhpur</p>
+              <div class="speaker-topic">
+                <span class="topic-label">Topic:</span>
+                <p class="topic-text">
+                  Exploring Space Robotics: Challenges and Solutions for
+                  On-Orbit Operations
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Expert Speaker 3 -->
+          <div class="speaker-card">
+            <div class="speaker-image-container">
+              <img
+                src="Sudeep Popat - Expert Speaker Chemical.jpg"
+                alt="Sudeep C. Popat"
+                class="speaker-image"
+              />
+            </div>
+            <div class="speaker-content">
+              <h3 class="speaker-name">Sudeep C. Popat</h3>
+              <p class="speaker-designation">Associate Professor</p>
+              <p class="speaker-organization">
+                Department of Environmental Engineering & Earth Sciences,
+                Clemson University
+              </p>
+              <div class="speaker-topic">
+                <span class="topic-label">Topic:</span>
+                <p class="topic-text">Electrochemical Technology</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Expert Speaker 4 -->
+          <div class="speaker-card">
+            <div class="speaker-image-container">
+              <img
+                src="Dr. Sridhar - Keynote Chemical Civil track.jpg"
+                alt="Dr. Sundergopal Sridhar"
+                class="speaker-image"
+              />
+            </div>
+            <div class="speaker-content">
+              <h3 class="speaker-name">Dr. Sundergopal Sridhar</h3>
+              <p class="speaker-designation">
+                Chemical Engineer and Chief Scientist
+              </p>
+              <p class="speaker-organization">
+                CSIR - Indian Institute of Chemical Technology, Hyderabad.
+                Fellow of the prestigious Royal Society of Chemistry (FRSC)
+              </p>
+              <div class="speaker-topic">
+                <span class="topic-label">Topic:</span>
+                <p class="topic-text">Membrane Technology</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Expert Speaker 5 -->
+          <div class="speaker-card">
+            <div class="speaker-image-container">
+              <img
+                src="Dr. Namrata Jariwala -photo.jpg"
+                alt="Dr. Namrata D Jariwala"
+                class="speaker-image"
+              />
+            </div>
+            <div class="speaker-content">
+              <h3 class="speaker-name">Dr. Namrata D Jariwala</h3>
+              <p class="speaker-designation">Associate Professor</p>
+              <p class="speaker-organization">
+                Civil Engineering Department SVNIT, Surat
+              </p>
+              <div class="speaker-topic">
+                <span class="topic-label">Topic:</span>
+                <p class="topic-text">
+                  Solid Waste Management: Issues And Challenges For Indian
+                  Cities
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Expert Speaker 6 -->
+          <div class="speaker-card">
+            <div class="speaker-image-container">
+              <img
+                src="Dr. S S Arya_Expert Talk Speaker_Food Dairy Chemical and Civil Track.jpeg"
+                alt="Dr. S. S. Arya"
+                class="speaker-image"
+              />
+            </div>
+            <div class="speaker-content">
+              <h3 class="speaker-name">Dr. S. S. Arya</h3>
+              <p class="speaker-designation">Professor</p>
+              <p class="speaker-organization">
+                Institute of Chemical Technology, Mumbai, India
+              </p>
+              <div class="speaker-topic">
+                <span class="topic-label">Topic:</span>
+                <p class="topic-text">
+                  Application of NonThermal Processing of Food
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Expert Speaker 7 -->
+          <div class="speaker-card">
+            <div class="speaker-image-container">
+              <img
+                src="Dr. Hiren K. Mewada_Keynote Speaker_IT_CP_Track.jpg"
+                alt="Dr. Hiren Mewada"
+                class="speaker-image"
+              />
+            </div>
+            <div class="speaker-content">
+              <h3 class="speaker-name">Dr. Hiren Mewada</h3>
+              <p class="speaker-designation">
+                Assistant Professor (PhD Electronics)
+              </p>
+              <p class="speaker-organization">
+                Electrical Engineering Department, Prince Mohammad Bin Fahd
+                University, AL Khobar, Saudi
+              </p>
+              <div class="speaker-topic">
+                <span class="topic-label">Topic:</span>
+                <p class="topic-text">
+                  Implications of AI based image classification and diagnosis in
+                  healthcare
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Expert Speaker 8 -->
+          <div class="speaker-card">
+            <div class="speaker-image-container">
+              <img
+                src="Dr. Modi Chirag Navinchandra.png"
+                alt="Dr. Modi Chirag Navinchandra"
+                class="speaker-image"
+              />
+            </div>
+            <div class="speaker-content">
+              <h3 class="speaker-name">Dr. Modi Chirag Navinchandra</h3>
+              <p class="speaker-designation">Associate Professor</p>
+              <p class="speaker-organization">
+                Computer science and Engg., NIT Goa
+              </p>
+              <div class="speaker-topic">
+                <span class="topic-label">Topic:</span>
+                <p class="topic-text">
+                  Role of AI/ML and Blockchain in the Technological Advancements
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Expert Speaker 9 -->
+          <div class="speaker-card">
+            <div class="speaker-image-container">
+              <img
+                src="RJP.jpg"
+                alt="Dr. Rahul Jashvantbhai Pandya"
+                class="speaker-image"
+              />
+            </div>
+            <div class="speaker-content">
+              <h3 class="speaker-name">Dr. Rahul Jashvantbhai Pandya</h3>
+              <p class="speaker-designation">
+                Senior IEEE member, Assistant Professor
+              </p>
+              <p class="speaker-organization">
+                Electrical, Electronics and Communication Engg., IIT, Dharwad
+              </p>
+              <div class="speaker-topic">
+                <span class="topic-label">Topic:</span>
+                <p class="topic-text">
+                  6G Vision, Potential technologies, Challenges, and Role of AI
+                  in 6G
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Call to Action -->
+      <section class="cta-section">
+        <h3 class="cta-title">Join the Conference</h3>
+        <p class="cta-text">
+          We are thrilled to announce that experts from reputed International
+          and National Institutes are joining the conference. Register now for
+          networking opportunities, innovation support, and potential
+          collaborations.
+        </p>
+        <div class="cta-buttons">
+          <button
+            class="cta-btn primary"
+            onclick="openInNewTab('https://forms.gle/oZiaETYz1s2UpWhR8')"
+          >
+            Register Now
+          </button>
+          <button
+            class="cta-btn secondary"
+            onclick="openInNewTab('https://cmt3.research.microsoft.com/User/Login?ReturnUrl=%2FSDSTD2025%2FSubmission%2FIndex')"
+          >
+            Submit Paper
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <p>© 2025 SDSTD Conference. All rights reserved.</p>
+        <p>
+          Design And Develop By
+          <span>Student Team of CP & IT GCET College</span>
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      function toggleMenu() {
+        const mobileNav = document.getElementById("mobileNav");
+        mobileNav.classList.add("active");
+      }
+
+      function toggleClose() {
+        const mobileNav = document.getElementById("mobileNav");
+        mobileNav.classList.remove("active");
+      }
+
+      function openInNewTab(url) {
+        window.open(url, "_blank").focus();
+      }
+
+      // Close mobile menu when clicking outside
+      document.addEventListener("click", function (event) {
+        const mobileNav = document.getElementById("mobileNav");
+        const menuBtn = document.querySelector(".menu-btn");
+
+        if (
+          !mobileNav.contains(event.target) &&
+          !menuBtn.contains(event.target)
+        ) {
+          mobileNav.classList.remove("active");
+        }
+      });
+    </script>
+  </body>
 </html>

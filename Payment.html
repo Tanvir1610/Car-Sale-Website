@@ -1,231 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Payment Details</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      body {
-        animation: slideUp 0.5s ease-in;
-        font-family: "Ubuntu", sans-serif;
-        font-weight: 400;
-        /* text-align: justify; */
-      }
-      @keyframes slideUp {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
 
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Payment Details</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+    rel="stylesheet" />
+  <style>
+    body {
+      animation: slideUp 0.5s ease-in;
+      font-family: "Ubuntu", sans-serif;
+      font-weight: 400;
+      /* text-align: justify; */
+    }
+
+    .nav-links a {
+      /* color: white; */
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
       }
-      /* Menu Button (Visible only on mobile) */
-      .menu-btn {
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Menu Button (Visible only on mobile) */
+    .menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: linear-gradient(to right, #cffafe 0%, #dbeafe 100%);
+      font-size: 20px;
+      cursor: pointer;
+      text-align: left;
+      margin-left: 10px;
+    }
+
+    /* Mobile Navbar (Sidebar) */
+    .mobile-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 250px;
+      height: 100%;
+      background: #0b274c;
+      padding-top: 50px;
+      transition: transform 0.3s ease-in-out;
+      transform: translateX(-100%);
+      display: flex;
+      flex-direction: column;
+      list-style: none;
+    }
+
+    .mobile-nav.active {
+      transform: translateX(0);
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      /* align-self: flex-end; */
+      cursor: pointer;
+      margin-right: 15px;
+      text-align: left;
+      padding: 10px 20px;
+    }
+
+    .mobile-nav a {
+      color: white;
+      background: linear-gradient(to right, #2563eb 0%, #06b6d4 100%);
+      -webkit-background-clip: text;
+      /* -webkit-text-fill-color: transparent; */
+      text-decoration: none;
+      padding: 15px;
+      font-size: 18px;
+      display: block;
+      list-style: none;
+    }
+
+    /* Show Mobile Menu */
+    .mobile-nav .dropdown {
+      position: relative;
+      display: block;
+    }
+
+    .mobile-nav .dropdown-content {
+      display: none;
+      /* Initially hidden */
+      flex-direction: column;
+      background: #1a1a1a;
+      padding-left: 10px;
+    }
+
+    .mobile-nav .dropdown-content a {
+      padding: 10px;
+      display: block;
+      color: white;
+      text-decoration: none;
+    }
+
+    /* Show dropdown when active */
+    .mobile-nav .dropdown.active .dropdown-content {
+      display: flex;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-links {
         display: none;
-        background: none;
-        border: none;
-        color: linear-gradient(to right, #cffafe 0%, #dbeafe 100%);
-        font-size: 20px;
-        cursor: pointer;
-        text-align: left;
-        margin-left: 10px;
-      }
-
-      /* Mobile Navbar (Sidebar) */
-      .mobile-nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 250px;
-        height: 100%;
-        background: #0b274c;
-        padding-top: 50px;
-        transition: transform 0.3s ease-in-out;
-        transform: translateX(-100%);
-        display: flex;
-        flex-direction: column;
-        list-style: none;
-      }
-
-      .mobile-nav.active {
-        transform: translateX(0);
-      }
-
-      .close-btn {
-        background: none;
-        border: none;
         color: white;
-        font-size: 24px;
-        /* align-self: flex-end; */
-        cursor: pointer;
-        margin-right: 15px;
-        text-align: left;
-        padding: 10px 20px;
       }
 
-      .mobile-nav a {
-        color: white;
-        background: linear-gradient(to right, #2563eb 0%, #06b6d4 100%);
-        -webkit-background-clip: text;
-        /* -webkit-text-fill-color: transparent; */
-        text-decoration: none;
-        padding: 15px;
-        font-size: 18px;
-        display: block;
-        list-style: none;
-      }
-
-      /* Show Mobile Menu */
-      .mobile-nav .dropdown {
-        position: relative;
-        display: block;
-      }
-
-      .mobile-nav .dropdown-content {
-        display: none; /* Initially hidden */
-        flex-direction: column;
-        background: #1a1a1a;
-        padding-left: 10px;
-      }
-
-      .mobile-nav .dropdown-content a {
-        padding: 10px;
+      .menu-btn {
         display: block;
         color: white;
-        text-decoration: none;
       }
 
-      /* Show dropdown when active */
-      .mobile-nav .dropdown.active .dropdown-content {
-        display: flex;
+      .logo-container {
+        gap: 2rem;
       }
 
-      /* Responsive Design */
-      @media (max-width: 768px) {
-        .nav-links {
-          display: none;
-        }
+      .conference-info {
+        margin-bottom: 1.5rem;
+        width: 85%;
+      }
+      .submit-paper{
+        box-shadow: none;
+      }
+    }
 
-        .menu-btn {
-          display: block;
-        }
-        .logo-container {
-          gap: 2rem;
-        }
-        .conference-info {
-          margin-bottom: 1.5rem;
-          width: 85%;
-        }
-      }
-      h2 {
-        margin-top: 3rem;
-        font-weight: bold;
-        font-size: 2rem;
-        color: #000;
-        /* background: #fff; */
-        width: 60%;
-        margin: 0 auto;
-        margin-bottom: 1rem;
-        margin-top: 1rem;
-      }
+    h2 {
+      margin-top: 3rem;
+      font-weight: bold;
+      font-size: 1rem;
+      color: #000;
+      /* background: #fff; */
+      width: 60%;
+      margin: 0 auto;
+      margin-bottom: 1rem;
+      margin-top: 1rem;
+    }
+
+    .submit-paper {
+      color: #000;
+      background-color: linear-gradient(to right, #cffafe 0%, #dbeafe 100%);
+      /* -webkit-text-fill-color: transparent; */
+      margin-right: 15px;
+      animation: fadeIn 1s ease;
+      /* box-shadow: 1px -4px 5px; */
+      box-shadow: none;
+    }
+
+    @media(max-width:768px) {
       .submit-paper {
-        color: #fff !important;
-        background: linear-gradient(to right, #2563eb 0%, #06b6d4 100%);
-        /* -webkit-text-fill-color: transparent; */
-        margin-right: 15px;
-        animation: fadeIn 1s ease;
-        box-shadow: 1px -4px 5px;
+        color: white;
       }
-      #h3 {
+    }
+
+    #h3 {
+      margin: auto;
+      /* border: 1px solid 'black; */
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .bank-info>img {
+      /* border: 1px solid black; */
+      margin: auto;
+      width: 300px;
+      box-shadow: 1px -5px 10px;
+      /* height: 600px; */
+    }
+
+    @media (max-width: 768px) {
+      .bank-info>img {
+        /* height: 300px; */
+        width: 224px;
         margin: auto;
-        /* border: 1px solid 'black; */
-        text-align: center;
-        margin-bottom: 1rem;
       }
-      .bank-info > img {
-        /* border: 1px solid black; */
-        margin: auto;
-        width: 400px;
-        box-shadow: 1px -5px 10px;
-        /* height: 600px; */
+
+      .logo {
+        height: 25px;
       }
-      @media (max-width: 768px) {
-        .bank-info > img {
-          /* height: 300px; */
-          width: 224px;
-          margin: auto;
-        }
-        .logo {
-          height: 25px;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <div class="logo-container">
-        <img src="SDSTD2025.png" alt="SDSTD" class="logo" />
-        <img src="cvm.png" alt="CVM" class="logo" />
-        <img src="adit.png" alt="ADIT" class="logo" />
-        <img src="gcet.png" alt="GCET" class="logo" />
-        <img src="mbit.png" alt="MBIT" class="logo" />
-      </div>
-      <nav class="navbar">
-        <ul class="nav-links">
-          <li><a href="index.html" class="active">Home</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropbtn">About</a>
-            <div class="dropdown-content">
-              <a href="cvm.html">Charutar Vidya Mandal</a>
-              <a href="cvm-university.html">CVM University</a>
-            </div>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropbtn">SDSTD-2025</a>
-            <div class="dropdown-content">
-              <a href="tracks.html">Tracks</a>
-              <a href="call-for-papers.html">Call for Papers</a>
-              <a href="important-dates.html">Important Dates</a>
-              <a href="submission-guidelines.html">Submission Guidelines</a>
-              <a
-                href="#"
-                onclick="openInNewTab('https://forms.gle/oZiaETYz1s2UpWhR8')"
-                >Registration</a
-              >
-              <a href="Payment.html">Payment Details</a>
-            </div>
-          </li>
-          <li><a href="keynote.html">Keynote Speakers</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropbtn">Committee</a>
-            <div class="dropdown-content">
-              <a href="organizing.html">Organizing Committee</a>
-              <a href="track-coordinators.html">Track Co-ordinators</a>
-              <a href="ITC.html">International Technical Committee</a>
-              <a href="NC.html">National Technical Committee</a>
-              <!-- <a href="WC.html">Website Coordinator</a> -->
-            </div>
-          </li>
-          <li><a href="index.html#contact">Contact Us</a></li>
-          <li>
-            <a href="#" class="submit-paper" onclick="openInNewTab('https://cmt3.research.microsoft.com/User/Login?ReturnUrl=%2FSDSTD2025%2FSubmission%2FIndex')">Submit Paper</a
-            >
-          </li>
-        </ul>
-        <button class="menu-btn" onclick="toggleMenu()">☰</button>
-      </nav>
-      <div class="mobile-nav" id="mobileNav">
-        <button class="close-btn" onclick="toggleClose()">✖</button>
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="SDSTD2025.png" alt="SDSTD" class="logo" />
+      <img src="cvm.png" alt="CVM" class="logo" />
+      <img src="adit.png" alt="ADIT" class="logo" />
+      <img src="gcet.png" alt="GCET" class="logo" />
+      <img src="mbit.png" alt="MBIT" class="logo" />
+      <img src="CVM-Logo.png" alt="MBIT" class="logo" />
+    </div>
+    <nav class="navbar">
+      <ul class="nav-links">
         <li><a href="index.html" class="active">Home</a></li>
         <li class="dropdown">
           <a href="#" class="dropbtn">About</a>
@@ -241,15 +228,11 @@
             <a href="call-for-papers.html">Call for Papers</a>
             <a href="important-dates.html">Important Dates</a>
             <a href="submission-guidelines.html">Submission Guidelines</a>
-            <a
-              href="#"
-              onclick="openInNewTab('https://forms.gle/oZiaETYz1s2UpWhR8')"
-              >Registration</a
-            >
+            <a href="#" onclick="openInNewTab('https://forms.gle/oZiaETYz1s2UpWhR8')">Registration</a>
             <a href="Payment.html">Payment Details</a>
           </div>
         </li>
-        <li><a href="keynote.html">Keynote Speakers</a></li>
+        <li><a href="keynote.html">Keynote Speaker</a></li>
         <li class="dropdown">
           <a href="#" class="dropbtn">Committee</a>
           <div class="dropdown-content">
@@ -261,65 +244,107 @@
           </div>
         </li>
         <li><a href="index.html#contact">Contact Us</a></li>
-        <li><a href="#" class="submit-paper" onclick="openInNewTab('https://cmt3.research.microsoft.com/User/Login?ReturnUrl=%2FSDSTD2025%2FSubmission%2FIndex')">Submit Paper</a></li>
-      </div>
-    </header>
-    <h2>Conference Payment Details</h2>
-    <div class="conference-info">
-      <h3 style="text-align: center; font-weight: bold">Registration Fees:</h3>
-      <ul>
-        <li>Rs. 1000 per participant (outside CVM University)</li>
         <li>
-          Rs. 750 per participant (Faculty members and PhD scholars of CVM
-          University)
+          <a href="#" class="submit-paper"
+            onclick="openInNewTab('https://cmt3.research.microsoft.com/User/Login?ReturnUrl=%2FSDSTD2025%2FSubmission%2FIndex')">Submit
+            Paper</a>
         </li>
-        <li>Rs. 500 per participant (CVM University students)</li>
       </ul>
-    </div>
-
-    <div class="payment-details">
-      <h3 id="h3" style="font-weight: bold">
-        Bank & QR Code Details for Payment
-      </h3>
-      <div class="bank-info">
-        <img src="IMG_3405.jpg" alt="QR Code" />
-        <p><strong>Bank Name:</strong> HDFC BANK</p>
-        <p><strong>Account Number:</strong> 50100402371501</p>
-        <p><strong>Account Holder:</strong> CVM UNIVERSITY</p>
-        <p><strong>IFSC Code:</strong> HDFC0009500</p>
-        <p>
-          <strong>Branch:</strong> CHARUTAR VIDYA MANDAL BRANCH, ADIT CAMPUS,
-          NEW V V NAGAR
-        </p>
-        <p><strong>Email:</strong> account.section@cvmu.edu.in</p>
-      </div>
-    </div>
-    <footer style="margin-top: 1.5rem">
-      <div class="footer-content">
-        <p>© 2025 SDSTD Conference. All rights reserved.</p>
-        <div class="footer-links">
-          <p>
-            Design And Develop By
-            <span style="font-weight: bold"
-              >Student Team of CP & IT GCET College</span
-            >
-          </p>
+      <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    </nav>
+    <div class="mobile-nav" id="mobileNav">
+      <button class="close-btn" onclick="toggleClose()">✖</button>
+      <li><a href="index.html" class="active">Home</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropbtn">About</a>
+        <div class="dropdown-content">
+          <a href="cvm.html">Charutar Vidya Mandal</a>
+          <a href="cvm-university.html">CVM University</a>
         </div>
-      </div>
-    </footer>
-    <script>
-      function toggleMenu() {
-        const mobileNav = document.getElementById("mobileNav");
-        mobileNav.classList.add("active");
-      }
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropbtn">SDSTD-2025</a>
+        <div class="dropdown-content">
+          <a href="tracks.html">Tracks</a>
+          <a href="call-for-papers.html">Call for Papers</a>
+          <a href="important-dates.html">Important Dates</a>
+          <a href="submission-guidelines.html">Submission Guidelines</a>
+          <a href="#" onclick="openInNewTab('https://forms.gle/oZiaETYz1s2UpWhR8')">Registration</a>
+          <a href="Payment.html">Payment Details</a>
+        </div>
+      </li>
+      <li><a href="keynote.html">Keynote Speaker</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Committee</a>
+        <div class="dropdown-content">
+          <a href="organizing.html">Organizing Committee</a>
+          <a href="track-coordinators.html">Track Co-ordinators</a>
+          <a href="ITC.html">International Technical Committee</a>
+          <a href="NC.html">National Technical Committee</a>
+          <!-- <a href="WC.html">Website Coordinator</a> -->
+        </div>
+      </li>
+      <li><a href="index.html#contact">Contact Us</a></li>
+      <li><a href="#" class="submit-paper"
+          onclick="openInNewTab('https://cmt3.research.microsoft.com/User/Login?ReturnUrl=%2FSDSTD2025%2FSubmission%2FIndex')">Submit
+          Paper</a></li>
+    </div>
+  </header>
+  <h2>Conference Payment Details</h2>
+  <div class="conference-info">
+    <h3 style="text-align: center; font-weight: bold">Registration Fees:</h3>
+    <ul>
+      <li>Rs. 1000 per participant (outside CVM University)</li>
+      <li>
+        Rs. 750 per participant (Faculty members and PhD scholars of CVM
+        University)
+      </li>
+      <li>Rs. 500 per participant (CVM University students)</li>
+    </ul>
+  </div>
 
-      function toggleClose() {
-        const mobileNav = document.getElementById("mobileNav");
-        mobileNav.classList.remove("active");
-      }
-      function openInNewTab(url) {
-        window.open(url, "_blank").focus();
-      }
-    </script>
-  </body>
+  <div class="payment-details">
+    <h3 id="h3" style="font-weight: bold">
+      Bank & QR Code Details for Payment
+    </h3>
+    <div class="bank-info">
+      <img src="IMG_3405.jpg" alt="QR Code" />
+      <p><strong>Bank Name:</strong> HDFC BANK</p>
+      <p><strong>Account Number:</strong> 50100402371501</p>
+      <p><strong>Account Holder:</strong> CVM UNIVERSITY</p>
+      <p><strong>IFSC Code:</strong> HDFC0009500</p>
+      <p>
+        <strong>Branch:</strong> CHARUTAR VIDYA MANDAL BRANCH, ADIT CAMPUS,
+        NEW V. V. NAGAR
+      </p>
+      <p><strong>Email:</strong> account.section@cvmu.edu.in</p>
+    </div>
+  </div>
+  <footer style="margin-top: 1.5rem">
+    <div class="footer-content">
+      <p>© 2025 SDSTD Conference. All rights reserved.</p>
+      <div class="footer-links">
+        <p>
+          Design And Develop By
+          <span style="font-weight: bold">Student Team of CP & IT GCET College</span>
+        </p>
+      </div>
+    </div>
+  </footer>
+  <script>
+    function toggleMenu() {
+      const mobileNav = document.getElementById("mobileNav");
+      mobileNav.classList.add("active");
+    }
+
+    function toggleClose() {
+      const mobileNav = document.getElementById("mobileNav");
+      mobileNav.classList.remove("active");
+    }
+    function openInNewTab(url) {
+      window.open(url, "_blank").focus();
+    }
+  </script>
+</body>
+
 </html>
