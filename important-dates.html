@@ -28,7 +28,7 @@
         justify-content: center;
         align-items: center;
         padding: 1rem;
-        gap: 10rem;
+        gap: 7rem;
         background-color: #f8f9fa;
       }
 
@@ -55,8 +55,8 @@
         align-items: center;
       }
       nav {
-        background-color: #fff;
-        padding: 0.5rem;
+        background-color: #0b274c;
+        padding: 1rem;
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
       }
       .nav-links {
@@ -175,6 +175,7 @@
 
         .menu-btn {
           display: block;
+          color: white;
         }
         .logo-container {
           gap: 2rem;
@@ -259,12 +260,13 @@
       } */
 
       .submit-paper {
-        color: #000 !important;
+        color: #000;
         /* background: #027bff; */
         background-color: linear-gradient(to right, #cffafe 0%, #dbeafe 100%);
         /* -webkit-text-fill-color: transparent; */
         animation: fadeIn 1s ease;
-        box-shadow: 1px -4px 5px;
+        /* box-shadow: 1px -4px 5px; */
+        box-shadow: none;
       }
 
       @keyframes fadeInUp {
@@ -294,6 +296,9 @@
           height: 25px;
           align-items: justify;
         }
+        .submit-paper{
+          box-shadow: none;
+        }
       }
     </style>
   </head>
@@ -305,6 +310,7 @@
         <img src="adit.png" alt="ADIT" class="logo" />
         <img src="gcet.png" alt="GCET" class="logo" />
         <img src="mbit.png" alt="MBIT" class="logo" />
+        <img src="CVM-Logo.png" alt="MBIT" class="logo" />
       </div>
       <nav class="navbar">
         <ul class="nav-links">
@@ -327,7 +333,7 @@
               <a href="Payment.html">Payment Details</a>
             </div>
           </li>
-          <li><a href="keynote.html">Keynote Speakers</a></li>
+          <li><a href="keynote.html">Keynote Speaker</a></li>
           <li class="dropdown">
             <a href="#" class="dropbtn">Committee</a>
             <div class="dropdown-content">
@@ -366,7 +372,7 @@
             <a href="Payment.html">Payment Details</a>
           </div>
         </li>
-        <li><a href="keynote.html">Keynote Speakers</a></li>
+        <li><a href="keynote.html">Keynote Speaker</a></li>
         <li class="dropdown">
           <a href="#" class="dropbtn">Committee</a>
           <div class="dropdown-content">
@@ -381,7 +387,7 @@
         <li><a href="#" class="submit-paper" onclick="openInNewTab('https://cmt3.research.microsoft.com/User/Login?ReturnUrl=%2FSDSTD2025%2FSubmission%2FIndex')">Submit Paper</a></li>
       </div>
     </header>
-    <h1 style="color: #000; font-size: 2rem; font-weight: bold; text-align: center; margin: 0 auto; margin-top: 1.5rem;">Important Dates</h1>
+    <h1 style="color: #000; font-size: 2rem; font-weight: bold; text-align: center; margin: 0 auto; margin-top: 1.5rem;">Important Dates and Publications</h1>
     <div class="table-container">
       <table>
         <thead>
@@ -393,6 +399,17 @@
         <tbody id="table-body"></tbody>
       </table>
     </div>
+    <!-- <h2>Publications</h2> -->
+    <div class="conference-info" style="width: 55%;">
+      <!-- <h3 style="text-align: center; font-weight: bold">Registration Fees:</h3> -->
+      <ul>
+        <li style="text-align: justify; font-size: 0.9rem;">All presented papers will be published as a book chapter in conference proceedings (with ISBN). 
+        </li>
+        <li style="text-align: justify; font-size: 0.9rem;">Also selected papers will be published in Pertanika Journal with Additional applicable charges of 800 RM.
+        </li>
+      </ul>
+    </div>
+    <br>
     <footer>
       <div class="footer-content">
         <p>© 2025 SDSTD Conference. All rights reserved.</p>
@@ -422,9 +439,9 @@
           date: "10th May 2025",
           activity: "Last date of submission of Papers",
         },
-        // { date: "20th May 2025", activity: "Extension for paper submission" },
+        { date: "30th May 2025", activity: "Extension for paper submission" },
         {
-          date: "25th May 2025",
+          date: "1st June 2025",
           activity: "Intimation for paper acceptance and Registration starts",
         },
         { date: "10th June 2025", activity: "Last date of registration" },
@@ -433,7 +450,7 @@
           activity:
             "Last date of submission of camera ready copy and copy right form",
         },
-        { date: "25th June 2025", activity: "Conference starts" },
+        { date: "25-26th June 2025", activity: "Conference starts" },
       ];
 
       const tableBody = document.getElementById("table-body");

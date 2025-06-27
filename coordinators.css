@@ -14,6 +14,7 @@
   padding: 1.5rem;
   margin: 0 auto;
   background: #fff;
+  border-radius: 1rem;
 }
 
 h1 {
@@ -52,7 +53,7 @@ h1 {
 .coordinator-card:hover {
   transform: translateY(-5px);
   box-shadow: 10px 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -5px rgba(0, 0, 0, 0.5);
-  border: 1px solid #1e293b;
+  /* border: 1px solid #1e293b; */
   border-radius: 10px;
 }
 
@@ -91,14 +92,16 @@ h1 {
   /* margin-bottom: 0.5rem; */
   /* text-align: center; */
   font-weight: bold;
+  text-align: left;
 }
 
 .coordinator-info p {
   color: #64748b;
-  line-height: 1.6;
-  padding: 0.5rem;
+  /* line-height: 1.6; */
+  /* padding: 0.5rem; */
   font-weight: bold;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
+  text-align: left;
 }
 
 .more-btn {

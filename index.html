@@ -53,6 +53,12 @@
       /* color: white; */
       text-decoration: none;
       font-size: 18px;
+      font-weight: 400;
+    }
+
+    .nav-links a:hover {
+      color: #333;
+      border: none;
     }
 
     /* Menu Button (Visible only on mobile) */
@@ -144,27 +150,32 @@
 
       .menu-btn {
         display: block;
+        color: white;
       }
 
       .logo-container {
         gap: 2rem;
+        background: none;
       }
     }
+
     @media (max-width: 768px) {
-        table {
-          transform: rotateX(0deg);
-          align-items: center;
-          justify-content: center;
-          margin: 0;
-          padding: 0;
-        }
-        tr,
-        td {
-          padding: 10px;
-          font-size: 10px;
-          margin: 0;
-        }
+      table {
+        transform: rotateX(0deg);
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
       }
+
+      tr,
+      td {
+        padding: 10px;
+        font-size: 10px;
+        margin: 0;
+      }
+    }
+
     .contact {
       /* background-color: #0b274c;
             color: white; */
@@ -188,8 +199,8 @@
       /* padding: 3rem; */
     }
 
-    @media(max-width:768px){
-      .contact p.email{
+    @media(max-width:768px) {
+      .contact p.email {
         font-size: 15px;
         padding: 0;
         margin: 0;
@@ -197,16 +208,20 @@
         margin-bottom: 2rem;
         text-align: center;
       }
-      .contact h2{
+
+      .contact h2 {
         font-size: 18px;
       }
+
       .display {
         display: block;
       }
+
       .contact-us {
         display: block;
       }
     }
+
     /* Contact Form */
     form {
       display: flex;
@@ -267,22 +282,26 @@
       margin-bottom: 1rem;
       display: inline-block;
     }
-    @media(max-width:768px){
+
+    @media(max-width:768px) {
       .hero h1 {
-        font-size: 2rem;
+        font-size: 0.75rem;
+        margin-top: 0.5rem;
       }
     }
+
     .hero {
       background: linear-gradient(135deg, #3b82f6, #cffafe, #dbeafe);
     }
 
     .submit-paper {
-      color: #000 !important;
+      color: #000;
       background-color: linear-gradient(to right, #cffafe 0%, #dbeafe 100%);
       /* -webkit-text-fill-color: transparent; */
       margin-right: 15px;
       animation: fadeIn 1s ease;
-      box-shadow: 1px -4px 5px;
+      /* box-shadow: 1px -4px 5px; */
+      box-shadow: none;
     }
 
     .register-btn {
@@ -299,10 +318,28 @@
       margin-top: 2rem;
       display: grid;
     }
+
     .contact-us {
       display: flex;
       text-align: left;
-    } 
+    }
+
+    #blinking {
+      animation: blink 1.5s infinite;
+    }
+    @keyframes blink {
+      0% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
     @keyframes fadeIn {
       from {
         opacity: 0;
@@ -344,32 +381,270 @@
       }
 
       .hero h2 {
-        text-align: justify;
-        font-size: 1rem;
+        text-align: center;
+        font-size: 0.7rem;
+      }
+
+      .submit-paper {
+        color: white;
+        box-shadow: none;
       }
     }
-    .Address{
+
+    @media(max-width:320px) {
+      .hero h1 {
+        font-size: 0.45rem;
+        margin-top: 0.5rem;
+        font-weight: bolder;
+        text-align: left;
+      }
+    }
+
+    .Address {
       margin: 0 auto;
       margin-bottom: 1rem;
       margin-top: 0;
     }
-    tr,td {
+
+    tr,
+    td {
       /* margin: 10px; */
       padding: 10px;
       text-align: center;
     }
+
     .table-container {
       overflow-x: hidden;
       text-align: center;
       justify-content: center;
       align-items: center;
     }
-    table{
+
+    table {
       text-align: center;
       margin: 0 auto;
       justify-content: center;
       align-items: center;
       margin-top: 2rem;
+    }
+
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+      color: white;
+      overflow: hidden;
+    }
+
+    .video-background {
+      /* position: absolute; */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0.9;
+    }
+
+    .content {
+      position: absolute;
+      /* z-index: -1; */
+      background: rgba(255, 255, 255, 0);
+      padding: 10px;
+      border-radius: 10px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .sponser {
+      color: black;
+      text-align: center;
+      padding: 20px 10px;
+      background: linear-gradient(to right, #cffafe, #dbeafe);
+    }
+
+    .sponser h1 {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 1.5rem;
+    }
+
+    .sponsors-logo-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .sponsor-logo {
+      height: auto;
+      max-width: 100px;
+      transition: transform 0.3s ease;
+    }
+
+    .sponsor-logo:hover {
+      transform: scale(1.1);
+    }
+
+    /* Academic Partners Section Styles */
+    .academic-partners {
+      color: black;
+      text-align: center;
+      padding: 20px 10px;
+      background: linear-gradient(to right, #f0f9ff, #e0f2fe);
+      margin-top: 0;
+    }
+
+    .academic-partners h1 {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 1.5rem;
+      color: #000;
+      font-weight: bold;
+    }
+
+    .academic-partners-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .academic-partner-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .academic-partner-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .academic-partner-logo {
+      height: auto;
+      max-width: 120px;
+      margin-bottom: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .academic-partner-logo:hover {
+      transform: scale(1.05);
+    }
+
+    .academic-partner-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #374151;
+      max-width: 150px;
+      line-height: 1.3;
+    }
+
+    /* Responsive adjustments for both sections */
+    @media (max-width: 992px) {
+      .sponsors-logo-container {
+        gap: 1.5rem;
+      }
+
+      .sponsor-logo {
+        max-width: 90px;
+      }
+
+      .sponser h1,
+      .academic-partners h1 {
+        font-size: 1.75rem;
+      }
+
+      .academic-partners-container {
+        gap: 2.5rem;
+      }
+
+      .academic-partner-logo {
+        max-width: 110px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .sponsors-logo-container {
+        gap: 1rem;
+      }
+
+      .sponsor-logo {
+        max-width: 80px;
+      }
+
+      .sponser h1,
+      .academic-partners h1 {
+        font-size: 1.5rem;
+      }
+
+      .academic-partners-container {
+        gap: 2rem;
+      }
+
+      .academic-partner-logo {
+        max-width: 100px;
+      }
+
+      .academic-partner-name {
+        font-size: 0.8rem;
+        max-width: 120px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .sponsors-logo-container {
+        gap: 0.75rem;
+      }
+
+      .sponsor-logo {
+        max-width: 70px;
+      }
+
+      .sponser h1,
+      .academic-partners h1 {
+        font-size: 1.25rem;
+      }
+
+      .academic-partners-container {
+        gap: 1.5rem;
+      }
+
+      .academic-partner-logo {
+        max-width: 90px;
+      }
+
+      .academic-partner-name {
+        font-size: 0.75rem;
+        max-width: 100px;
+      }
+    }
+
+    @media (max-width: 320px) {
+      .academic-partners-container {
+        gap: 1rem;
+      }
+
+      .academic-partner-logo {
+        max-width: 80px;
+      }
+
+      .academic-partner-name {
+        font-size: 0.7rem;
+        max-width: 90px;
+      }
     }
   </style>
 </head>
@@ -382,6 +657,7 @@
       <img src="adit.png" alt="ADIT" class="logo" />
       <img src="gcet.png" alt="GCET" class="logo" />
       <img src="mbit.png" alt="MBIT" class="logo" />
+      <img src="CVM-Logo.png" alt="MBIT" class="logo" />
     </div>
     <nav class="navbar">
       <ul class="nav-links">
@@ -404,7 +680,7 @@
             <a href="Payment.html">Payment Details</a>
           </div>
         </li>
-        <li><a href="keynote.html">Keynote Speakers</a></li>
+        <li><a href="keynote.html">Keynote Speaker</a></li>
         <li class="dropdown">
           <a href="#" class="dropbtn">Committee</a>
           <div class="dropdown-content">
@@ -417,7 +693,9 @@
         </li>
         <li><a href="index.html#contact">Contact Us</a></li>
         <li>
-          <a href="#" class="submit-paper" onclick="openInNewTab('https://cmt3.research.microsoft.com/User/Login?ReturnUrl=%2FSDSTD2025%2FSubmission%2FIndex')">Submit Paper</a>
+          <a href="#" class="submit-paper"
+            onclick="openInNewTab('https://cmt3.research.microsoft.com/User/Login?ReturnUrl=%2FSDSTD2025%2FSubmission%2FIndex')">Submit
+            Paper</a>
         </li>
       </ul>
       <button class="menu-btn" onclick="toggleMenu()">☰</button>
@@ -443,7 +721,7 @@
           <a href="Payment.html">Payment Details</a>
         </div>
       </li>
-      <li><a href="keynote.html">Keynote Speakers</a></li>
+      <li><a href="keynote.html">Keynote Speaker</a></li>
       <li class="dropdown">
         <a href="#" class="dropbtn">Committee</a>
         <div class="dropdown-content">
@@ -455,29 +733,46 @@
         </div>
       </li>
       <li><a href="index.html#contact">Contact Us</a></li>
-      <li><a href="#" class="submit-paper" onclick="openInNewTab('https://cmt3.research.microsoft.com/User/Login?ReturnUrl=%2FSDSTD2025%2FSubmission%2FIndex')">Submit Paper</a></li>
+      <li><a href="#" class="submit-paper"
+          onclick="openInNewTab('https://cmt3.research.microsoft.com/User/Login?ReturnUrl=%2FSDSTD2025%2FSubmission%2FIndex')">Submit
+          Paper</a></li>
     </div>
   </header>
   <main>
     <section class="hero">
-      <h1>
-        <!-- <video autoplay muted loop id="myVideo">
-            <source src="Untitled video.mp4" type="video/mp4">
-            Your browser does not support HTML5 video.
-          </video> -->
-        <img src="SDSTD2025.png" alt="SDSTD2025 Logo" class="conference-logo" />SDSTD 2025
-      </h1>
-      <h2>
-        Synergetic Development through Smart Technology & Digital
-        Transformation-2025
-      </h2>
-      <div class="conference-type">
-        International Conference <span style="font-weight: bold;">(Hybrid Mode)</span>
-      </div>
-      <div class="conference-dates" style="font-weight: bold;">Conference Dates: 25-26 June 2025</div>
-      <div class="cta-buttons">
-        <a href="#" class="register-btn" onclick="openInNewTab('https://forms.gle/oZiaETYz1s2UpWhR8')">Register Now</a>
-        <!-- <a href="#" class="submit-btn">Submit Paper →</a> -->
+      <video autoplay loop muted playsinline class="video-background">
+        <source src="Untitled video - Made with Clipchamp (2).mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+      </video>
+      <div class="content">
+        <h1>
+          <img src="SDSTD2025.png" alt="SDSTD2025 Logo" class="conference-logo" />SDSTD 2025
+        </h1>
+        <h2>
+          Synergetic Development through Smart Technology & Digital
+          Transformation-2025
+        </h2>
+        <div class="conference-type">
+          International Conference <span style="font-weight: bold;">(Hybrid Mode)</span>
+        </div>
+        <div class="conference-dates" style="font-weight: bold;">Conference Dates: 25-26 June 2025</div>
+        <div class="cta-buttons">
+          <!-- <a href="#" class="submit-btn">Submit Paper →</a> -->
+           <a href="#" class="register-btn" id="blinking" onclick="openInNewTab('SDSTD 2025_Schedule.pdf')" style="text-align: justify; font-size: 1rem; font-weight: bold; text-decoration: none; "><span style="backdrop-filter: blur(8px);
+  background: linear-gradient(to right, #2563eb 0%, #06b6d4 100%);
+  /* -webkit-text-fill-color: transparent; */
+  padding: 10px 20px;
+  color: #fff !important;
+  font-size: 1rem;">Schedule</span></a>
+            <a href="#" class="register-btn" onclick="openInNewTab('https://forms.gle/oZiaETYz1s2UpWhR8')" style="text-align: justify; font-size: 1rem; font-weight: bold; text-decoration: none; ">Register
+            Now</a>
+          <a href="#" class="register-btn" id="blinking" onclick="openInNewTab('Revised_Presentation Schedule.pdf')" style="text-align: justify; font-size: 1rem; font-weight: bold; text-decoration: none; "><span style="backdrop-filter: blur(8px);
+  background: linear-gradient(to right, #2563eb 0%, #06b6d4 100%);
+  /* -webkit-text-fill-color: transparent; */
+  padding: 10px 20px;
+  color: #fff !important;
+  font-size: 1rem;">Presentation Schedule</span></a>
+        </div>
       </div>
     </section>
     <section class="content-section">
@@ -509,8 +804,30 @@
         technology, knowledge and ideas across disciplines. SDSTD2025 is
         poised to be a milestone in the journey towards a more interconnected,
         innovative, and sustainable global society.
-      </p>
+      </p>.
     </section>
+    <h2>About Publications</h2>
+    <div class="conference-info" style="max-width: 1200px; width: 100%; color: #666;">
+      <!-- <h3 style="text-align: center; font-weight: bold">Registration Fees:</h3> -->
+      <ul>
+        <li style="text-align: justify; font-size: 1rem; font-weight: bold;"><span style="backdrop-filter: blur(8px);
+  background: linear-gradient(to right, #2563eb 0%, #06b6d4 100%);
+  /* -webkit-text-fill-color: transparent; */
+  padding: 10px 20px;
+  color: #fff !important;
+  font-size: 1rem;
+  border-radius: 3px;
+  border: 1px solid rgba(255,255,255,0.2);
+">30th May 2025:</span> Last date of submission of Papers</li>
+        <li style="text-align: justify; font-size: 1rem; font-weight: bold;">All presented papers will be published as a
+          book chapter in conference proceedings (with ISBN).
+        </li>
+        <li style="text-align: justify; font-size: 1rem; font-weight: bold; ">Also selected papers will be published in
+          Pertanika Journal with Additional applicable charges of 800 RM.
+        </li>
+      </ul>
+    </div>
+    <br>
   </main>
   <div class="popup-overlay" id="popupOverlay">
     <div class="popup-content">
@@ -564,12 +881,73 @@
           Mobile No:9426885360
         </p>
         </div> -->
-    </section>
-    <h2 class="Address" style="margin-top: 0px;">The CVM University</h2>
-    <p style="text-align: center;">Beside BVM College,Opp. Shastri Maidan,Vallabh Vidhyanagar-388120 ,Gujarat, India</p>
+    <div class="sponser">
+      <h1>Sponsors</h1>
+      <div class="sponsors-logo-container">
+        <img src="isa_logo-removebg-preview.png" alt="ISA" class="sponsor-logo" />
+        <img src="AFSTI Vallabha Vidyanagar Chapter Logo_HD.png" alt="AFSTI" class="sponsor-logo" />
+        <img src="ISTE_logo-removebg-preview.png" alt="ISTE" class="sponsor-logo" />
+        <img src="ADIT ISTE Student chapter logo.png" alt="ADIT ISTE" class="sponsor-logo" />
+        <img src="IE_I__logo-removebg-preview.png" alt="IE_I__logo" class="sponsor-logo" />
+      </div>
+    </div>
+    <div class="academic-partners">
+      <h1>Academic Partners</h1>
+      <div class="academic-partners-container">
+        <div class="academic-partner-item">
+          <img
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1000090596-removebg-preview-xqDjz1IWdtBiVq9XXfxM1rlYZfZ87E.png"
+            alt="Sardar Patel University" class="academic-partner-logo" />
+          <div class="academic-partner-name">Sardar Patel University</div>
+        </div>
+        <div class="academic-partner-item">
+          <img
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1000090587-removebg-preview-xV2GYVKbQsxVfl053qVeCbox2UvFcR.png"
+            alt="BRICS+ Universities Association" class="academic-partner-logo" />
+          <div class="academic-partner-name">BRICS+ Universities Association</div>
+        </div>
+        <div class="academic-partner-item">
+          <img
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1000090593-removebg-preview-sn7LTfzds0EmX8O3TNFO3gqNfel8Eh.png"
+            alt="Science Gujarat" class="academic-partner-logo" />
+          <div class="academic-partner-name">Science Gujarat</div>
+        </div>
+      </div>
+    </div>
+    <hr style="color: #000;">
+    <div class="academic-partners">
+      <h1>Industry Partners</h1>
+      <div class="academic-partners-container">
+        <div class="academic-partner-item">
+          <img
+            src="SSL.png"
+            alt="SSL" class="academic-partner-logo" />
+        </div>
+        <div class="academic-partner-item">
+          <img
+            src="KE.png"
+            alt="KE" class="academic-partner-logo" />
+        </div>
+        <div class="academic-partner-item">
+          <img
+            src="Technolabs.png"
+            alt="Akash Technolabs" class="academic-partner-logo" />
+        </div>
+        <div class="academic-partner-item">
+          <img
+            src="Foundation.png"
+            alt="Foundation" class="academic-partner-logo" />
+        </div>
+      </div>
+    </div>
   </section>
 
-  <!-- <div id="map"></div> -->
+  <hr style="color: #000;">
+  <br>
+  <h2 class="Address" style="margin-top: 0px;">The CVM University</h2>
+  <p style="text-align: center; margin-bottom: 1rem;">Beside BVM College,Opp. Shastri Maidan,Vallabh Vidhyanagar-388120
+    ,Gujarat, India</p>
+  </section>
 
   <footer>
     <div class="footer-content">
@@ -589,33 +967,34 @@
       const mobileNav = document.getElementById("mobileNav");
       mobileNav.classList.remove("active");
     }
-    function openInNewTab(url){
+    function openInNewTab(url) {
       window.open(url, '_blank').focus();
     }
     const tableData = [
-        { Name: "Dr. Shivmurti Srivastav", Email: "shivmurti.shrivastava@cvmu.edu.in", 
-          Mobile: "+91 2692-233680" 
-        },
-        
-        {
-          Name: "Dr. Vinod Patel",
-          Email: "vinodpatel@gcet.ac.in",
-          Mobile:"+91 2692-231651"
-        },
-        {
-          Name: "Dr. Foram Joshi",
-          Email:"fmjoshi@mbit.edu.in",
-          Mobile: "+91 2692-230823"
-        }
-      ];
+      {
+        Name: "Dr. Shivmurti Srivastav", Email: "shivmurti.shrivastava@cvmu.edu.in",
+        Mobile: "+91 2692-233680"
+      },
 
-      const table = document.getElementById("table");
+      {
+        Name: "Dr. Vinod Patel",
+        Email: "vinodpatel@gcet.ac.in",
+        Mobile: "+91 2692-231651"
+      },
+      {
+        Name: "Dr. Foram Joshi",
+        Email: "fmjoshi@mbit.edu.in",
+        Mobile: "+91 2692-230823"
+      }
+    ];
 
-      tableData.forEach((entry) => {
-        const row = document.createElement("tr");
-        row.innerHTML = `<td>${entry.Name}</td><td>${entry.Email}</td><td>${entry.Mobile}</td>`;
-        table.appendChild(row);
-      });
+    const table = document.getElementById("table");
+
+    tableData.forEach((entry) => {
+      const row = document.createElement("tr");
+      row.innerHTML = `<td>${entry.Name}</td><td>${entry.Email}</td><td>${entry.Mobile}</td>`;
+      table.appendChild(row);
+    });
   </script>
 
   <script src="scriptContact.js"></script>
