@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      ICNIIS 2026 - International Conference on Next-Gen Integrated and
-      Intelligent Systems
-    </title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIIS 2026 - International Conference on Next-Gen Integrated and Intelligent Systems</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -15,1099 +12,567 @@
     />
     <link rel="stylesheet" href="styles.css" />
     <style>
-      .logo-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 1rem;
-        gap: 7rem;
-        background: none;
-      }
-
-      .logo-container img {
-        /* height: 80px; */
-        width: 80px;
-      }
-
-      .logo {
-        height: 80px;
-        object-fit: contain;
-        transition: transform 0.3s ease;
-      }
-
-      .logo:hover {
-        transform: scale(1.05);
-        cursor: pointer;
-      }
+        /* Flyer Popup Styles */
+        .flyer-popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .flyer-popup-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .flyer-popup {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+        
+        .flyer-popup-overlay.active .flyer-popup {
+            transform: scale(1);
+        }
+        
+        .flyer-popup img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .flyer-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .flyer-close:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: scale(1.1);
+        }
+        
+        .flyer-trigger {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #3b82f6, #1e40af);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+        
+        .flyer-trigger:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 35px rgba(59, 130, 246, 0.6);
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4), 0 0 0 0 rgba(59, 130, 246, 0.7);
+            }
+            70% {
+                box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4), 0 0 0 10px rgba(59, 130, 246, 0);
+            }
+            100% {
+                box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4), 0 0 0 0 rgba(59, 130, 246, 0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .flyer-trigger {
+                width: 60px;
+                height: 60px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 20px;
+            }
+            
+            .flyer-popup {
+                max-width: 95vw;
+                max-height: 85vh;
+            }
+        }
     </style>
-  </head>
-  <body class="dark-theme">
-    <!-- Animated Background -->
-    <div class="animated-bg">
-      <div class="floating-shapes">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
-        <div class="shape shape-4"></div>
-        <div class="shape shape-5"></div>
-      </div>
-    </div>
-
+</head>
+<body>
     <!-- Header -->
-    <header class="header" id="header">
-      <!-- Logo Section -->
-      <div class="logo-section glass-card">
-        <div class="logo-container">
-          <div class="logo-3d">
-            <img src="cvm.png" alt="CVM Logo" class="logo" />
-          </div>
-          <div class="logo-3d">
-            <img src="adit.png" alt="ADIT Logo" class="logo" />
-          </div>
-          <div class="logo-3d">
-            <img src="gcet.png" alt="GCET Logo" class="logo" />
-          </div>
-          <div class="logo-3d">
-            <img src="mbit.png" alt="MBIT Logo" class="logo" />
-          </div>
-          <div class="logo-3d">
-            <img src="CVM-Logo (2).png" alt="CVM Logo" class="logo" />
-          </div>
-        </div>
+    <header class="header">
+      <div class="logo-container">
+        <!-- <img src="SDSTD2025.png" alt="SDSTD" class="logo" /> -->
+        <img src="cvm.png" alt="CVM" class="logo" />
+        <img src="adit.png" alt="ADIT" class="logo" />
+        <img src="gcet.png" alt="GCET" class="logo" />
+        <img src="mbit.png" alt="MBIT" class="logo" />
+        <img src="CVM-Logo.png" alt="MBIT" class="logo" />
       </div>
-
-      <!-- Navigation -->
-      <nav class="navbar glass-card">
-        <div class="nav-container">
-          <ul class="nav-links" id="navLinks">
-            <li><a href="#home" class="nav-link active">Home</a></li>
-            <li><a href="#about" class="nav-link">About</a></li>
-            <li><a href="#conference" class="nav-link">ICNIIS 2026</a></li>
-            <li><a href="#keynote" class="nav-link">Keynote</a></li>
-            <li><a href="#committee" class="nav-link">Committee</a></li>
-            <li><a href="#contact" class="nav-link">Contact</a></li>
-          </ul>
-
-          <div class="nav-actions">
-            <button class="theme-toggle" id="themeToggle">
-              <svg
-                class="sun-icon"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <circle cx="12" cy="12" r="5" />
-                <path
-                  d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"
-                />
-              </svg>
-              <svg
-                class="moon-icon"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-              </svg>
-            </button>
-
-            <button class="cta-btn glow-button">Submit Paper</button>
-
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-              <span></span>
-              <span></span>
-              <span></span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div class="mobile-menu" id="mobileMenu">
-          <div class="mobile-menu-content">
-            <a href="#home" class="mobile-nav-link">Home</a>
-            <a href="#about" class="mobile-nav-link">About</a>
-            <a href="#conference" class="mobile-nav-link">ICNIIS 2026</a>
-            <a href="#keynote" class="mobile-nav-link">Keynote</a>
-            <a href="#committee" class="mobile-nav-link">Committee</a>
-            <a href="#contact" class="mobile-nav-link">Contact</a>
-            <button class="mobile-cta-btn glow-button">Submit Paper</button>
-          </div>
-        </div>
-      </nav>
-    </header>
-    <br><br><br><br><br><br>
-    <!-- Main Content -->
-    <main>
-      <!-- Hero Section -->
-      <section id="home" class="hero">
-        <div class="hero-content">
-          <!-- Conference Badge -->
-          <div class="conference-badge animate-pulse-glow">
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-            </svg>
-            <span>ICNIIS 2026</span>
-          </div>
-
-          <!-- Main Title -->
-          <div class="hero-title text-3d-glow" id="heroTitle">
-            <h1>
-              <span class="gradient-text">ICNIIS</span>
-              <br />
-              <span class="year-text">2026</span>
-            </h1>
-          </div>
-
-          <!-- Subtitle -->
-          <h2 class="hero-subtitle">
-            International Conference on
-            <br />
-            <span class="gradient-text-alt"
-              >Next-Gen Integrated and Intelligent Systems</span
-            >
-          </h2>
-
-          <!-- Conference Details -->
-          <div class="conference-details">
-            <div class="detail-item glass-card">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                <line x1="16" y1="2" x2="16" y2="6" />
-                <line x1="8" y1="2" x2="8" y2="6" />
-                <line x1="3" y1="10" x2="21" y2="10" />
-              </svg>
-              <span>March 20-21, 2026</span>
-            </div>
-            <div class="detail-item glass-card">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                <circle cx="12" cy="10" r="3" />
-              </svg>
-              <span>Hybrid Mode</span>
-            </div>
-            <div class="detail-item glass-card">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                <circle cx="9" cy="7" r="4" />
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-              </svg>
-              <span>International</span>
-            </div>
-          </div>
-
-          <!-- CTA Buttons -->
-          <div class="hero-cta">
-            <button class="cta-primary glow-button">Register Now</button>
-            <button class="cta-secondary glass-button">View Schedule</button>
-            <button class="cta-tertiary glow-button animate-pulse-glow">
-              Presentation Schedule
-            </button>
-          </div>
-        </div>
-
-        <!-- Statistics -->
-        <div class="hero-stats">
-          <div class="stat-item glass-card">
-            <svg
-              width="32"
-              height="32"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-              <circle cx="9" cy="7" r="4" />
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-            </svg>
-            <div class="stat-number">50+</div>
-            <div class="stat-label">Speakers</div>
-          </div>
-          <div class="stat-item glass-card">
-            <svg
-              width="32"
-              height="32"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-              <circle cx="12" cy="10" r="3" />
-            </svg>
-            <div class="stat-number">25+</div>
-            <div class="stat-label">Countries</div>
-          </div>
-          <div class="stat-item glass-card">
-            <svg
-              width="32"
-              height="32"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-              <line x1="16" y1="2" x2="16" y2="6" />
-              <line x1="8" y1="2" x2="8" y2="6" />
-              <line x1="3" y1="10" x2="21" y2="10" />
-            </svg>
-            <div class="stat-number">40+</div>
-            <div class="stat-label">Sessions</div>
-          </div>
-          <div class="stat-item glass-card">
-            <svg
-              width="32"
-              height="32"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-            </svg>
-            <div class="stat-number">500+</div>
-            <div class="stat-label">Attendees</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- About Section -->
-      <section id="about" class="about-section">
         <div class="container">
-          <div class="section-header">
-            <h2 class="section-title gradient-text">About ICNIIS 2026</h2>
-            <div class="section-divider"></div>
-          </div>
-
-          <div class="about-content">
-            <div class="about-main glass-card">
-              <p>
-                The International Conference on Next-Gen Integrated and
-                Intelligent Systems (ICNIIS 2026) aims to bring together
-                researchers, academicians, industry professionals, and
-                policymakers to share their innovative ideas and research in the
-                domains of Electronics, VLSI, Embedded Systems, AI/ML, IoT,
-                Cyber-Physical Systems, and Smart Networks. The conference will
-                serve as a platform for discussing the convergence of emerging
-                technologies driving Intelligent Automation, Next-Generation
-                Electronics, and Digital Infrastructure.
-              </p>
-              <p>
-                Aligned with national missions like Semicon India, Digital
-                India, and Atmanirbhar Bharat, this conference promotes
-                indigenous innovation and future-ready technology development in
-                intelligent systems and integrated electronic solutions.
-              </p>
-            </div>
-
-            <div class="features-grid">
-              <div class="feature-card glass-card">
-                <div class="feature-icon">
-                  <svg
-                    width="32"
-                    height="32"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <rect x="4" y="4" width="16" height="16" rx="2" />
-                    <rect x="9" y="9" width="6" height="6" />
-                    <path d="m15 2 5 5" />
-                    <path d="m9 22 5-5" />
-                    <path d="m2 15 5-5" />
-                    <path d="m22 9-5 5" />
-                  </svg>
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 21h18"/>
+                            <path d="M5 21V7l8-4v18"/>
+                            <path d="M19 21V11l-6-4"/>
+                        </svg>
+                    </div>
+                    <div class="logo-text">
+                        <h1>NIIS 2026</h1>
+                        <p>International Conference</p>
+                    </div>
                 </div>
-                <h3>Electronics & VLSI</h3>
-                <p>
-                  Advanced semiconductor technologies and electronic system
-                  design for next-generation applications.
-                </p>
-              </div>
-
-              <div class="feature-card glass-card">
-                <div class="feature-icon">
-                  <svg
-                    width="32"
-                    height="32"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h4a2 2 0 0 1 2 2v1.28c.6.35 1 .98 1 1.72 0 .74-.4 1.38-1 1.73V15a2 2 0 0 1-2 2h-4v1.27c.6.35 1 .98 1 1.73a2 2 0 1 1-4 0c0-.75.4-1.38 1-1.73V17H7a2 2 0 0 1-2-2v-1.27c-.6-.35-1-.98-1-1.73 0-.74.4-1.37 1-1.72V9a2 2 0 0 1 2-2h4V5.73c-.6-.35-1-.98-1-1.73a2 2 0 0 1 2-2Z"
-                    />
-                  </svg>
-                </div>
-                <h3>AI/ML Integration</h3>
-                <p>
-                  Artificial intelligence and machine learning solutions for
-                  intelligent automation systems.
-                </p>
-              </div>
-
-              <div class="feature-card glass-card">
-                <div class="feature-icon">
-                  <svg
-                    width="32"
-                    height="32"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <circle cx="12" cy="12" r="10" />
-                    <path d="m8 14 4-4 4 4" />
-                  </svg>
-                </div>
-                <h3>IoT & Networks</h3>
-                <p>
-                  Internet of Things and smart network architectures for
-                  connected intelligent systems.
-                </p>
-              </div>
-
-              <div class="feature-card glass-card">
-                <div class="feature-icon">
-                  <svg
-                    width="32"
-                    height="32"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-                  </svg>
-                </div>
-                <h3>Cyber-Physical Systems</h3>
-                <p>
-                  Integration of computational algorithms and physical
-                  components in modern systems.
-                </p>
-              </div>
-            </div>
-
-            <div class="about-cta glass-card">
-              <h3 class="gradient-text-alt">Join the Future of Technology</h3>
-              <p>
-                Be part of the conversation shaping the next generation of
-                integrated and intelligent systems.
-              </p>
-              <button class="glow-button">Learn More</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Publications Section -->
-      <section id="publications" class="publications-section">
-        <div class="container">
-          <div class="section-header">
-            <h2 class="section-title gradient-text-alt">
-              Publications & Important Dates
-            </h2>
-            <div class="section-divider"></div>
-          </div>
-
-          <div class="publications-content">
-            <div class="publication-info glass-card">
-              <div class="info-header">
-                <svg
-                  width="32"
-                  height="32"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-                  <path
-                    d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
-                  />
-                </svg>
-                <h3>Publication Details</h3>
-              </div>
-
-              <div class="info-items">
-                <div class="info-item">
-                  <div class="info-icon">
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path
-                        d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"
-                      />
-                      <line x1="3" y1="6" x2="21" y2="6" />
-                      <path d="M16 10a4 4 0 0 1-8 0" />
-                    </svg>
-                  </div>
-                  <div>
-                    <span class="info-label">Conference Proceedings</span>
-                    <p>
-                      All presented papers will be published as a book chapter
-                      in conference proceedings (with ISBN).
-                    </p>
-                  </div>
-                </div>
-
-                <div class="info-item">
-                  <div class="info-icon">
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path
-                        d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"
-                      />
-                      <line x1="3" y1="6" x2="21" y2="6" />
-                      <path d="M16 10a4 4 0 0 1-8 0" />
-                    </svg>
-                  </div>
-                  <div>
-                    <span class="info-label">Journal Publication</span>
-                    <p>
-                      Selected papers will be published in Pertanika Journal
-                      with additional applicable charges of 800 RM.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="important-dates glass-card">
-              <div class="info-header">
-                <svg
-                  width="32"
-                  height="32"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                  <line x1="16" y1="2" x2="16" y2="6" />
-                  <line x1="8" y1="2" x2="8" y2="6" />
-                  <line x1="3" y1="10" x2="21" y2="10" />
-                </svg>
-                <h3>Important Date</h3>
-              </div>
-
-              <div class="deadline-card">
-                <div class="deadline-date">May 30, 2025</div>
-                <div class="deadline-label">Last Date of Submission</div>
-                <div class="deadline-badge animate-pulse">
-                  <span class="pulse-dot"></span>
-                  Deadline Approaching
-                </div>
-              </div>
-
-              <div class="conference-date-card">
-                <div class="conference-date-label">Conference Dates</div>
-                <div class="conference-date">March 20-21, 2026</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="publications-cta">
-            <button class="glow-button animate-pulse-glow">
-              Submit Your Paper Now
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <!-- Sponsors Section -->
-      <section id="sponsors" class="sponsors-section">
-        <div class="container">
-          <!-- Sponsors -->
-          <div class="sponsor-category">
-            <div class="section-header">
-              <div class="section-icon">
-                <svg
-                  width="32"
-                  height="32"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path d="M3 21h18" />
-                  <path d="M5 21V7l8-4v18" />
-                  <path d="M19 21V11l-6-4" />
-                </svg>
-              </div>
-              <h2 class="section-title gradient-text">Sponsors</h2>
-              <div class="section-divider"></div>
-            </div>
-
-            <div class="sponsors-grid">
-              <div class="sponsor-card glass-card">
-                <svg
-                  width="32"
-                  height="32"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path d="M3 21h18" />
-                  <path d="M5 21V7l8-4v18" />
-                  <path d="M19 21V11l-6-4" />
-                </svg>
-                <span>ISA</span>
-              </div>
-              <div class="sponsor-card glass-card">
-                <svg
-                  width="32"
-                  height="32"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path d="M3 21h18" />
-                  <path d="M5 21V7l8-4v18" />
-                  <path d="M19 21V11l-6-4" />
-                </svg>
-                <span>AFSTI</span>
-              </div>
-              <div class="sponsor-card glass-card">
-                <svg
-                  width="32"
-                  height="32"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path d="M3 21h18" />
-                  <path d="M5 21V7l8-4v18" />
-                  <path d="M19 21V11l-6-4" />
-                </svg>
-                <span>ISTE</span>
-              </div>
-              <div class="sponsor-card glass-card">
-                <svg
-                  width="32"
-                  height="32"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path d="M3 21h18" />
-                  <path d="M5 21V7l8-4v18" />
-                  <path d="M19 21V11l-6-4" />
-                </svg>
-                <span>ADIT ISTE</span>
-              </div>
-              <div class="sponsor-card glass-card">
-                <svg
-                  width="32"
-                  height="32"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path d="M3 21h18" />
-                  <path d="M5 21V7l8-4v18" />
-                  <path d="M19 21V11l-6-4" />
-                </svg>
-                <span>IE_I</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Academic Partners -->
-          <div class="sponsor-category">
-            <div class="section-header">
-              <div class="section-icon">
-                <svg
-                  width="32"
-                  height="32"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-                  <path d="M6 12v5c3 3 9 3 12 0v-5" />
-                </svg>
-              </div>
-              <h2 class="section-title gradient-text-alt">Academic Partners</h2>
-              <div class="section-divider"></div>
-            </div>
-
-            <div class="academic-partners-grid">
-              <div class="partner-card glass-card">
-                <svg
-                  width="48"
-                  height="48"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-                  <path d="M6 12v5c3 3 9 3 12 0v-5" />
-                </svg>
-                <h3>Sardar Patel University</h3>
-              </div>
-              <div class="partner-card glass-card">
-                <svg
-                  width="48"
-                  height="48"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-                  <path d="M6 12v5c3 3 9 3 12 0v-5" />
-                </svg>
-                <h3>BRICS+ Universities Association</h3>
-              </div>
-              <div class="partner-card glass-card">
-                <svg
-                  width="48"
-                  height="48"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-                  <path d="M6 12v5c3 3 9 3 12 0v-5" />
-                </svg>
-                <h3>Science Gujarat</h3>
-              </div>
-            </div>
-          </div>
-
-          <!-- Industry Partners -->
-          <div class="sponsor-category">
-            <div class="section-header">
-              <div class="section-icon">
-                <svg
-                  width="32"
-                  height="32"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-                  <line x1="8" y1="21" x2="16" y2="21" />
-                  <line x1="12" y1="17" x2="12" y2="21" />
-                </svg>
-              </div>
-              <h2 class="section-title gradient-text-green">
-                Industry Partners
-              </h2>
-              <div class="section-divider"></div>
-            </div>
-
-            <div class="industry-partners-grid">
-              <div class="industry-card glass-card">
-                <svg
-                  width="32"
-                  height="32"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-                  <line x1="8" y1="21" x2="16" y2="21" />
-                  <line x1="12" y1="17" x2="12" y2="21" />
-                </svg>
-                <span>SSL</span>
-              </div>
-              <div class="industry-card glass-card">
-                <svg
-                  width="32"
-                  height="32"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-                  <line x1="8" y1="21" x2="16" y2="21" />
-                  <line x1="12" y1="17" x2="12" y2="21" />
-                </svg>
-                <span>KE</span>
-              </div>
-              <div class="industry-card glass-card">
-                <svg
-                  width="32"
-                  height="32"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-                  <line x1="8" y1="21" x2="16" y2="21" />
-                  <line x1="12" y1="17" x2="12" y2="21" />
-                </svg>
-                <span>Akash Technolabs</span>
-              </div>
-              <div class="industry-card glass-card">
-                <svg
-                  width="32"
-                  height="32"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-                  <line x1="8" y1="21" x2="16" y2="21" />
-                  <line x1="12" y1="17" x2="12" y2="21" />
-                </svg>
-                <span>Foundation</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Contact Section -->
-      <section id="contact" class="contact-section">
-        <div class="container">
-          <div class="section-header">
-            <h2 class="section-title gradient-text">Contact Us</h2>
-            <div class="section-divider"></div>
-            <p class="section-subtitle">
-              Get in touch with our conference organizers for any queries or
-              assistance
-            </p>
-          </div>
-
-          <div class="contact-content">
-            <div class="main-contact glass-card">
-              <div class="contact-header">
-                <svg
-                  width="32"
-                  height="32"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path
-                    d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
-                  />
-                  <polyline points="22,6 12,13 2,6" />
-                </svg>
-                <h3>Main Contact</h3>
-              </div>
-              <a
-                href="mailto:cvmuconference.sdstd2025@cvmu.edu.in"
-                class="main-email"
-              >
-                cvmuconference.sdstd2025@cvmu.edu.in
-              </a>
-
-              <form class="contact-form" id="contactForm">
-                <input
-                  type="email"
-                  placeholder="Your email for queries"
-                  required
-                  id="emailInput"
-                />
-                <button type="submit" class="glow-button">
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <line x1="22" y1="2" x2="11" y2="13" />
-                    <polygon points="22,2 15,22 11,13 2,9 22,2" />
-                  </svg>
-                  Submit
+                
+                <nav class="navigation">
+                    <a href="#home" class="nav-link active">Home</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#schedule" class="nav-link">Schedule</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                    <a href="https://forms.gle/poL6xmD6jXPGCveL6" target="_blank" class="cta-button">Register Now</a>
+                </nav>
+                
+                <button class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </button>
-              </form>
             </div>
-
-            <div class="contacts-grid">
-              <div class="contact-card glass-card">
-                <div class="contact-avatar">
-                  <svg
-                    width="32"
-                    height="32"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                    <circle cx="12" cy="7" r="4" />
-                  </svg>
-                </div>
-                <h3>Dr. Shivmurti Srivastav</h3>
-                <div class="contact-info">
-                  <div class="contact-item">
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path
-                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
-                      />
-                      <polyline points="22,6 12,13 2,6" />
-                    </svg>
-                    <a href="mailto:shivmurti.shrivastava@cvmu.edu.in"
-                      >shivmurti.shrivastava@cvmu.edu.in</a
-                    >
-                  </div>
-                  <div class="contact-item">
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path
-                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
-                      />
-                    </svg>
-                    <span>+91 2692-233680</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="contact-card glass-card">
-                <div class="contact-avatar">
-                  <svg
-                    width="32"
-                    height="32"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                    <circle cx="12" cy="7" r="4" />
-                  </svg>
-                </div>
-                <h3>Dr. Vinod Patel</h3>
-                <div class="contact-info">
-                  <div class="contact-item">
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path
-                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
-                      />
-                      <polyline points="22,6 12,13 2,6" />
-                    </svg>
-                    <a href="mailto:vinodpatel@gcet.ac.in"
-                      >vinodpatel@gcet.ac.in</a
-                    >
-                  </div>
-                  <div class="contact-item">
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path
-                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
-                      />
-                    </svg>
-                    <span>+91 2692-231651</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="contact-card glass-card">
-                <div class="contact-avatar">
-                  <svg
-                    width="32"
-                    height="32"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                    <circle cx="12" cy="7" r="4" />
-                  </svg>
-                </div>
-                <h3>Dr. Foram Joshi</h3>
-                <div class="contact-info">
-                  <div class="contact-item">
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path
-                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
-                      />
-                      <polyline points="22,6 12,13 2,6" />
-                    </svg>
-                    <a href="mailto:fmjoshi@mbit.edu.in">fmjoshi@mbit.edu.in</a>
-                  </div>
-                  <div class="contact-item">
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path
-                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
-                      />
-                    </svg>
-                    <span>+91 2692-230823</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="venue-info glass-card">
-              <div class="venue-header">
-                <svg
-                  width="32"
-                  height="32"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                  <circle cx="12" cy="10" r="3" />
-                </svg>
-                <h3>Conference Venue</h3>
-              </div>
-              <h4>The GCET College</h4>
-              <p>
-                G H Patel College of Engineering & Technology, Vallabh
-                Vidyanagar, Gujarat, India
-              </p>
-            </div>
-          </div>
         </div>
-      </section>
-    </main>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="conference-badge">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                        <line x1="16" y1="2" x2="16" y2="6"/>
+                        <line x1="8" y1="2" x2="8" y2="6"/>
+                        <line x1="3" y1="10" x2="21" y2="10"/>
+                    </svg>
+                    March 20-21, 2026
+                </div>
+                
+                <h1 class="hero-title">
+                    NIIS <span class="highlight">2026</span>
+                </h1>
+                
+                <p class="hero-subtitle">
+                    International Conference on Next-Gen Integrated and Intelligent Systems
+                </p>
+                
+                <p class="hero-description">
+                    Bringing together researchers, academicians, and industry professionals to share innovative ideas in Electronics, VLSI, AI/ML, IoT, and Cyber-Physical Systems.
+                </p>
+                
+                <div class="hero-buttons">
+                    <a href="#" target="_blank" class="btn-primary">Submit Paper</a>
+                    <button class="btn-secondary">View Program</button>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">9+</div>
+                        <div class="stat-label">Speakers</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Attendees</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label">Countries</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">25+</div>
+                        <div class="stat-label">Sessions</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About NIIS 2026</h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">
+                    Advancing the future of integrated and intelligent systems through collaboration and innovation
+                </p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Conference Overview</h3>
+                    <p>
+                        The International Conference on Next-Gen Integrated and Intelligent Systems (NIIS 2026) aims to bring together researchers, academicians, industry professionals, and policymakers to share their innovative ideas and research in the domains of Electronics, VLSI, Embedded Systems, AI/ML, IoT, Cyber-Physical Systems, and Smart Networks.
+                    </p>
+                    <p>
+                        Aligned with national missions like Semicon India, Digital India, and Atmanirbhar Bharat, this conference promotes indigenous innovation and future-ready technology development in intelligent systems and integrated electronic solutions.
+                    </p>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature-card blue">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M6 9l6 6 6-6"/>
+                            </svg>
+                        </div>
+                        <h4>Excellence</h4>
+                        <p>Recognized for outstanding research contributions</p>
+                    </div>
+                    <div class="feature-card green">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                        </div>
+                        <h4>Networking</h4>
+                        <p>Connect with global experts and peers</p>
+                    </div>
+                    <div class="feature-card purple">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="2" y1="12" x2="22" y2="12"/>
+                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                            </svg>
+                        </div>
+                        <h4>Global Reach</h4>
+                        <p>International participation and collaboration</p>
+                    </div>
+                    <div class="feature-card orange">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22,4 12,14.01 9,11.01"/>
+                            </svg>
+                        </div>
+                        <h4>Innovation</h4>
+                        <p>Cutting-edge research and development</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Topics -->
+    <section class="topics">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Key Topics</h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">
+                    Explore cutting-edge research areas and emerging technologies
+                </p>
+            </div>
+            
+            <div class="topics-grid">
+                <div class="topic-card">
+                    <div class="topic-icon blue">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 21h18"/>
+                            <path d="M5 21V7l8-4v18"/>
+                            <path d="M19 21V11l-6-4"/>
+                        </svg>
+                    </div>
+                    <h3>Electronics & VLSI</h3>
+                    <p>Advanced semiconductor technologies and electronic system design for next-generation applications.</p>
+                </div>
+                
+                <div class="topic-card">
+                    <div class="topic-icon green">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="2" y1="12" x2="22" y2="12"/>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                        </svg>
+                    </div>
+                    <h3>AI/ML Integration</h3>
+                    <p>Artificial intelligence and machine learning solutions for intelligent automation systems.</p>
+                </div>
+                
+                <div class="topic-card">
+                    <div class="topic-icon purple">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h3>IoT & Networks</h3>
+                    <p>Internet of Things and smart network architectures for connected intelligent systems.</p>
+                </div>
+                
+                <div class="topic-card">
+                    <div class="topic-icon orange">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </div>
+                    <h3>Cyber-Physical Systems</h3>
+                    <p>Integration of computational algorithms and physical components in modern systems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Important Dates -->
+    <section class="dates">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Important Dates</h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="dates-grid">
+                <div class="date-card deadline">
+                    <div class="date-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12,6 12,12 16,14"/>
+                        </svg>
+                    </div>
+                    <h3>May 30, 2025</h3>
+                    <p>Paper Submission Deadline</p>
+                    <div class="badge deadline-badge">Deadline Approaching</div>
+                </div>
+                
+                <div class="date-card conference">
+                    <div class="date-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6"/>
+                            <line x1="8" y1="2" x2="8" y2="6"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
+                        </svg>
+                    </div>
+                    <h3>March 20-21, 2026</h3>
+                    <p>Conference Dates</p>
+                    <div class="badge conference-badge">Save the Date</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Contact Us</h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">
+                    Get in touch with our conference organizers for any queries or assistance
+                </p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-card" style="max-width: 400px; margin: 0 auto;">
+                    <div class="contact-avatar blue">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                    </div>
+                    <h3>Priyang Bhatt</h3>
+                    <p class="role">Conference Coordinator</p>
+                    <a href="mailto:priyangbhatt@gcet.ac.in" class="email">
+                        priyangbhatt@gcet.ac.in
+                    </a>
+                    <div class="phone">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                        +91 9879849707
+                    </div>
+                </div>
+            </div>
+            
+            <div class="venue-card">
+                <div class="venue-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                </div>
+                <h3>Conference Venue</h3>
+                <h4>G H Patel College of Engineering & Technology</h4>
+                <p>Vallabh Vidyanagar, Gujarat, India</p>
+            </div>
+            
+            <!-- Registration Section -->
+            <div class="registration-section">
+                <div class="registration-card">
+                    <h3>Conference Registration</h3>
+                    <p>Register now to secure your spot at NIIS 2026</p>
+                    <a href="https://forms.gle/poL6xmD6jXPGCveL6" target="_blank" class="registration-button">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 11l3 3l8-8"/>
+                            <path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9s4.03-9 9-9c1.51 0 2.93.37 4.18 1.03"/>
+                        </svg>
+                        Register Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-left">
-            <p>&copy; 2026 ICNIIS Conference. All rights reserved.</p>
-          </div>
-          <div class="footer-right">
-            <span>Designed & Developed with</span>
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              class="heart-icon"
-            >
-              <path
-                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
-              />
-            </svg>
-            <span>by</span>
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              class="code-icon"
-            >
-              <polyline points="16,18 22,12 16,6" />
-              <polyline points="8,6 2,12 8,18" />
-            </svg>
-            <span class="team-name">Student Team of CP & IT GCET College</span>
-          </div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 21h18"/>
+                            <path d="M5 21V7l8-4v18"/>
+                            <path d="M19 21V11l-6-4"/>
+                        </svg>
+                    </div>
+                    <div class="logo-text">
+                        <h3>NIIS 2026</h3>
+                        <p>International Conference</p>
+                    </div>
+                </div>
+                
+                <div class="footer-divider"></div>
+                
+                <div class="footer-bottom">
+                    <p>&copy; 2026 NIIS Conference. All rights reserved.</p>
+                    <p class="footer-credit">
+                        Designed & Developed by Student Team of CP & IT GCET College
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
     </footer>
 
+    <!-- Flyer Popup -->
+    <div class="flyer-popup-overlay" id="flyerPopup">
+        <div class="flyer-popup">
+            <button class="flyer-close" onclick="closeFlyerPopup()">&times;</button>
+            <img src="ICNIIS2026_Flyer.jpg" alt="NIIS 2026 Conference Flyer" />
+        </div>
+    </div>
+    
+    <!-- Flyer Trigger Button -->
+    <button class="flyer-trigger" onclick="openFlyerPopup()" title="View Conference Flyer">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14,2 14,8 20,8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+            <polyline points="10,9 9,9 8,9"/>
+        </svg>
+    </button>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navigation = document.querySelector('.navigation');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            navigation.classList.toggle('active');
+            mobileMenuToggle.classList.toggle('active');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Flyer popup functions
+        function openFlyerPopup() {
+            document.getElementById('flyerPopup').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeFlyerPopup() {
+            document.getElementById('flyerPopup').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close popup when clicking outside
+        document.getElementById('flyerPopup').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeFlyerPopup();
+            }
+        });
+        
+        // Close popup with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeFlyerPopup();
+            }
+        });
+    </script>
     <script src="script.js"></script>
     <script src="scriptContact.js"></script>
-  </body>
+</body>
 </html>
